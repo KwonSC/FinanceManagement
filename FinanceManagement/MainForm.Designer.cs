@@ -195,7 +195,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "재정관리";
-            this.Text = "재정관리";
+            this.Text = "Zacchaeus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.재정관리_Load);
             this.menuStrip1.ResumeLayout(false);
