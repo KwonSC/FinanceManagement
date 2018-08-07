@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(재정관리));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.파일 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileCreate = new System.Windows.Forms.ToolStripMenuItem();
@@ -192,6 +193,7 @@
             this.ClientSize = new System.Drawing.Size(700, 360);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "재정관리";

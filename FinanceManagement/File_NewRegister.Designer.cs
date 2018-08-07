@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             System.Windows.Forms.Button button1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(File_NewRegister));
             this.file_name = new System.Windows.Forms.TextBox();
             this.file_name_l = new System.Windows.Forms.Label();
             this.file_carryover_l = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@
             this.Controls.Add(this.file_carryover);
             this.Controls.Add(this.file_name_l);
             this.Controls.Add(this.file_name);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "File_NewRegister";
             this.Text = "새 금전출납부 만들기";
