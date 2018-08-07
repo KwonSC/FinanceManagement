@@ -75,6 +75,7 @@
             this.file_carryover.Name = "file_carryover";
             this.file_carryover.Size = new System.Drawing.Size(111, 21);
             this.file_carryover.TabIndex = 2;
+            this.file_carryover.Text = "0";
             this.file_carryover.TextChanged += new System.EventHandler(this.file_carryover_TextChanged);
             this.file_carryover.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.file_carryover_KeyPress);
             // 

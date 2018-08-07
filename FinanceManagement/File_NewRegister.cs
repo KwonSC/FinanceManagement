@@ -28,6 +28,12 @@ namespace FinanceManagement {
             {
                 MessageBox.Show("이름이 너무 깁니다.", "오류");
             }
+            else
+            {
+                this.name = file_name.Text;
+                this.carryover = Int32.Parse(file_carryover.Text);
+                this.Close();
+            }
         }
 
         private void file_carryover_KeyPress(object sender, KeyPressEventArgs e)
@@ -46,7 +52,10 @@ namespace FinanceManagement {
         {
             string lgsText;
             lgsText = file_carryover.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지
-            file_carryover.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+            if (file_carryover.Text != "")
+            {
+                file_carryover.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+            }
             file_carryover.SelectionStart = file_carryover.TextLength; //** 캐럿을 맨 뒤로 보낸다
             file_carryover.SelectionLength = 0;
         }
