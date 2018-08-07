@@ -23,54 +23,73 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.file_name_t = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.Button button1;
+            this.file_name = new System.Windows.Forms.TextBox();
             this.file_name_l = new System.Windows.Forms.Label();
             this.file_carryover_l = new System.Windows.Forms.Label();
-            this.file_carryover_t = new System.Windows.Forms.TextBox();
+            this.file_carryover = new System.Windows.Forms.TextBox();
+            button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // file_name_t
+            // button1
             // 
-            this.file_name_t.Location = new System.Drawing.Point(145, 16);
-            this.file_name_t.Name = "file_name_t";
-            this.file_name_t.Size = new System.Drawing.Size(192, 25);
-            this.file_name_t.TabIndex = 0;
+            button1.Location = new System.Drawing.Point(495, 10);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(76, 23);
+            button1.TabIndex = 4;
+            button1.TabStop = false;
+            button1.Text = "확인";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // file_name
+            // 
+            this.file_name.Location = new System.Drawing.Point(117, 13);
+            this.file_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.file_name.Name = "file_name";
+            this.file_name.Size = new System.Drawing.Size(168, 21);
+            this.file_name.TabIndex = 0;
             // 
             // file_name_l
             // 
             this.file_name_l.AutoSize = true;
-            this.file_name_l.Location = new System.Drawing.Point(12, 19);
+            this.file_name_l.Location = new System.Drawing.Point(10, 15);
             this.file_name_l.Name = "file_name_l";
-            this.file_name_l.Size = new System.Drawing.Size(127, 15);
+            this.file_name_l.Size = new System.Drawing.Size(101, 12);
             this.file_name_l.TabIndex = 1;
             this.file_name_l.Text = "금전출납부 이름 :";
             // 
             // file_carryover_l
             // 
             this.file_carryover_l.AutoSize = true;
-            this.file_carryover_l.Location = new System.Drawing.Point(366, 19);
+            this.file_carryover_l.Location = new System.Drawing.Point(291, 16);
             this.file_carryover_l.Name = "file_carryover_l";
-            this.file_carryover_l.Size = new System.Drawing.Size(102, 15);
+            this.file_carryover_l.Size = new System.Drawing.Size(81, 12);
             this.file_carryover_l.TabIndex = 3;
             this.file_carryover_l.Text = "초기 이월금 : ";
             // 
-            // file_carryover_t
+            // file_carryover
             // 
-            this.file_carryover_t.Location = new System.Drawing.Point(474, 16);
-            this.file_carryover_t.Name = "file_carryover_t";
-            this.file_carryover_t.Size = new System.Drawing.Size(126, 25);
-            this.file_carryover_t.TabIndex = 2;
+            this.file_carryover.Location = new System.Drawing.Point(378, 13);
+            this.file_carryover.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.file_carryover.Name = "file_carryover";
+            this.file_carryover.Size = new System.Drawing.Size(111, 21);
+            this.file_carryover.TabIndex = 2;
+            this.file_carryover.TextChanged += new System.EventHandler(this.file_carryover_TextChanged);
+            this.file_carryover.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.file_carryover_KeyPress);
             // 
-            // file
+            // File_NewRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 54);
+            this.ClientSize = new System.Drawing.Size(578, 45);
+            this.Controls.Add(button1);
             this.Controls.Add(this.file_carryover_l);
-            this.Controls.Add(this.file_carryover_t);
+            this.Controls.Add(this.file_carryover);
             this.Controls.Add(this.file_name_l);
-            this.Controls.Add(this.file_name_t);
-            this.Name = "file";
+            this.Controls.Add(this.file_name);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "File_NewRegister";
             this.Text = "새 금전출납부 만들기";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -79,9 +98,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox file_name_t;
+        private System.Windows.Forms.TextBox file_name;
         private System.Windows.Forms.Label file_name_l;
         private System.Windows.Forms.Label file_carryover_l;
-        private System.Windows.Forms.TextBox file_carryover_t;
+        private System.Windows.Forms.TextBox file_carryover;
     }
 }

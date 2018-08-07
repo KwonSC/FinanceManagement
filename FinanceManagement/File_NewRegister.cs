@@ -10,8 +10,45 @@ using System.Windows.Forms;
 
 namespace FinanceManagement {
     public partial class File_NewRegister : Form {
+        int carryover;
+
+        string name;
+
         public File_NewRegister() {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (file_name.Text == "")
+            {
+                MessageBox.Show("이름을 입력하시오.","오류");
+            }
+            else if (file_name.Text.Length > 10)
+            {
+                MessageBox.Show("이름이 너무 깁니다.", "오류");
+            }
+        }
+
+        private void file_carryover_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+            {
+                if (file_carryover.Text == "" && e.KeyChar == Convert.ToChar(Keys.Back))
+                {
+                    e.Handled = false;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void file_carryover_TextChanged(object sender, EventArgs e)
+        {
+            string lgsText;
+            lgsText = file_carryover.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지
+            file_carryover.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+            file_carryover.SelectionStart = file_carryover.TextLength; //** 캐럿을 맨 뒤로 보낸다
+            file_carryover.SelectionLength = 0;
         }
     }
 }
