@@ -31,5 +31,36 @@ namespace FinanceManagement {
             form.Location = new Point(250, 200);
             form.Show();
         }
+
+        private void search_Click(object sender, EventArgs e) {
+            Search form = new Search();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(250, 200);
+            form.Show();
+        }
+
+        private void budgetSetting_Click(object sender, EventArgs e) {
+            Setting_budget form = new Setting_budget();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(250, 200);
+            form.Show();
+        }
+
+        private void carryoverSetting_Click(object sender, EventArgs e) {
+            Setting_Carryover form = new Setting_Carryover();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(250, 200);
+            form.Show();
+        }
+
+        private void 재정관리_Load(object sender, EventArgs e) {
+            // TODO: This line of code loads data into the 'database1DataSet1.테이블1' table. You can move, or remove it, as needed.
+            this.테이블1TableAdapter.Fill(this.database1DataSet1.테이블1);
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
     }
 }
