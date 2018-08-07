@@ -14,6 +14,16 @@ namespace FinanceManagement {
 
         string name;
 
+        public int get_carryover()
+        {
+            return carryover;
+        }
+
+        public string get_name()
+        {
+            return name;
+        }
+
         public File_NewRegister() {
             InitializeComponent();
         }
