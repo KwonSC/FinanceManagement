@@ -19,7 +19,7 @@ namespace FinanceManagement {
         }
 
         private void fileCreate_Click(object sender, EventArgs e) {
-            FileRegister form = new FileRegister();
+            File_NewRegister form = new File_NewRegister();
             form.StartPosition = FormStartPosition.Manual;
             form.Location = new Point(100, 100);
             form.Show();

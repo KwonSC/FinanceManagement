@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinanceManagement {
-    public partial class FileRegister : Form {
-        public FileRegister() {
+    public partial class File_NewRegister : Form {
+        public File_NewRegister() {
             InitializeComponent();
         }
     }

@@ -1,5 +1,5 @@
 ﻿namespace FinanceManagement {
-    partial class FileRegister {
+    partial class File_NewRegister {
         /// <summary>
         /// Required designer variable.
         /// </summary>

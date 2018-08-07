@@ -27,7 +27,6 @@
             this.파일 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.fileOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.등록 = new System.Windows.Forms.ToolStripMenuItem();
             this.register = new System.Windows.Forms.ToolStripMenuItem();
             this.검색 = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,8 +55,7 @@
             // 
             this.파일.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileCreate,
-            this.fileOpen,
-            this.fileDelete});
+            this.fileOpen});
             this.파일.Name = "파일";
             this.파일.Size = new System.Drawing.Size(51, 24);
             this.파일.Text = "파일";
@@ -74,12 +72,6 @@
             this.fileOpen.Name = "fileOpen";
             this.fileOpen.Size = new System.Drawing.Size(229, 26);
             this.fileOpen.Text = "다른 금전출납부 열기";
-            // 
-            // fileDelete
-            // 
-            this.fileDelete.Name = "fileDelete";
-            this.fileDelete.Size = new System.Drawing.Size(229, 26);
-            this.fileDelete.Text = "금전출납부 삭제";
             // 
             // 등록
             // 
@@ -155,7 +147,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileCreate;
         private System.Windows.Forms.ToolStripMenuItem fileOpen;
         private System.Windows.Forms.ToolStripMenuItem 등록;
-        private System.Windows.Forms.ToolStripMenuItem fileDelete;
         private System.Windows.Forms.ToolStripMenuItem register;
         private System.Windows.Forms.ToolStripMenuItem 검색;
         private System.Windows.Forms.ToolStripMenuItem search;
