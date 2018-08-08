@@ -41,6 +41,7 @@
             this.budgetSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.carryoverSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.sfdCreateDB = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.테이블1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
@@ -78,20 +79,20 @@
             this.fileCreate,
             this.fileOpen});
             this.파일.Name = "파일";
-            this.파일.Size = new System.Drawing.Size(43, 20);
+            this.파일.Size = new System.Drawing.Size(51, 24);
             this.파일.Text = "파일";
             // 
             // fileCreate
             // 
             this.fileCreate.Name = "fileCreate";
-            this.fileCreate.Size = new System.Drawing.Size(190, 22);
+            this.fileCreate.Size = new System.Drawing.Size(229, 26);
             this.fileCreate.Text = "새 금전출납부 만들기";
             this.fileCreate.Click += new System.EventHandler(this.fileCreate_Click);
             // 
             // fileOpen
             // 
             this.fileOpen.Name = "fileOpen";
-            this.fileOpen.Size = new System.Drawing.Size(190, 22);
+            this.fileOpen.Size = new System.Drawing.Size(229, 26);
             this.fileOpen.Text = "다른 금전출납부 열기";
             // 
             // 등록
@@ -99,13 +100,13 @@
             this.등록.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.register});
             this.등록.Name = "등록";
-            this.등록.Size = new System.Drawing.Size(43, 20);
+            this.등록.Size = new System.Drawing.Size(51, 24);
             this.등록.Text = "등록";
             // 
             // register
             // 
             this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(163, 22);
+            this.register.Size = new System.Drawing.Size(195, 26);
             this.register.Text = "수입 / 지출 등록";
             this.register.Click += new System.EventHandler(this.register_Click);
             // 
@@ -114,13 +115,13 @@
             this.검색.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.search});
             this.검색.Name = "검색";
-            this.검색.Size = new System.Drawing.Size(43, 20);
+            this.검색.Size = new System.Drawing.Size(51, 24);
             this.검색.Text = "검색";
             // 
             // search
             // 
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(154, 22);
+            this.search.Size = new System.Drawing.Size(184, 26);
             this.search.Text = "수입 지출 검색";
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
@@ -130,20 +131,20 @@
             this.budgetSetting,
             this.carryoverSetting});
             this.환경설정.Name = "환경설정";
-            this.환경설정.Size = new System.Drawing.Size(67, 20);
+            this.환경설정.Size = new System.Drawing.Size(81, 24);
             this.환경설정.Text = "환경설정";
             // 
             // budgetSetting
             // 
             this.budgetSetting.Name = "budgetSetting";
-            this.budgetSetting.Size = new System.Drawing.Size(138, 22);
+            this.budgetSetting.Size = new System.Drawing.Size(164, 26);
             this.budgetSetting.Text = "예산 설정";
             this.budgetSetting.Click += new System.EventHandler(this.budgetSetting_Click);
             // 
             // carryoverSetting
             // 
             this.carryoverSetting.Name = "carryoverSetting";
-            this.carryoverSetting.Size = new System.Drawing.Size(138, 22);
+            this.carryoverSetting.Size = new System.Drawing.Size(164, 26);
             this.carryoverSetting.Text = "이월금 변경";
             this.carryoverSetting.Click += new System.EventHandler(this.carryoverSetting_Click);
             // 
@@ -157,16 +158,19 @@
             this.환경설정});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(786, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(898, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // sfdCreateDB
+            // 
+            this.sfdCreateDB.Filter = "MS Access 파일|*.accdb";
+            // 
             // 재정관리
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 483);
+            this.ClientSize = new System.Drawing.Size(898, 604);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -205,6 +209,7 @@
         private System.Windows.Forms.ToolStripMenuItem budgetSetting;
         private System.Windows.Forms.ToolStripMenuItem carryoverSetting;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.SaveFileDialog sfdCreateDB;
     }
 }
 
