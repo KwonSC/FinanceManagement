@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace FinanceManagement {
@@ -69,5 +70,6 @@ namespace FinanceManagement {
             file_carryover.SelectionStart = file_carryover.TextLength; //** 캐럿을 맨 뒤로 보낸다
             file_carryover.SelectionLength = 0;
         }
+        
     }
 }
