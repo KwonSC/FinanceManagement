@@ -19,10 +19,11 @@ namespace FinanceManagement {
         }
 
         private void fileCreate_Click(object sender, EventArgs e) {
-            File_NewRegister form = new File_NewRegister();
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(100, 100);
-            form.Show();
+            if (sfdCreateDB.ShowDialog() == DialogResult.OK) {
+                string strFilePath = sfdCreateDB.FileName;
+                cDBControl cdbc = new cDBControl(strFilePath);  // DBControl 클래스 생성
+                cdbc.funcAccessCreate();    // Access DB를 생성
+            }
         }
 
         private void register_Click(object sender, EventArgs e) {
@@ -57,7 +58,6 @@ namespace FinanceManagement {
         private void 재정관리_Load(object sender, EventArgs e) {
             // TODO: This line of code loads data into the 'database1DataSet1.테이블1' table. You can move, or remove it, as needed.
             this.테이블1TableAdapter.Fill(this.database1DataSet1.테이블1);
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
