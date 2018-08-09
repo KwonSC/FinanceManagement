@@ -24,6 +24,7 @@ namespace FinanceManagement {
                 cDBControl cdbc = new cDBControl(strFilePath);  // DBControl 클래스 생성
                 cdbc.funcAccessCreate();    // Access DB를 생성
                 cdbc.dbCreate();
+                
             }
         }
 
