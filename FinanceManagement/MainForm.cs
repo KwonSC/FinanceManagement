@@ -69,7 +69,7 @@ namespace FinanceManagement {
 
                 DBHandling currentDB = new DBHandling(openDB.FileName);
                 DateTime currentDate = new DateTime(2018, 09, 03);
-                currentDB.add(currentDate, "육근일", 30000, "예비");
+                currentDB.add(currentDate, "육근일", 30000, "예비군");
             }
         }
     }
