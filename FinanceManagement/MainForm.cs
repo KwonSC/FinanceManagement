@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace FinanceManagement {
     public partial class 재정관리 : Form {
+        string strFilePath;
         public 재정관리() {
             InitializeComponent();
         }
@@ -20,7 +21,7 @@ namespace FinanceManagement {
 
         private void fileCreate_Click(object sender, EventArgs e) {
             if (sfdCreateDB.ShowDialog() == DialogResult.OK) {
-                string strFilePath = sfdCreateDB.FileName;
+                strFilePath = sfdCreateDB.FileName;
                 cDBControl cdbc = new cDBControl(strFilePath);  // DBControl 클래스 생성
                 cdbc.funcAccessCreate();    // Access DB를 생성
                 cdbc.dbCreate();
@@ -29,7 +30,7 @@ namespace FinanceManagement {
         }
 
         private void register_Click(object sender, EventArgs e) {
-            Register form = new Register();
+            Register form = new Register(strFilePath);
             form.StartPosition = FormStartPosition.Manual;
             form.Location = new Point(250, 200);
             form.Show();
@@ -64,12 +65,9 @@ namespace FinanceManagement {
         private void fileOpen_Click(object sender, EventArgs e) {
             if (openDB.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 System.IO.StreamReader sr = new System.IO.StreamReader(openDB.FileName);
+                strFilePath = openDB.FileName;
                 MessageBox.Show(sr.ReadToEnd());
                 sr.Close();
-
-                DBHandling currentDB = new DBHandling(openDB.FileName);
-                DateTime currentDate = new DateTime(2018, 09, 03);
-                currentDB.add(currentDate, "육근일", 30000, "예비군");
             }
         }
     }

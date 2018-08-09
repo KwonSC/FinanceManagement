@@ -17,7 +17,7 @@ namespace FinanceManagement {
             this._strDBConnection = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";";
         }
 
-        private String strFilePath() {
+        public String strFilePath() {
             return this._strFilePath;
         }
         private String strDBConnection() {
