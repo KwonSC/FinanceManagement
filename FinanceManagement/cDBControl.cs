@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ADOX;
 using System.IO;
 using System.Data.OleDb;
+using System.Windows.Forms;
 
 namespace FinanceManagement {
     public class cDBControl {
@@ -62,7 +63,7 @@ namespace FinanceManagement {
             }
         }
 
-        public void dbOpen() {
+        public void dbCreate() {
             OleDbConnection conn = new OleDbConnection();
             OleDbCommand connCmd = new OleDbCommand();
 
@@ -71,11 +72,29 @@ namespace FinanceManagement {
                 conn.Open();
                 connCmd.Connection = conn;
 
-                connCmd.CommandText = "CREATE TABLE 수입(육근일 text, 권순창 text, ㅎㅅㅎ text)";
+                connCmd.CommandText = "CREATE TABLE 수입(코드 number, 날짜 date, 이름1 text, 이름2 text, 이름3 text, 금액 number, 비고 text)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 수입관(관코드 number, 관 text, 순서 number)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 수입목(목코드 number, 목 text, 예산액 number, 예산비고 text, 순서 number)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 수입항(항코드 number, 항 text, 순서 number)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 일결산(날짜 date, 항목 text, 금액 number)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 지출(코드 number, 날짜 date, 금액 number, 비고 text)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 지출관(관코드 number, 관 text, 순서 number)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 지출목(목코드 number, 목 text, 예산액 number, 예산비고 text, 순서 number)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 지출항(항코드 number, 항 text, 순서 number)";
+                connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "CREATE TABLE 환경(이월금 number)";
                 connCmd.ExecuteNonQuery();
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show("테이블이 생성되지 않았습니다.");
             }
             finally {
                 conn.Close();
