@@ -36,6 +36,7 @@
             this.carryoverSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sfdCreateDB = new System.Windows.Forms.SaveFileDialog();
+            this.openDB = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@
             this.fileOpen.Name = "fileOpen";
             this.fileOpen.Size = new System.Drawing.Size(229, 26);
             this.fileOpen.Text = "다른 금전출납부 열기";
+            this.fileOpen.Click += new System.EventHandler(this.fileOpen_Click);
             // 
             // 등록
             // 
@@ -72,7 +74,7 @@
             // register
             // 
             this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(216, 26);
+            this.register.Size = new System.Drawing.Size(195, 26);
             this.register.Text = "수입 / 지출 등록";
             this.register.Click += new System.EventHandler(this.register_Click);
             // 
@@ -132,6 +134,10 @@
             // 
             this.sfdCreateDB.Filter = "MS Access 파일|*.accdb";
             // 
+            // openDB
+            // 
+            this.openDB.Filter = "MS Access 파일|*.accdb";
+            // 
             // 재정관리
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -166,6 +172,7 @@
         private System.Windows.Forms.ToolStripMenuItem carryoverSetting;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.SaveFileDialog sfdCreateDB;
+        private System.Windows.Forms.OpenFileDialog openDB;
     }
 }
 

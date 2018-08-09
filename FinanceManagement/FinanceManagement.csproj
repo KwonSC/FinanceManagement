@@ -64,20 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cDBControl.cs" />
-    <Compile Include="Experiment.cs" />
-    <Compile Include="File_OtherRegister.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="File_OtherRegister.Designer.cs">
-      <DependentUpon>File_OtherRegister.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MSAccess.cs" />
+    <Compile Include="DBHandling.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.cs">
@@ -104,9 +97,6 @@
     <Compile Include="Setting_Carryover.Designer.cs">
       <DependentUpon>Setting_Carryover.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="File_OtherRegister.resx">
-      <DependentUpon>File_OtherRegister.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

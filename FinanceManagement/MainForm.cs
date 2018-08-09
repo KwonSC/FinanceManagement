@@ -24,6 +24,7 @@ namespace FinanceManagement {
                 cDBControl cdbc = new cDBControl(strFilePath);  // DBControl 클래스 생성
                 cdbc.funcAccessCreate();    // Access DB를 생성
                 cdbc.dbCreate();
+                
             }
         }
 
@@ -58,6 +59,18 @@ namespace FinanceManagement {
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
+        }
+
+        private void fileOpen_Click(object sender, EventArgs e) {
+            if (openDB.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                System.IO.StreamReader sr = new System.IO.StreamReader(openDB.FileName);
+                MessageBox.Show(sr.ReadToEnd());
+                sr.Close();
+
+                DBHandling currentDB = new DBHandling(openDB.FileName);
+                DateTime currentDate = new DateTime(2018, 09, 03);
+                currentDB.add(currentDate, "육근일", 30000, "예비");
+            }
         }
     }
 }
