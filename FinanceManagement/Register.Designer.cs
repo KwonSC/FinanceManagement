@@ -118,7 +118,7 @@
             // 
             // Sum
             // 
-            this.Sum.Location = new System.Drawing.Point(362, 140);
+            this.Sum.Location = new System.Drawing.Point(361, 149);
             this.Sum.Name = "Sum";
             this.Sum.Size = new System.Drawing.Size(120, 21);
             this.Sum.TabIndex = 9;
@@ -153,7 +153,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(321, 149);
+            this.label4.Location = new System.Drawing.Point(320, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 13;
@@ -162,7 +162,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(321, 189);
+            this.label5.Location = new System.Drawing.Point(320, 198);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 14;
@@ -170,7 +170,7 @@
             // 
             // Note
             // 
-            this.Note.Location = new System.Drawing.Point(362, 180);
+            this.Note.Location = new System.Drawing.Point(361, 189);
             this.Note.Name = "Note";
             this.Note.Size = new System.Drawing.Size(478, 21);
             this.Note.TabIndex = 15;
