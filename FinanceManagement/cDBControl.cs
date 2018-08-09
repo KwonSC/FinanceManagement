@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ADOX;
 using System.IO;
+using System.Data.OleDb;
 
 namespace FinanceManagement {
     public class cDBControl {
@@ -58,6 +59,26 @@ namespace FinanceManagement {
             }
             catch (Exception ex) {
                 throw new Exception("데이터베이스를 생성 중 에러 발생.", ex);
+            }
+        }
+
+        public void dbOpen() {
+            OleDbConnection conn = new OleDbConnection();
+            OleDbCommand connCmd = new OleDbCommand();
+
+            try {
+                conn.ConnectionString = strDBConnection;
+                conn.Open();
+                connCmd.Connection = conn;
+
+                connCmd.CommandText = "CREATE TABLE 수입(육근일 text, 권순창 text, ㅎㅅㅎ text)";
+                connCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            finally {
+                conn.Close();
             }
         }
     }

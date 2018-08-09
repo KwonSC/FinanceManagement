@@ -23,13 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(재정관리));
-            this.테이블1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.database1DataSet1 = new FinanceManagement.Database1DataSet1();
-            this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.database1DataSet = new FinanceManagement.Database1DataSet();
-            this.테이블1TableAdapter = new FinanceManagement.Database1DataSet1TableAdapters.테이블1TableAdapter();
             this.파일 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.fileOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,36 +36,8 @@
             this.carryoverSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sfdCreateDB = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.테이블1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // 테이블1BindingSource
-            // 
-            this.테이블1BindingSource.DataMember = "테이블1";
-            this.테이블1BindingSource.DataSource = this.database1DataSet1;
-            // 
-            // database1DataSet1
-            // 
-            this.database1DataSet1.DataSetName = "Database1DataSet1";
-            this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // database1DataSetBindingSource
-            // 
-            this.database1DataSetBindingSource.DataSource = this.database1DataSet;
-            this.database1DataSetBindingSource.Position = 0;
-            // 
-            // database1DataSet
-            // 
-            this.database1DataSet.DataSetName = "Database1DataSet";
-            this.database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // 테이블1TableAdapter
-            // 
-            this.테이블1TableAdapter.ClearBeforeFill = true;
             // 
             // 파일
             // 
@@ -106,7 +72,7 @@
             // register
             // 
             this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(195, 26);
+            this.register.Size = new System.Drawing.Size(216, 26);
             this.register.Text = "수입 / 지출 등록";
             this.register.Click += new System.EventHandler(this.register_Click);
             // 
@@ -178,11 +144,6 @@
             this.Name = "재정관리";
             this.Text = "Zacchaeus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.재정관리_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.테이블1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -191,11 +152,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource database1DataSetBindingSource;
-        private Database1DataSet database1DataSet;
-        private Database1DataSet1 database1DataSet1;
-        private System.Windows.Forms.BindingSource 테이블1BindingSource;
-        private Database1DataSet1TableAdapters.테이블1TableAdapter 테이블1TableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn field1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn field2DataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem 파일;
