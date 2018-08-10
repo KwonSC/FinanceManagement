@@ -20,6 +20,9 @@ namespace FinanceManagement {
         public String strFilePath() {
             return this._strFilePath;
         }
+        public void setStrFilePath(String aFilePath) {
+            this._strFilePath = aFilePath;
+        }
         private String strDBConnection() {
             return this._strDBConnection;
         }
