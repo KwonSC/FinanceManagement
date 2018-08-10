@@ -15,26 +15,27 @@ namespace FinanceManagement {
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e) {
-
-        }
-
         private void fileCreate_Click(object sender, EventArgs e) {
             if (sfdCreateDB.ShowDialog() == DialogResult.OK) {
                 strFilePath = sfdCreateDB.FileName;
                 cDBControl cdbc = new cDBControl(strFilePath);  // DBControl 클래스 생성
                 cdbc.funcAccessCreate();    // Access DB를 생성
                 cdbc.dbCreate();
-                
             }
         }
 
         private void register_Click(object sender, EventArgs e) {
-            Register form = new Register(strFilePath);
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(250, 200);
-            form.Show();
-
+            if (strFilePath == null)
+            {
+                MessageBox.Show("파일을 열기 한 후에 등록해야 합니다.");
+            }
+            else
+            {
+                Register form = new Register(strFilePath);
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = new Point(250, 200);
+                form.Show();
+            }
         }
 
         private void search_Click(object sender, EventArgs e) {
@@ -58,15 +59,11 @@ namespace FinanceManagement {
             form.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
-
         private void fileOpen_Click(object sender, EventArgs e) {
             if (openDB.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 System.IO.StreamReader sr = new System.IO.StreamReader(openDB.FileName);
                 strFilePath = openDB.FileName;
-                MessageBox.Show(sr.ReadToEnd());
+                MessageBox.Show(strFilePath+"를 열었습니다.");
                 sr.Close();
             }
         }

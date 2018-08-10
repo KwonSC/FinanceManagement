@@ -101,6 +101,7 @@
             this.Name1.Name = "Name1";
             this.Name1.Size = new System.Drawing.Size(120, 21);
             this.Name1.TabIndex = 6;
+            this.Name1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Name2
             // 
@@ -108,6 +109,7 @@
             this.Name2.Name = "Name2";
             this.Name2.Size = new System.Drawing.Size(120, 21);
             this.Name2.TabIndex = 7;
+            this.Name2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Name3
             // 
@@ -115,6 +117,7 @@
             this.Name3.Name = "Name3";
             this.Name3.Size = new System.Drawing.Size(120, 21);
             this.Name3.TabIndex = 8;
+            this.Name3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Sum
             // 
@@ -122,6 +125,7 @@
             this.Sum.Name = "Sum";
             this.Sum.Size = new System.Drawing.Size(120, 21);
             this.Sum.TabIndex = 9;
+            this.Sum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sum_KeyPress);
             // 
             // label1
             // 
@@ -172,7 +176,7 @@
             // 
             this.Note.Location = new System.Drawing.Point(361, 189);
             this.Note.Name = "Note";
-            this.Note.Size = new System.Drawing.Size(478, 21);
+            this.Note.Size = new System.Drawing.Size(508, 21);
             this.Note.TabIndex = 15;
             // 
             // label6
@@ -241,11 +245,16 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(108, 311);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(731, 142);
+            this.dataGridView1.Size = new System.Drawing.Size(761, 142);
             this.dataGridView1.TabIndex = 23;
             // 
             // label9
@@ -270,7 +279,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 497);
+            this.ClientSize = new System.Drawing.Size(879, 497);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.dataGridView1);
@@ -298,6 +307,8 @@
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Register";
             this.Text = "수입 지출 등록";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

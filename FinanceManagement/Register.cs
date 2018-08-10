@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
-using ADOX;
 using System.IO;
 
-namespace FinanceManagement {
-    public partial class Register : Form {
-        string filepath, name1, name2, name3;
-        int sum;
+namespace FinanceManagement
+{
+    public partial class Register : Form
+    {
+        string filepath;
 
-
-        public Register(String path) {
+        public Register(string path)
+        {
             filepath = path;
             InitializeComponent();
             DataSet ds = new DataSet();
@@ -28,13 +28,23 @@ namespace FinanceManagement {
             OleDbDataAdapter adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+
         }
-        
+
         private void button3_Click(object sender, EventArgs e)
         {
             DBHandling currentDB = new DBHandling(filepath);
             DateTime currentDate = DateTime.Now;
-            currentDB.add(currentDate, Name1.Text,Name2.Text,Name3.Text, Int32.Parse(Sum.Text), Note.Text);
+            currentDB.add(currentDate, Name1.Text, Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
         }
+
+        private void Sum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+            {
+                e.Handled = true;
+            }
+        }
+        
     }
 }
