@@ -45,7 +45,7 @@ namespace FinanceManagement {
         }
 
         private void budgetSetting_Click(object sender, EventArgs e) {
-            Setting_budget form = new Setting_budget();
+            Setting_budget form = new Setting_budget(strFilePath);
             form.StartPosition = FormStartPosition.Manual;
             form.Location = new Point(250, 200);
             form.Show();

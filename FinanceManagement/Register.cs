@@ -16,7 +16,8 @@ namespace FinanceManagement {
         string filepath, name1, name2, name3;
         int sum;
 
-        public Register(string path) {
+
+        public Register(String path) {
             filepath = path;
             InitializeComponent();
             DataSet ds = new DataSet();
