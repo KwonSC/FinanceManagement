@@ -13,7 +13,9 @@ using System.IO;
 
 namespace FinanceManagement {
     public partial class Register : Form {
-        string filepath;
+        string filepath, name1, name2, name3;
+        int sum;
+
         public Register(string path) {
             filepath = path;
             InitializeComponent();
@@ -30,8 +32,8 @@ namespace FinanceManagement {
         private void button3_Click(object sender, EventArgs e)
         {
             DBHandling currentDB = new DBHandling(filepath);
-            DateTime currentDate = new DateTime(2018, 09, 03);
-            currentDB.add(currentDate, "육근일", 30000, "예비군");
+            DateTime currentDate = DateTime.Now;
+            currentDB.add(currentDate, Name1.Text,Name2.Text,Name3.Text, Int32.Parse(Sum.Text), Note.Text);
         }
     }
 }
