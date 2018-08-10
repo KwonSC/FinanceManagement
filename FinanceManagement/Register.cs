@@ -13,32 +13,27 @@ using System.IO;
 
 namespace FinanceManagement {
     public partial class Register : Form {
+        string filepath, name1, name2, name3;
+        int sum;
 
-        String _address;
-
-        DataSet ds = new DataSet();
-        static string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Master\Documents\TestData\1.accdb";
-        static OleDbConnection conn = new OleDbConnection(connStr);
-        static string sql = "SELECT * FROM 수입";
-        OleDbDataAdapter adp = new OleDbDataAdapter(sql, conn);
-
-        public Register() {
+        public Register(string path) {
+            filepath = path;
             InitializeComponent();
+            DataSet ds = new DataSet();
+            DBHandling dbhand = new DBHandling(path);
+            string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";";
+            OleDbConnection conn = new OleDbConnection(connStr);
+            string sql = "SELECT * FROM 수입";
+            OleDbDataAdapter adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
         }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
-            
-        }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        public void setAddress(String address) {
-
+            DBHandling currentDB = new DBHandling(filepath);
+            DateTime currentDate = DateTime.Now;
+            currentDB.add(currentDate, Name1.Text,Name2.Text,Name3.Text, Int32.Parse(Sum.Text), Note.Text);
         }
     }
 }
