@@ -24,7 +24,7 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
 
-        public void add(DateTime aDate, String nam1,String nam2, String nam3, int number, String etc) {
+        public void add(DateTime aDate, String nam1,String nam2, String nam3, long number, String etc) {
             OleDbConnection conn = new OleDbConnection();
             OleDbCommand connCmd = new OleDbCommand();
 
