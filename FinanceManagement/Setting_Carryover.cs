@@ -13,5 +13,13 @@ namespace FinanceManagement {
         public Setting_Carryover() {
             InitializeComponent();
         }
+
+        private void confirm_Click(object sender, EventArgs e) {
+
+        }
+
+        private void cancel_Click(object sender, EventArgs e) {
+            Setting_Carryover.ActiveForm.Close();
+        }
     }
 }

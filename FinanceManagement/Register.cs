@@ -13,6 +13,9 @@ using System.IO;
 
 namespace FinanceManagement {
     public partial class Register : Form {
+
+        String _address;
+
         DataSet ds = new DataSet();
         static string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Master\Documents\TestData\1.accdb";
         static OleDbConnection conn = new OleDbConnection(connStr);
@@ -32,6 +35,10 @@ namespace FinanceManagement {
         private void button3_Click(object sender, EventArgs e)
         {
             
+        }
+
+        public void setAddress(String address) {
+
         }
     }
 }
