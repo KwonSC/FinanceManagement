@@ -29,13 +29,19 @@ namespace FinanceManagement {
 
         private void button3_Click(object sender, EventArgs e)  {
             DBHandling currentDB = new DBHandling(filepath);
-            DateTime currentDate = DateTime.Now;
-            if (Name1.Text == "") {
-                currentDB.add(currentDate, "무명", Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+            DateTime currentDate = DateTime.Today;
+            if (Sum.Text == String.Empty) {
+                MessageBox.Show("금액을 입력해야합니다.");
             }
             else {
-                currentDB.add(currentDate, Name1.Text, Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                if (Name1.Text == String.Empty) {
+                    currentDB.add(currentDate, "무명", Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                }
+                else {
+                    currentDB.add(currentDate, Name1.Text, Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                }
             }
+            
         }
 
         private void Sum_KeyPress(object sender, KeyPressEventArgs e)  {
