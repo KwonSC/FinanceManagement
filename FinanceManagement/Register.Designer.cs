@@ -49,6 +49,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -275,11 +276,21 @@
             this.listBox3.Size = new System.Drawing.Size(120, 16);
             this.listBox3.TabIndex = 24;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(364, 221);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(231, 12);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "이름1을 기재하지 않을시 무명으로 등록됨";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 497);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.dataGridView1);
@@ -343,5 +354,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label10;
     }
 }
