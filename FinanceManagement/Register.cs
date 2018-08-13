@@ -49,5 +49,13 @@ namespace FinanceManagement {
                 e.Handled = true;
             }
         }
+
+        private void Income_Click(object sender, EventArgs e) {
+            panel1.Visible = true;
+        }
+
+        private void Expenditure_Click(object sender, EventArgs e) {
+            panel1.Visible = false;
+        }
     }
 }
