@@ -18,6 +18,7 @@ namespace FinanceManagement {
             filepath = path;
             InitializeComponent();
             DataSet ds = new DataSet();
+            DataSet ds2 = new DataSet();
             DBHandling dbhand = new DBHandling(path);
             string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";";
             OleDbConnection conn = new OleDbConnection(connStr);
@@ -25,6 +26,10 @@ namespace FinanceManagement {
             OleDbDataAdapter adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            string sql2 = "SELECT * FROM 지출";
+            OleDbDataAdapter adp2 = new OleDbDataAdapter(sql2, conn);
+            adp2.Fill(ds2);
+            dataGridView2.DataSource = ds2.Tables[0];
         }
 
         private void button3_Click(object sender, EventArgs e)  {
@@ -52,10 +57,12 @@ namespace FinanceManagement {
 
         private void Income_Click(object sender, EventArgs e) {
             panel1.Visible = true;
+            panel2.Visible = false;
         }
 
         private void Expenditure_Click(object sender, EventArgs e) {
             panel1.Visible = false;
+            panel2.Visible = true;
         }
     }
 }
