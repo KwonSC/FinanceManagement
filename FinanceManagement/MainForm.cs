@@ -16,7 +16,7 @@ namespace FinanceManagement {
         }
 
         private void fileCreate_Click(object sender, EventArgs e) {
-            if (sfdCreateDB.ShowDialog() == DialogResult.OK) { //실험
+            if (sfdCreateDB.ShowDialog() == DialogResult.OK) {
                 strFilePath = sfdCreateDB.FileName;
                 cDBControl cdbc = new cDBControl(strFilePath); 
                 cdbc.funcAccessCreate(); 
