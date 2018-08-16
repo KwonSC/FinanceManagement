@@ -13,22 +13,25 @@ using System.IO;
 namespace FinanceManagement {
     public partial class Register : Form {
         string filepath;
-
+        OleDbDataAdapter adp;
+        OleDbDataAdapter adp2;
+        DataSet ds;
+        DataSet ds2;
         public Register(string path)  {
             
             filepath = path;
             InitializeComponent();
-            DataSet ds = new DataSet();
-            DataSet ds2 = new DataSet();
+            ds = new DataSet();
+            ds2 = new DataSet();
             DBHandling dbhand = new DBHandling(path);
             string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";";
             OleDbConnection conn = new OleDbConnection(connStr);
             string sql = "SELECT * FROM 수입";
-            OleDbDataAdapter adp = new OleDbDataAdapter(sql, conn);
+            adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
             string sql2 = "SELECT * FROM 지출";
-            OleDbDataAdapter adp2 = new OleDbDataAdapter(sql2, conn);
+            adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
 
