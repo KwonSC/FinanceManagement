@@ -17,20 +17,20 @@ namespace FinanceManagement {
         OleDbDataAdapter adp2;
         DataSet ds;
         DataSet ds2;
+        string sql = "SELECT * FROM 수입";
+        string sql2 = "SELECT * FROM 지출";
+        OleDbConnection conn;
         public Register(string path)  {
-            
             filepath = path;
             InitializeComponent();
             ds = new DataSet();
             ds2 = new DataSet();
-            DBHandling dbhand = new DBHandling(path);
-            string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";";
-            OleDbConnection conn = new OleDbConnection(connStr);
-            string sql = "SELECT * FROM 수입";
+            DBHandling dbhand = new DBHandling(filepath);
+            string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
+            conn = new OleDbConnection(connStr);
             adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
-            string sql2 = "SELECT * FROM 지출";
             adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
@@ -73,6 +73,7 @@ namespace FinanceManagement {
                 Sum2.Text = "";
                 Note2.Text = "";
             }
+
         }
 
         private void Sum_KeyPress(object sender, KeyPressEventArgs e)  {

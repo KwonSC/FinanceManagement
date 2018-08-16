@@ -54,8 +54,6 @@ namespace FinanceManagement {
         }
 
         public void exp(DateTime aDate, long number, String etc) {
-            OleDbConnection conn = new OleDbConnection();
-            OleDbCommand connCmd = new OleDbCommand();
 
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
