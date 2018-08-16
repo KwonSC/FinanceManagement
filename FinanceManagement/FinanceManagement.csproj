@@ -91,6 +91,18 @@
     <Compile Include="Setting_budget.Designer.cs">
       <DependentUpon>Setting_budget.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting_budget_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting_budget_add.Designer.cs">
+      <DependentUpon>Setting_budget_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting_budget_delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting_budget_delete.Designer.cs">
+      <DependentUpon>Setting_budget_delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting_Carryover.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting_budget.resx">
       <DependentUpon>Setting_budget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting_budget_add.resx">
+      <DependentUpon>Setting_budget_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting_budget_delete.resx">
+      <DependentUpon>Setting_budget_delete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting_Carryover.resx">
       <DependentUpon>Setting_Carryover.cs</DependentUpon>

@@ -78,7 +78,6 @@
             this.관data.RowTemplate.Height = 27;
             this.관data.Size = new System.Drawing.Size(134, 388);
             this.관data.TabIndex = 5;
-            this.관data.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.관data_CellContentClick);
             // 
             // title
             // 
@@ -116,6 +115,7 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "관 추가";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -125,6 +125,7 @@
             this.button4.TabIndex = 10;
             this.button4.Text = "관 수정";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -134,6 +135,7 @@
             this.button5.TabIndex = 11;
             this.button5.Text = "관 삭제";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -143,6 +145,7 @@
             this.button6.TabIndex = 14;
             this.button6.Text = "항 삭제";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -152,6 +155,7 @@
             this.button7.TabIndex = 13;
             this.button7.Text = "항 수정";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -161,6 +165,7 @@
             this.button8.TabIndex = 12;
             this.button8.Text = "항 추가";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -170,6 +175,7 @@
             this.button9.TabIndex = 17;
             this.button9.Text = "목 삭제";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -179,6 +185,7 @@
             this.button10.TabIndex = 16;
             this.button10.Text = "목 수정";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -188,6 +195,7 @@
             this.button11.TabIndex = 15;
             this.button11.Text = "목 추가";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // label2
             // 
@@ -268,6 +276,8 @@
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Setting_budget";
             this.Text = "Setting_budget";
             ((System.ComponentModel.ISupportInitialize)(this.관data)).EndInit();

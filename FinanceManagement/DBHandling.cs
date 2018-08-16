@@ -42,6 +42,20 @@ namespace FinanceManagement {
             conn.Close();
         }
 
+        public void exp(DateTime aDate, long number, String etc) {
+            OleDbConnection conn = new OleDbConnection();
+            OleDbCommand connCmd = new OleDbCommand();
+
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "INSERT INTO 지출(코드, 날짜, 금액, 비고) VALUES('1', '" + aDate + "', '" + number + "', '" + etc + "')";
+            connCmd.ExecuteNonQuery();
+        }
+
+        //환경
+
         public void carryOverAdd(long number) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
@@ -53,16 +67,12 @@ namespace FinanceManagement {
             conn.Close();
         }
 
-        public void exp(DateTime aDate, long number, String etc) {
-            OleDbConnection conn = new OleDbConnection();
-            OleDbCommand connCmd = new OleDbCommand();
-
+        public void categoryAdd(String table, String category) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 지출(코드, 날짜, 금액, 비고) VALUES('1', '" + aDate + "', '" + number + "', '" + etc + "')";
-            connCmd.ExecuteNonQuery();
+            
         }
     }
 }
