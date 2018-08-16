@@ -15,6 +15,7 @@ namespace FinanceManagement {
         string filepath;
 
         public Register(string path)  {
+            
             filepath = path;
             InitializeComponent();
             DataSet ds = new DataSet();
@@ -30,9 +31,10 @@ namespace FinanceManagement {
             OleDbDataAdapter adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
+
         }
 
-        private void button3_Click(object sender, EventArgs e)  {
+        private void button3_Click(object sender, EventArgs e)  { //수입 저장
             DBHandling currentDB = new DBHandling(filepath);
             DateTime currentDate = DateTime.Today;
             if (Sum.Text == String.Empty) {
@@ -41,12 +43,33 @@ namespace FinanceManagement {
             else {
                 if (Name1.Text == String.Empty) {
                     currentDB.add(currentDate, "무명", Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                    Name2.Text = "";
+                    Name3.Text = "";
+                    Sum.Text = "";
+                    Note.Text = "";
                 }
                 else {
                     currentDB.add(currentDate, Name1.Text, Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                    Name1.Text = "";
+                    Name2.Text = "";
+                    Name3.Text = "";
+                    Sum.Text = "";
+                    Note.Text = "";
                 }
             }
-            
+        }
+
+        private void button10_Click(object sender, EventArgs e) { //지출 저장
+            DBHandling currentDB = new DBHandling(filepath);
+            DateTime currentDate = DateTime.Today;
+            if (Sum2.Text == String.Empty) {
+                MessageBox.Show("금액을 입력해야합니다.");
+            }
+            else {
+                currentDB.exp(currentDate, long.Parse(Sum2.Text), Note2.Text);
+                Sum2.Text = "";
+                Note2.Text = "";
+            }
         }
 
         private void Sum_KeyPress(object sender, KeyPressEventArgs e)  {
@@ -55,14 +78,18 @@ namespace FinanceManagement {
             }
         }
 
-        private void Income_Click(object sender, EventArgs e) {
-            panel1.Visible = true;
-            panel2.Visible = false;
+        private void button1_Click(object sender, EventArgs e) {
+            incomepanel.BringToFront();
         }
 
-        private void Expenditure_Click(object sender, EventArgs e) {
-            panel1.Visible = false;
-            panel2.Visible = true;
+        private void button2_Click(object sender, EventArgs e) {
+            expanel.BringToFront();
+        }
+
+        private void Sum2_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back))) {  //숫자와 백스페이스를 제외한 나머지를 바로 처리
+                e.Handled = true;
+            }
         }
     }
 }
