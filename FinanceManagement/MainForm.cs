@@ -18,8 +18,8 @@ namespace FinanceManagement {
         private void fileCreate_Click(object sender, EventArgs e) {
             if (sfdCreateDB.ShowDialog() == DialogResult.OK) {
                 strFilePath = sfdCreateDB.FileName;
-                cDBControl cdbc = new cDBControl(strFilePath);  // DBControl 클래스 생성
-                cdbc.funcAccessCreate();    // Access DB를 생성
+                cDBControl cdbc = new cDBControl(strFilePath); 
+                cdbc.funcAccessCreate(); 
                 cdbc.dbCreate();
                 MessageBox.Show(strFilePath + "를 열었습니다.");
             }
