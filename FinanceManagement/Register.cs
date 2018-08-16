@@ -55,7 +55,6 @@ namespace FinanceManagement {
                     Name3.Text = "";
                     Sum.Text = "";
                     Note.Text = "";
-
                 }
             }
         }
@@ -68,6 +67,8 @@ namespace FinanceManagement {
             }
             else {
                 currentDB.exp(currentDate, long.Parse(Sum2.Text), Note2.Text);
+                Sum2.Text = "";
+                Note2.Text = "";
             }
         }
 
