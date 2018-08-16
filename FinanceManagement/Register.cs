@@ -36,9 +36,19 @@ namespace FinanceManagement {
             else {
                 if (Name1.Text == String.Empty) {
                     currentDB.add(currentDate, "무명", Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                    Name2.Text = "";
+                    Name3.Text = "";
+                    Sum.Text = "";
+                    Note.Text = "";
                 }
                 else {
                     currentDB.add(currentDate, Name1.Text, Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                    Name1.Text = "";
+                    Name2.Text = "";
+                    Name3.Text = "";
+                    Sum.Text = "";
+                    Note.Text = "";
+
                 }
             }
             
