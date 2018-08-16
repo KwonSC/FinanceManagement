@@ -15,9 +15,11 @@ namespace FinanceManagement {
         string filepath;
 
         public Register(string path)  {
+            
             filepath = path;
             InitializeComponent();
             DataSet ds = new DataSet();
+            DataSet ds2 = new DataSet();
             DBHandling dbhand = new DBHandling(path);
             string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";";
             OleDbConnection conn = new OleDbConnection(connStr);
@@ -25,9 +27,14 @@ namespace FinanceManagement {
             OleDbDataAdapter adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            string sql2 = "SELECT * FROM 지출";
+            OleDbDataAdapter adp2 = new OleDbDataAdapter(sql2, conn);
+            adp2.Fill(ds2);
+            dataGridView2.DataSource = ds2.Tables[0];
+
         }
 
-        private void button3_Click(object sender, EventArgs e)  {
+        private void button3_Click(object sender, EventArgs e)  { //수입 저장
             DBHandling currentDB = new DBHandling(filepath);
             DateTime currentDate = DateTime.Today;
             if (Sum.Text == String.Empty) {
@@ -51,7 +58,17 @@ namespace FinanceManagement {
 
                 }
             }
-            
+        }
+
+        private void button10_Click(object sender, EventArgs e) { //지출 저장
+            DBHandling currentDB = new DBHandling(filepath);
+            DateTime currentDate = DateTime.Today;
+            if (Sum2.Text == String.Empty) {
+                MessageBox.Show("금액을 입력해야합니다.");
+            }
+            else {
+                currentDB.exp(currentDate, long.Parse(Sum2.Text), Note2.Text);
+            }
         }
 
         private void Sum_KeyPress(object sender, KeyPressEventArgs e)  {
@@ -61,11 +78,17 @@ namespace FinanceManagement {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            incomepanel.Visible = true;
+            incomepanel.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            incomepanel.Visible = false;
+            expanel.BringToFront();
+        }
+
+        private void Sum2_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back))) {  //숫자와 백스페이스를 제외한 나머지를 바로 처리
+                e.Handled = true;
+            }
         }
     }
 }
