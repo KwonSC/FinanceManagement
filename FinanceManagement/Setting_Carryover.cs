@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace FinanceManagement {
     public partial class Setting_Carryover : Form {
-        public Setting_Carryover() {
+
+        DBHandling currentDB;
+
+        public Setting_Carryover(String path) {
             InitializeComponent();
+            currentDB = new DBHandling(path);
         }
 
         private void confirm_Click(object sender, EventArgs e) {
-
+            currentDB.carryOverAdd(long.Parse(carryOverText.Text));
+            Setting_Carryover.ActiveForm.Close();
         }
 
         private void cancel_Click(object sender, EventArgs e) {

@@ -28,7 +28,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.confirm = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.carryOverText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -69,19 +69,19 @@
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // textBox1
+            // carryOverText
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 25);
-            this.textBox1.TabIndex = 4;
+            this.carryOverText.Location = new System.Drawing.Point(104, 60);
+            this.carryOverText.Name = "carryOverText";
+            this.carryOverText.Size = new System.Drawing.Size(144, 25);
+            this.carryOverText.TabIndex = 4;
             // 
             // Setting_Carryover
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 105);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.carryOverText);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.confirm);
             this.Controls.Add(this.label2);
@@ -101,6 +101,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button confirm;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox carryOverText;
     }
 }

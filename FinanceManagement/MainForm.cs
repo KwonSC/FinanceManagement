@@ -53,7 +53,7 @@ namespace FinanceManagement {
         }
 
         private void carryoverSetting_Click(object sender, EventArgs e) {
-            Setting_Carryover form = new Setting_Carryover();
+            Setting_Carryover form = new Setting_Carryover(strFilePath);
             form.StartPosition = FormStartPosition.Manual;
             form.Location = new Point(250, 200);
             form.Show();
