@@ -61,6 +61,7 @@ namespace FinanceManagement {
 
             connCmd.CommandText = "INSERT INTO 지출(코드, 날짜, 금액, 비고) VALUES('1', '" + aDate + "', '" + number + "', '" + etc + "')";
             connCmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

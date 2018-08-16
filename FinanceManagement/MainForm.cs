@@ -47,10 +47,15 @@ namespace FinanceManagement {
         }
 
         private void budgetSetting_Click(object sender, EventArgs e) {
-            Setting_budget form = new Setting_budget(strFilePath);
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(250, 200);
-            form.Show();
+            if (strFilePath == null) {
+                MessageBox.Show("파일을 열기 한 후에 예산을 설정해야 합니다.");
+            }
+            else {
+                Setting_budget form = new Setting_budget(strFilePath);
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = new Point(250, 200);
+                form.Show();
+            }
         }
 
         private void carryoverSetting_Click(object sender, EventArgs e) {

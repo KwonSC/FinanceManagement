@@ -20,13 +20,19 @@ namespace FinanceManagement {
         string sql = "SELECT * FROM 수입";
         string sql2 = "SELECT * FROM 지출";
         OleDbConnection conn;
+        string connStr;
+
         public Register(string path)  {
             filepath = path;
             InitializeComponent();
+            load_data();
+        }
+
+        public void load_data() {
             ds = new DataSet();
             ds2 = new DataSet();
             DBHandling dbhand = new DBHandling(filepath);
-            string connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
+            connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
             conn = new OleDbConnection(connStr);
             adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
@@ -34,10 +40,10 @@ namespace FinanceManagement {
             adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
-
         }
+        
 
-        private void button3_Click(object sender, EventArgs e)  { //수입 저장
+        private void button3_Click(object sender, EventArgs e) { //수입 저장
             DBHandling currentDB = new DBHandling(filepath);
             DateTime currentDate = DateTime.Today;
             if (Sum.Text == String.Empty) {
@@ -59,6 +65,7 @@ namespace FinanceManagement {
                     Sum.Text = "";
                     Note.Text = "";
                 }
+                load_data();
             }
         }
 
@@ -72,8 +79,8 @@ namespace FinanceManagement {
                 currentDB.exp(currentDate, long.Parse(Sum2.Text), Note2.Text);
                 Sum2.Text = "";
                 Note2.Text = "";
+                load_data();
             }
-
         }
 
         private void Sum_KeyPress(object sender, KeyPressEventArgs e)  {
@@ -95,5 +102,7 @@ namespace FinanceManagement {
                 e.Handled = true;
             }
         }
+
+        
     }
 }
