@@ -27,7 +27,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.관data = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.title = new System.Windows.Forms.Label();
             this.항data = new System.Windows.Forms.DataGridView();
             this.목data = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
@@ -80,15 +80,15 @@
             this.관data.TabIndex = 5;
             this.관data.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.관data_CellContentClick);
             // 
-            // label1
+            // title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Gulim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(110, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "수입 / 지출";
+            this.title.AutoSize = true;
+            this.title.Font = new System.Drawing.Font("Gulim", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.title.Location = new System.Drawing.Point(110, 13);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(101, 20);
+            this.title.TabIndex = 6;
+            this.title.Text = "수입 예산";
             // 
             // 항data
             // 
@@ -262,7 +262,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.목data);
             this.Controls.Add(this.항data);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.title);
             this.Controls.Add(this.관data);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -283,7 +283,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView 관data;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label title;
         private System.Windows.Forms.DataGridView 항data;
         private System.Windows.Forms.DataGridView 목data;
         private System.Windows.Forms.Button button3;

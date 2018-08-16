@@ -92,6 +92,8 @@ namespace FinanceManagement {
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 환경(이월금 number)";
                 connCmd.ExecuteNonQuery();
+                connCmd.CommandText = "INSERT INTO 환경(이월금) VALUES(0)";
+                connCmd.ExecuteNonQuery();
             }
             catch (Exception ex) {
                 MessageBox.Show("테이블이 생성되지 않았습니다.");

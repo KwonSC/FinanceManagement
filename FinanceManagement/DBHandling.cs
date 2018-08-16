@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Data.OleDb;
+using System.Windows.Forms;
+using System.Data;
 
 namespace FinanceManagement {
     public class DBHandling {
@@ -45,7 +47,8 @@ namespace FinanceManagement {
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 환경(이월금) VALUES(" + number + ")";
+            connCmd.CommandText = "SELECT 이월금 FROM 환경";
+            connCmd.CommandText = "UPDATE 환경 SET 이월금 = " + number;
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
