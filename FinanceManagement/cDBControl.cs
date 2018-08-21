@@ -72,7 +72,7 @@ namespace FinanceManagement {
                 conn.Open();
                 connCmd.Connection = conn;
 
-                connCmd.CommandText = "CREATE TABLE 수입(코드 number, 날짜 date, 이름1 text, 이름2 text, 이름3 text, 금액 number, 비고 text)";
+                connCmd.CommandText = "CREATE TABLE 수입(코드 number, 날짜 date, 이름1 text, 이름2 text, 금액 number, 비고 text)";
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 수입관(관코드 number, 관 text, 순서 number)";
                 connCmd.ExecuteNonQuery();

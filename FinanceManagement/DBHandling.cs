@@ -32,12 +32,12 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
 
-        public void add(DateTime aDate, String nam1,String nam2, String nam3, long number, String etc) {
+        public void add(DateTime aDate, String nam1,String nam2, long number, String etc) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 수입(코드, 날짜, 이름1, 이름2, 이름3, 금액, 비고) VALUES('1', '" + aDate + "', '" + nam1 + "', '"+nam2+"', '"+nam3+"', '" + number + "', '" + etc + "')";
+            connCmd.CommandText = "INSERT INTO 수입(코드, 날짜, 이름1, 이름2, 금액, 비고) VALUES('1', '" + aDate + "', '" + nam1 + "', '"+nam2+"', '" + number + "', '" + etc + "')";
             connCmd.ExecuteNonQuery();
             conn.Close();
         }

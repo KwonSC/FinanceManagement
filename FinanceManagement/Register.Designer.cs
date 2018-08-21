@@ -31,11 +31,9 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.Name1 = new System.Windows.Forms.TextBox();
             this.Name2 = new System.Windows.Forms.TextBox();
-            this.Name3 = new System.Windows.Forms.TextBox();
             this.Sum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Note = new System.Windows.Forms.TextBox();
@@ -136,14 +134,6 @@
             this.Name2.TabIndex = 7;
             this.Name2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // Name3
-            // 
-            this.Name3.Location = new System.Drawing.Point(64, 213);
-            this.Name3.Name = "Name3";
-            this.Name3.Size = new System.Drawing.Size(120, 21);
-            this.Name3.TabIndex = 8;
-            this.Name3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // Sum
             // 
             this.Sum.Location = new System.Drawing.Point(271, 134);
@@ -169,15 +159,6 @@
             this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 11;
             this.label2.Text = "이름2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 222);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "이름3";
             // 
             // label4
             // 
@@ -249,6 +230,7 @@
             this.button4.TabIndex = 20;
             this.button4.Text = "수정";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -281,6 +263,7 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(761, 142);
             this.dataGridView1.TabIndex = 23;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label9
             // 
@@ -325,11 +308,9 @@
             this.incomepanel.Controls.Add(this.Note);
             this.incomepanel.Controls.Add(this.label5);
             this.incomepanel.Controls.Add(this.label4);
-            this.incomepanel.Controls.Add(this.label3);
             this.incomepanel.Controls.Add(this.label2);
             this.incomepanel.Controls.Add(this.label1);
             this.incomepanel.Controls.Add(this.Sum);
-            this.incomepanel.Controls.Add(this.Name3);
             this.incomepanel.Controls.Add(this.Name2);
             this.incomepanel.Controls.Add(this.Name1);
             this.incomepanel.Controls.Add(this.listBox2);
@@ -551,11 +532,9 @@
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.TextBox Name1;
         private System.Windows.Forms.TextBox Name2;
-        private System.Windows.Forms.TextBox Name3;
         private System.Windows.Forms.TextBox Sum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox Note;

@@ -21,6 +21,7 @@ namespace FinanceManagement {
         string sql2 = "SELECT * FROM 지출";
         OleDbConnection conn;
         string connStr;
+        DataGridViewCellEventArgs k = null;
 
         public Register(string path)  {
             filepath = path;
@@ -51,17 +52,15 @@ namespace FinanceManagement {
             }
             else {
                 if (Name1.Text == String.Empty) {
-                    currentDB.add(currentDate, "무명", Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                    currentDB.add(currentDate, "무명", Name2.Text, long.Parse(Sum.Text), Note.Text);
                     Name2.Text = "";
-                    Name3.Text = "";
                     Sum.Text = "";
                     Note.Text = "";
                 }
                 else {
-                    currentDB.add(currentDate, Name1.Text, Name2.Text, Name3.Text, long.Parse(Sum.Text), Note.Text);
+                    currentDB.add(currentDate, Name1.Text, Name2.Text, long.Parse(Sum.Text), Note.Text);
                     Name1.Text = "";
                     Name2.Text = "";
-                    Name3.Text = "";
                     Sum.Text = "";
                     Note.Text = "";
                 }
@@ -103,6 +102,23 @@ namespace FinanceManagement {
             }
         }
 
-        
+        private void button4_Click(object sender, EventArgs e) { //수입 수정버튼
+            if (k == null) {
+                MessageBox.Show("지정된 자료가 없습니다.");
+            }
+            else {
+                DateTime dt = DateTime.Parse(dataGridView1.Rows[k.RowIndex].Cells[1].Value.ToString());
+                Register_modify form = new Register_modify(dt,dataGridView1.Rows[k.RowIndex].Cells[2].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[3].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[4].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[5].Value.ToString());
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = new Point(250, 200);
+                form.Show();
+                
+
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
+            k = e;
+        }
     }
 }
