@@ -18,10 +18,11 @@ namespace FinanceManagement {
         private void fileCreate_Click(object sender, EventArgs e) {
             if (sfdCreateDB.ShowDialog() == DialogResult.OK) {
                 strFilePath = sfdCreateDB.FileName;
-                cDBControl cdbc = new cDBControl(strFilePath); 
-                cdbc.funcAccessCreate(); 
+                cDBControl cdbc = new cDBControl(strFilePath);
+                cdbc.funcAccessCreate();
                 cdbc.dbCreate();
                 MessageBox.Show(strFilePath + "를 열었습니다.");
+                
             }
         }
 
@@ -67,10 +68,15 @@ namespace FinanceManagement {
 
         private void fileOpen_Click(object sender, EventArgs e) {
             if (openDB.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                System.IO.StreamReader sr = new System.IO.StreamReader(openDB.FileName);
-                strFilePath = openDB.FileName;
-                MessageBox.Show(strFilePath+"를 열었습니다.");
-                sr.Close();
+                try {
+                    System.IO.StreamReader sr = new System.IO.StreamReader(openDB.FileName);
+                    strFilePath = openDB.FileName;
+                    MessageBox.Show(strFilePath+"를 열었습니다.");
+                    sr.Close();
+                }
+                catch (Exception) {
+                    MessageBox.Show("파일이 다른곳에서 열려있습니다. 파일을 종료시키십시오");
+                }
             }
         }
     }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinanceManagement {
-    public partial class Register_modify : Form {
+    public partial class Register_income_modify : Form {
 
-        public Register_modify(DateTime dat, string nam1, string nam2, string su, string not) {
+        public Register_income_modify(DateTime dat, string nam1, string nam2, string su, string not) {
             InitializeComponent();
             dateTimePicker1.Value = dat;
             name1.Text = nam1;

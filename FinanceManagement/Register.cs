@@ -108,12 +108,10 @@ namespace FinanceManagement {
             }
             else {
                 DateTime dt = DateTime.Parse(dataGridView1.Rows[k.RowIndex].Cells[1].Value.ToString());
-                Register_modify form = new Register_modify(dt,dataGridView1.Rows[k.RowIndex].Cells[2].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[3].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[4].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[5].Value.ToString());
+                Register_income_modify form = new Register_income_modify(dt,dataGridView1.Rows[k.RowIndex].Cells[2].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[3].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[4].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[5].Value.ToString());
                 form.StartPosition = FormStartPosition.Manual;
                 form.Location = new Point(250, 200);
                 form.Show();
-                
-
             }
         }
 
