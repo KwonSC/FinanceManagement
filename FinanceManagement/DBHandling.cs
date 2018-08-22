@@ -53,6 +53,34 @@ namespace FinanceManagement {
             conn.Close();
         }
 
+        public void addG(String name, int order) {
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "INSERT INTO 수입관(관코드, 관, 순서) VALUES('1', '" + name + "', '" + order + "')";
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public void addH(String name, int order) {
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "INSERT INTO 수입항(항코드, 항, 순서) VALUES('1', '" + name + "', '" + order + "')";
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public void addM(String name, long budget, String etc, int order) {
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "INSERT INTO 수입목(목코드, 목, 예산액, 예산비고, 순서) VALUES('1', '" + name + "', '" + budget + "', '" + etc + "', '" + order + "')";
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public void exp(DateTime aDate, long number, String etc) {
 
             conn.ConnectionString = this.strDBConnection();

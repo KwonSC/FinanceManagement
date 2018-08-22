@@ -103,6 +103,12 @@
     <Compile Include="Setting_budget_add.Designer.cs">
       <DependentUpon>Setting_budget_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting_budget_add_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting_budget_add_m.Designer.cs">
+      <DependentUpon>Setting_budget_add_m.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting_budget_delete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting_budget_add.resx">
       <DependentUpon>Setting_budget_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting_budget_add_m.resx">
+      <DependentUpon>Setting_budget_add_m.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting_budget_delete.resx">
       <DependentUpon>Setting_budget_delete.cs</DependentUpon>

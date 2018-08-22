@@ -78,6 +78,7 @@
             this.관data.RowTemplate.Height = 27;
             this.관data.Size = new System.Drawing.Size(134, 388);
             this.관data.TabIndex = 5;
+            this.관data.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.관data_CellContentClick);
             // 
             // title
             // 
