@@ -153,6 +153,8 @@
             this.sum.Name = "sum";
             this.sum.Size = new System.Drawing.Size(100, 21);
             this.sum.TabIndex = 12;
+            this.sum.TextChanged += new System.EventHandler(this.sum_TextChanged);
+            this.sum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sum_KeyPress);
             // 
             // note
             // 

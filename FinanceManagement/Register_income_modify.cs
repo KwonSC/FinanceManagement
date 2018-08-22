@@ -36,5 +36,21 @@ namespace FinanceManagement {
             temp.load_data();
             this.Close();
         }
+
+        private void sum_TextChanged(object sender, EventArgs e) {
+            if (sum.Text != "") {
+                string lgsText;
+                lgsText = sum.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지...
+                sum.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                sum.SelectionStart = sum.TextLength; //** 캐럿을 맨 뒤로 보낸다...
+                sum.SelectionLength = 0;
+            }
+        }
+
+        private void sum_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back))) {  //숫자와 백스페이스를 제외한 나머지를 바로 처리
+                e.Handled = true;
+            }
+        }
     }
 }

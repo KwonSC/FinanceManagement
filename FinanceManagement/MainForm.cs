@@ -21,7 +21,7 @@ namespace FinanceManagement {
                 cDBControl cdbc = new cDBControl(strFilePath);
                 cdbc.funcAccessCreate();
                 cdbc.dbCreate();
-                MessageBox.Show(strFilePath + "를 열었습니다.");
+                MessageBox.Show(strFilePath + "를 열었습니다.", "Zacchaeus");
                 
             }
         }
@@ -29,7 +29,7 @@ namespace FinanceManagement {
         private void register_Click(object sender, EventArgs e) {
             if (strFilePath == null)
             {
-                MessageBox.Show("파일을 열여야 합니다.");
+                MessageBox.Show("파일을 열여야 합니다.","오류");
             }
             else
             {
@@ -49,7 +49,7 @@ namespace FinanceManagement {
 
         private void budgetSetting_Click(object sender, EventArgs e) {
             if (strFilePath == null) {
-                MessageBox.Show("파일을 열여야 합니다.");
+                MessageBox.Show("파일을 열여야 합니다.","오류");
             }
             else {
                 Setting_budget form = new Setting_budget(strFilePath);
@@ -75,7 +75,7 @@ namespace FinanceManagement {
                     sr.Close();
                 }
                 catch (Exception) {
-                    MessageBox.Show("파일이 다른곳에서 열려있습니다. 파일을 종료시키십시오");
+                    MessageBox.Show("파일이 다른곳에서 열려있습니다. 파일을 종료시키십시오","오류");
                 }
             }
         }

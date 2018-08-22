@@ -54,7 +54,7 @@ namespace FinanceManagement {
             DBHandling currentDB = new DBHandling(filepath);
             DateTime currentDate = dateTimePicker1.Value.Date;
             if (Sum.Text == String.Empty) {
-                MessageBox.Show("금액을 입력해야합니다.");
+                MessageBox.Show("금액을 입력해야합니다.","오류");
             }
             else {
                 if (Name1.Text == String.Empty) {
@@ -78,7 +78,7 @@ namespace FinanceManagement {
             DBHandling currentDB = new DBHandling(filepath);
             DateTime currentDate = dateTimePicker2.Value.Date;
             if (Sum2.Text == String.Empty) {
-                MessageBox.Show("금액을 입력해야합니다.");
+                MessageBox.Show("금액을 입력해야합니다.","오류");
             }
             else {
                 currentDB.exp(expen_rowcount,currentDate, Int64.Parse(Sum2.Text.Replace(",","")), Note2.Text);
@@ -110,7 +110,7 @@ namespace FinanceManagement {
 
         private void button4_Click(object sender, EventArgs e) { //수입 수정버튼
             if (k_i == null) {
-                MessageBox.Show("지정된 자료가 없습니다.");
+                MessageBox.Show("지정된 자료가 없습니다.","오류");
             }
             else {
                 DateTime dt = DateTime.Parse(dataGridView1.Rows[k_i.RowIndex].Cells[1].Value.ToString());
@@ -128,7 +128,7 @@ namespace FinanceManagement {
 
         private void button9_Click(object sender, EventArgs e) { //지출 수정버튼
             if (k_e == null) {
-                MessageBox.Show("지정된 자료가 없습니다.");
+                MessageBox.Show("지정된 자료가 없습니다.","오류");
             }
             else {
                 DateTime dt = DateTime.Parse(dataGridView2.Rows[k_e.RowIndex].Cells[1].Value.ToString());
@@ -146,7 +146,7 @@ namespace FinanceManagement {
 
         private void button5_Click(object sender, EventArgs e) { //수입 삭제 버튼
             if (k_i == null) {
-                MessageBox.Show("지정된 자료가 없습니다.");
+                MessageBox.Show("지정된 자료가 없습니다.","오류");
             }
             else {
                 if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
@@ -160,7 +160,7 @@ namespace FinanceManagement {
 
         private void button8_Click(object sender, EventArgs e) { //지출 삭제 버튼
             if (k_e == null) {
-                MessageBox.Show("지정된 자료가 없습니다.");
+                MessageBox.Show("지정된 자료가 없습니다.","오류");
             }
             else {
                 if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
@@ -187,7 +187,7 @@ namespace FinanceManagement {
                 string lgsText;
                 lgsText = Sum2.Text.Replace(",", "");
                 Sum2.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-                Sum2.SelectionStart = Sum.TextLength; 
+                Sum2.SelectionStart = Sum2.TextLength; 
                 Sum2.SelectionLength = 0;
             }
         }
