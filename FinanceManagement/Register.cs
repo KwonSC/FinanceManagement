@@ -171,5 +171,25 @@ namespace FinanceManagement {
                 }
             }
         }
+
+        private void Sum_TextChanged(object sender, EventArgs e) { //수입금액 세자리 콤마
+            if (Sum.Text != "") {
+                string lgsText;
+                lgsText = Sum.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지...
+                Sum.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+                Sum.SelectionStart = Sum.TextLength; //** 캐럿을 맨 뒤로 보낸다...
+                Sum.SelectionLength = 0;
+            }
+        }
+
+        private void Sum2_TextChanged(object sender, EventArgs e) { //지출금액 세자리 콤마
+            if (Sum2.Text != "") {
+                string lgsText;
+                lgsText = Sum2.Text.Replace(",", "");
+                Sum2.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+                Sum2.SelectionStart = Sum.TextLength; 
+                Sum2.SelectionLength = 0;
+            }
+        }
     }
 }

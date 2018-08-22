@@ -138,6 +138,7 @@
             this.Sum.Name = "Sum";
             this.Sum.Size = new System.Drawing.Size(120, 21);
             this.Sum.TabIndex = 9;
+            this.Sum.TextChanged += new System.EventHandler(this.Sum_TextChanged);
             this.Sum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sum_KeyPress);
             // 
             // label1
@@ -454,6 +455,7 @@
             this.Sum2.Name = "Sum2";
             this.Sum2.Size = new System.Drawing.Size(120, 21);
             this.Sum2.TabIndex = 9;
+            this.Sum2.TextChanged += new System.EventHandler(this.Sum2_TextChanged);
             this.Sum2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sum2_KeyPress);
             // 
             // listBox5
