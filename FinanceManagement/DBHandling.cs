@@ -42,6 +42,16 @@ namespace FinanceManagement {
             conn.Close();
         }
 
+        public void add_modify(int rowindex,DateTime aDate, String nam1, String nam2, long number, String etc) {
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "UPDATE 수입 SET 날짜 = '" + aDate.Date + "', 이름1 ='" + nam1 + "', 이름2 ='" + nam2 + "',금액 ='" + number + "',비고 ='" + etc + "'WHERE ROWNUM=" + rowindex;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public void carryOverAdd(long number) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();

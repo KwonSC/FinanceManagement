@@ -43,7 +43,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
@@ -53,7 +52,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -241,15 +239,6 @@
             this.button5.Text = "삭제";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(199, 241);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(55, 46);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "정렬";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -298,7 +287,6 @@
             this.incomepanel.Controls.Add(this.label9);
             this.incomepanel.Controls.Add(this.listBox3);
             this.incomepanel.Controls.Add(this.dataGridView1);
-            this.incomepanel.Controls.Add(this.button6);
             this.incomepanel.Controls.Add(this.button5);
             this.incomepanel.Controls.Add(this.button4);
             this.incomepanel.Controls.Add(this.button3);
@@ -326,7 +314,6 @@
             this.expanel.Controls.Add(this.label12);
             this.expanel.Controls.Add(this.listBox4);
             this.expanel.Controls.Add(this.dataGridView2);
-            this.expanel.Controls.Add(this.button7);
             this.expanel.Controls.Add(this.button8);
             this.expanel.Controls.Add(this.button9);
             this.expanel.Controls.Add(this.button10);
@@ -376,15 +363,7 @@
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(761, 142);
             this.dataGridView2.TabIndex = 23;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(199, 241);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(55, 46);
-            this.button7.TabIndex = 22;
-            this.button7.Text = "정렬";
-            this.button7.UseVisualStyleBackColor = true;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // button8
             // 
@@ -403,6 +382,7 @@
             this.button9.TabIndex = 20;
             this.button9.Text = "수정";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -544,7 +524,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ListBox listBox3;
@@ -554,7 +533,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
