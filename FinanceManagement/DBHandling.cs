@@ -52,6 +52,16 @@ namespace FinanceManagement {
             conn.Close();
         }
 
+        public void add_delete(int rowindex) { //수입 삭제
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "DELETE FROM 수입 WHERE 코드 =" + rowindex;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public void exp(int count, DateTime aDate, long number, String etc) { // 지출 저장
 
             conn.ConnectionString = this.strDBConnection();
@@ -69,6 +79,16 @@ namespace FinanceManagement {
             connCmd.Connection = conn;
 
             connCmd.CommandText = "UPDATE 지출 SET 날짜 = '" + aDate.Date + "',금액 ='" + number + "',비고 ='" + etc + "' WHERE 코드=" + rowindex;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void exp_delete(int rowindex) { //지출 삭제
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "DELETE FROM 지출 WHERE 코드 =" + rowindex;
             connCmd.ExecuteNonQuery();
             conn.Close();
         }

@@ -141,5 +141,27 @@ namespace FinanceManagement {
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e) {
             k_e = e;
         }
+
+        private void button5_Click(object sender, EventArgs e) { //수입 삭제 버튼
+            if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                DBHandling currentDB = new DBHandling(filepath);
+                currentDB.add_delete(k_i.RowIndex);
+                load_data();
+            }
+            else {
+                this.Close();
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e) { //지출 삭제 버튼
+            if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                DBHandling currentDB = new DBHandling(filepath);
+                currentDB.exp_delete(k_e.RowIndex);
+                load_data();
+            }
+            else {
+                this.Close();
+            }
+        }
     }
 }

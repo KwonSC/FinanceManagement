@@ -238,6 +238,7 @@
             this.button5.TabIndex = 21;
             this.button5.Text = "삭제";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // dataGridView1
             // 
@@ -373,6 +374,7 @@
             this.button8.TabIndex = 21;
             this.button8.Text = "삭제";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
