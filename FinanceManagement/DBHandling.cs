@@ -32,22 +32,43 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
 
-        public void add(DateTime aDate, String nam1,String nam2, long number, String etc) {
+        public void add(int count, DateTime aDate, String nam1,String nam2, long number, String etc) { //수입 저장
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 수입(코드, 날짜, 이름1, 이름2, 금액, 비고) VALUES('1', '" + aDate + "', '" + nam1 + "', '"+nam2+"', '" + number + "', '" + etc + "')";
+            connCmd.CommandText = "INSERT INTO 수입(코드, 날짜, 이름1, 이름2, 금액, 비고) VALUES('"+count+"', '" + aDate + "', '" + nam1 + "', '"+nam2+"', '" + number + "', '" + etc + "')";
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
 
-        public void add_modify(int rowindex,DateTime aDate, String nam1, String nam2, long number, String etc) {
+        public void add_modify(int rowindex,DateTime aDate, String nam1, String nam2, long number, String etc) { //수입 수정
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "UPDATE 수입 SET 날짜 = '" + aDate.Date + "', 이름1 ='" + nam1 + "', 이름2 ='" + nam2 + "',금액 ='" + number + "',비고 ='" + etc + "'WHERE ROWNUM=" + rowindex;
+            connCmd.CommandText = "UPDATE 수입 SET 날짜 = '" + aDate.Date + "', 이름1 ='" + nam1 + "', 이름2 ='" + nam2 + "',금액 ='" + number + "',비고 ='" + etc+"' WHERE 코드="+rowindex;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void exp(int count, DateTime aDate, long number, String etc) { // 지출 저장
+
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "INSERT INTO 지출(코드, 날짜, 금액, 비고) VALUES('" + count + "', '" + aDate + "', '" + number + "', '" + etc + "')";
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void exp_modify(int rowindex,DateTime aDate, long number, String etc) { //지출 수정
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "UPDATE 지출 SET 날짜 = '" + aDate.Date + "',금액 ='" + number + "',비고 ='" + etc + "' WHERE 코드=" + rowindex;
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -91,15 +112,6 @@ namespace FinanceManagement {
             conn.Close();
         }
 
-        public void exp(DateTime aDate, long number, String etc) {
-
-            conn.ConnectionString = this.strDBConnection();
-            conn.Open();
-            connCmd.Connection = conn;
-
-            connCmd.CommandText = "INSERT INTO 지출(코드, 날짜, 금액, 비고) VALUES('1', '" + aDate + "', '" + number + "', '" + etc + "')";
-            connCmd.ExecuteNonQuery();
-            conn.Close();
-        }
+       
     }
 }

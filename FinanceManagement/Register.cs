@@ -23,6 +23,8 @@ namespace FinanceManagement {
         string connStr;
         DataGridViewCellEventArgs k_i = null;
         DataGridViewCellEventArgs k_e = null;
+        int incom_rowcount;
+        int expen_rowcount;
 
 
         public Register(string path)  {
@@ -40,9 +42,11 @@ namespace FinanceManagement {
             adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            incom_rowcount = ds.Tables[0].Rows.Count;
             adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
+            expen_rowcount = ds2.Tables[0].Rows.Count;
         }
         
 
@@ -54,13 +58,13 @@ namespace FinanceManagement {
             }
             else {
                 if (Name1.Text == String.Empty) {
-                    currentDB.add(currentDate, "무명", Name2.Text, long.Parse(Sum.Text), Note.Text);
+                    currentDB.add(incom_rowcount,currentDate, "무명", Name2.Text, long.Parse(Sum.Text), Note.Text);
                     Name2.Text = "";
                     Sum.Text = "";
                     Note.Text = "";
                 }
                 else {
-                    currentDB.add(currentDate, Name1.Text, Name2.Text, long.Parse(Sum.Text), Note.Text);
+                    currentDB.add(incom_rowcount,currentDate, Name1.Text, Name2.Text, long.Parse(Sum.Text), Note.Text);
                     Name1.Text = "";
                     Name2.Text = "";
                     Sum.Text = "";
@@ -77,7 +81,7 @@ namespace FinanceManagement {
                 MessageBox.Show("금액을 입력해야합니다.");
             }
             else {
-                currentDB.exp(currentDate, long.Parse(Sum2.Text), Note2.Text);
+                currentDB.exp(expen_rowcount,currentDate, long.Parse(Sum2.Text), Note2.Text);
                 Sum2.Text = "";
                 Note2.Text = "";
                 load_data();
