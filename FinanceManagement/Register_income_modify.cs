@@ -32,7 +32,7 @@ namespace FinanceManagement {
 
         private void button1_Click(object sender, EventArgs e) { //저장버튼
             DBHandling currentDB = new DBHandling(file);
-            currentDB.add_modify(row, dateTimePicker1.Value, name1.Text, name2.Text, long.Parse(sum.Text), note.Text);
+            currentDB.add_modify(row, dateTimePicker1.Value, name1.Text, name2.Text, Int64.Parse(sum.Text.Replace(",","")), note.Text);
             temp.load_data();
             this.Close();
         }

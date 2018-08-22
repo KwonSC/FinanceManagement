@@ -58,13 +58,13 @@ namespace FinanceManagement {
             }
             else {
                 if (Name1.Text == String.Empty) {
-                    currentDB.add(incom_rowcount,currentDate, "무명", Name2.Text, long.Parse(Sum.Text), Note.Text);
+                    currentDB.add(incom_rowcount,currentDate, "무명", Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
                     Name2.Text = "";
                     Sum.Text = "";
                     Note.Text = "";
                 }
                 else {
-                    currentDB.add(incom_rowcount,currentDate, Name1.Text, Name2.Text, long.Parse(Sum.Text), Note.Text);
+                    currentDB.add(incom_rowcount,currentDate, Name1.Text, Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
                     Name1.Text = "";
                     Name2.Text = "";
                     Sum.Text = "";
@@ -81,7 +81,7 @@ namespace FinanceManagement {
                 MessageBox.Show("금액을 입력해야합니다.");
             }
             else {
-                currentDB.exp(expen_rowcount,currentDate, long.Parse(Sum2.Text), Note2.Text);
+                currentDB.exp(expen_rowcount,currentDate, Int64.Parse(Sum2.Text.Replace(",","")), Note2.Text);
                 Sum2.Text = "";
                 Note2.Text = "";
                 load_data();
@@ -176,7 +176,7 @@ namespace FinanceManagement {
             if (Sum.Text != "") {
                 string lgsText;
                 lgsText = Sum.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지...
-                Sum.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+                Sum.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
                 Sum.SelectionStart = Sum.TextLength; //** 캐럿을 맨 뒤로 보낸다...
                 Sum.SelectionLength = 0;
             }
@@ -186,7 +186,7 @@ namespace FinanceManagement {
             if (Sum2.Text != "") {
                 string lgsText;
                 lgsText = Sum2.Text.Replace(",", "");
-                Sum2.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+                Sum2.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
                 Sum2.SelectionStart = Sum.TextLength; 
                 Sum2.SelectionLength = 0;
             }

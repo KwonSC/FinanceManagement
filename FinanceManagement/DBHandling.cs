@@ -32,7 +32,7 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
 
-        public void add(int count, DateTime aDate, String nam1,String nam2, long number, String etc) { //수입 저장
+        public void add(int count, DateTime aDate, String nam1,String nam2, Int64 number, String etc) { //수입 저장
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
@@ -42,7 +42,7 @@ namespace FinanceManagement {
             conn.Close();
         }
 
-        public void add_modify(int rowindex,DateTime aDate, String nam1, String nam2, long number, String etc) { //수입 수정
+        public void add_modify(int rowindex,DateTime aDate, String nam1, String nam2, Int64 number, String etc) { //수입 수정
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
@@ -62,7 +62,7 @@ namespace FinanceManagement {
             conn.Close();
         }
 
-        public void exp(int count, DateTime aDate, long number, String etc) { // 지출 저장
+        public void exp(int count, DateTime aDate, Int64 number, String etc) { // 지출 저장
 
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
@@ -73,7 +73,7 @@ namespace FinanceManagement {
             conn.Close();
         }
 
-        public void exp_modify(int rowindex,DateTime aDate, long number, String etc) { //지출 수정
+        public void exp_modify(int rowindex,DateTime aDate, Int64 number, String etc) { //지출 수정
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
@@ -93,7 +93,7 @@ namespace FinanceManagement {
             conn.Close();
         }
 
-        public void carryOverAdd(long number) {
+        public void carryOverAdd(Int64 number) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
