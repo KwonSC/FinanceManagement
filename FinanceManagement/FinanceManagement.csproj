@@ -79,6 +79,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Register_expen_modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register_expen_modify.Designer.cs">
+      <DependentUpon>Register_expen_modify.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register_income_modify.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Register_expen_modify.resx">
+      <DependentUpon>Register_expen_modify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register_income_modify.resx">
       <DependentUpon>Register_income_modify.cs</DependentUpon>

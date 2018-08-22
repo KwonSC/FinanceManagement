@@ -21,7 +21,9 @@ namespace FinanceManagement {
         string sql2 = "SELECT * FROM 지출";
         OleDbConnection conn;
         string connStr;
-        DataGridViewCellEventArgs k = null;
+        DataGridViewCellEventArgs k_i = null;
+        DataGridViewCellEventArgs k_e = null;
+
 
         public Register(string path)  {
             filepath = path;
@@ -46,7 +48,7 @@ namespace FinanceManagement {
 
         private void button3_Click(object sender, EventArgs e) { //수입 저장
             DBHandling currentDB = new DBHandling(filepath);
-            DateTime currentDate = DateTime.Today;
+            DateTime currentDate = dateTimePicker1.Value.Date;
             if (Sum.Text == String.Empty) {
                 MessageBox.Show("금액을 입력해야합니다.");
             }
@@ -70,7 +72,7 @@ namespace FinanceManagement {
 
         private void button10_Click(object sender, EventArgs e) { //지출 저장
             DBHandling currentDB = new DBHandling(filepath);
-            DateTime currentDate = DateTime.Today;
+            DateTime currentDate = dateTimePicker2.Value.Date;
             if (Sum2.Text == String.Empty) {
                 MessageBox.Show("금액을 입력해야합니다.");
             }
@@ -103,12 +105,12 @@ namespace FinanceManagement {
         }
 
         private void button4_Click(object sender, EventArgs e) { //수입 수정버튼
-            if (k == null) {
+            if (k_i == null) {
                 MessageBox.Show("지정된 자료가 없습니다.");
             }
             else {
-                DateTime dt = DateTime.Parse(dataGridView1.Rows[k.RowIndex].Cells[1].Value.ToString());
-                Register_income_modify form = new Register_income_modify(dt,dataGridView1.Rows[k.RowIndex].Cells[2].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[3].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[4].Value.ToString(), dataGridView1.Rows[k.RowIndex].Cells[5].Value.ToString());
+                DateTime dt = DateTime.Parse(dataGridView1.Rows[k_i.RowIndex].Cells[1].Value.ToString());
+                Register_income_modify form = new Register_income_modify(filepath,k_i.RowIndex,dt,dataGridView1.Rows[k_i.RowIndex].Cells[2].Value.ToString(), dataGridView1.Rows[k_i.RowIndex].Cells[3].Value.ToString(), dataGridView1.Rows[k_i.RowIndex].Cells[4].Value.ToString(), dataGridView1.Rows[k_i.RowIndex].Cells[5].Value.ToString(),this);
                 form.StartPosition = FormStartPosition.Manual;
                 form.Location = new Point(250, 200);
                 form.Show();
@@ -116,7 +118,24 @@ namespace FinanceManagement {
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
-            k = e;
+            k_i = e;
+        }
+
+        private void button9_Click(object sender, EventArgs e) { //지출 수정버튼
+            if (k_e == null) {
+                MessageBox.Show("지정된 자료가 없습니다.");
+            }
+            else {
+                DateTime dt = DateTime.Parse(dataGridView2.Rows[k_e.RowIndex].Cells[1].Value.ToString());
+                Register_expen_modify form = new Register_expen_modify(filepath,k_e.RowIndex,dt, dataGridView2.Rows[k_e.RowIndex].Cells[2].Value.ToString(), dataGridView2.Rows[k_e.RowIndex].Cells[3].Value.ToString(),this);
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = new Point(250, 200);
+                form.Show();
+            }
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e) {
+            k_e = e;
         }
     }
 }
