@@ -42,10 +42,12 @@ namespace FinanceManagement {
             adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.Columns[4].DefaultCellStyle.Format = "c";
             incom_rowcount = ds.Tables[0].Rows.Count;
             adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
+            dataGridView2.Columns[2].DefaultCellStyle.Format = "c";
             expen_rowcount = ds2.Tables[0].Rows.Count;
         }
         

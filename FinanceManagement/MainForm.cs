@@ -71,7 +71,7 @@ namespace FinanceManagement {
                 try {
                     System.IO.StreamReader sr = new System.IO.StreamReader(openDB.FileName);
                     strFilePath = openDB.FileName;
-                    MessageBox.Show(strFilePath+"를 열었습니다.");
+                    MessageBox.Show(strFilePath+"를 열었습니다.", "Zacchaeus");
                     sr.Close();
                 }
                 catch (Exception) {
