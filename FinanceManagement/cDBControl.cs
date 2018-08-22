@@ -72,7 +72,7 @@ namespace FinanceManagement {
                 conn.Open();
                 connCmd.Connection = conn;
 
-                connCmd.CommandText = "CREATE TABLE 수입(코드 number, 날짜 date, 이름1 text, 이름2 text, 금액 number, 비고 text)";
+                connCmd.CommandText = "CREATE TABLE 수입(코드 number, 날짜 date, 이름1 text, 이름2 text, 금액 money, 비고 text)";
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 수입관(관코드 number, 관 text, 순서 number)";
                 connCmd.ExecuteNonQuery();
@@ -82,15 +82,15 @@ namespace FinanceManagement {
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 일결산(날짜 date, 항목 text, 금액 number)";
                 connCmd.ExecuteNonQuery();
-                connCmd.CommandText = "CREATE TABLE 지출(코드 number, 날짜 date, 금액 number, 비고 text)";
+                connCmd.CommandText = "CREATE TABLE 지출(코드 number, 날짜 date, 금액 money, 비고 text)";
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 지출관(관코드 number, 관 text, 순서 number)";
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 지출항(항코드 number, 항 text, 순서 number, 항관코드 number)";
                 connCmd.ExecuteNonQuery();
-                connCmd.CommandText = "CREATE TABLE 지출목(목코드 number, 목 text, 예산액 number, 예산비고 text, 순서 number, 목관코드 number, 목항코드 number)";
+                connCmd.CommandText = "CREATE TABLE 지출목(목코드 number, 목 text, 예산액 money, 예산비고 text, 순서 number, 목관코드 number, 목항코드 number)";
                 connCmd.ExecuteNonQuery();
-                connCmd.CommandText = "CREATE TABLE 환경(이월금 number)";
+                connCmd.CommandText = "CREATE TABLE 환경(이월금 money)";
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "INSERT INTO 환경(이월금) VALUES(0)";
                 connCmd.ExecuteNonQuery();
