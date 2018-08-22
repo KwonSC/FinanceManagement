@@ -118,6 +118,7 @@ namespace FinanceManagement {
                 form.StartPosition = FormStartPosition.Manual;
                 form.Location = new Point(250, 200);
                 form.Show();
+                k_i = null;
             }
         }
 
@@ -135,6 +136,7 @@ namespace FinanceManagement {
                 form.StartPosition = FormStartPosition.Manual;
                 form.Location = new Point(250, 200);
                 form.Show();
+                k_e = null;
             }
         }
 
@@ -143,24 +145,30 @@ namespace FinanceManagement {
         }
 
         private void button5_Click(object sender, EventArgs e) { //수입 삭제 버튼
-            if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                DBHandling currentDB = new DBHandling(filepath);
-                currentDB.add_delete(k_i.RowIndex);
-                load_data();
+            if (k_i == null) {
+                MessageBox.Show("지정된 자료가 없습니다.");
             }
             else {
-                this.Close();
+                if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                    DBHandling currentDB = new DBHandling(filepath);
+                    currentDB.add_delete(k_i.RowIndex);
+                    load_data();
+                    k_i = null;
+                }
             }
         }
 
         private void button8_Click(object sender, EventArgs e) { //지출 삭제 버튼
-            if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                DBHandling currentDB = new DBHandling(filepath);
-                currentDB.exp_delete(k_e.RowIndex);
-                load_data();
+            if (k_e == null) {
+                MessageBox.Show("지정된 자료가 없습니다.");
             }
             else {
-                this.Close();
+                if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                    DBHandling currentDB = new DBHandling(filepath);
+                    currentDB.exp_delete(k_e.RowIndex);
+                    load_data();
+                    k_e = null;
+                }
             }
         }
     }
