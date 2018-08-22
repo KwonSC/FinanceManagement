@@ -154,6 +154,11 @@ namespace FinanceManagement {
                 if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     DBHandling currentDB = new DBHandling(filepath);
                     currentDB.add_delete(k_i.RowIndex);
+                    if (incom_rowcount != 0) { //1씩 코드 내리기
+                        for (int i = k_i.RowIndex + 1; i <= incom_rowcount; i++) {
+                            currentDB.add_iterdel(i);
+                        }
+                    }
                     load_data();
                     k_i = null;
                 }
@@ -168,6 +173,11 @@ namespace FinanceManagement {
                 if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     DBHandling currentDB = new DBHandling(filepath);
                     currentDB.exp_delete(k_e.RowIndex);
+                    if (expen_rowcount != 0) { //1씩 코드 내리기
+                        for (int i = k_e.RowIndex + 1; i <= expen_rowcount; i++) {
+                            currentDB.exp_iterdel(i);
+                        }
+                    }
                     load_data();
                     k_e = null;
                 }
@@ -177,9 +187,9 @@ namespace FinanceManagement {
         private void Sum_TextChanged(object sender, EventArgs e) { //수입금액 세자리 콤마
             if (Sum.Text != "") {
                 string lgsText;
-                lgsText = Sum.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지...
+                lgsText = Sum.Text.Replace(",", "");
                 Sum.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-                Sum.SelectionStart = Sum.TextLength; //** 캐럿을 맨 뒤로 보낸다...
+                Sum.SelectionStart = Sum.TextLength;
                 Sum.SelectionLength = 0;
             }
         }

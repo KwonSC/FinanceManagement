@@ -32,6 +32,26 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
 
+        public void exp_iterdel(int count) { //지출_삭제전 코드땡기기
+            int mcount = count - 1;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "UPDATE 지출 SET 코드 ='" + mcount+"' WHERE 코드="+count;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void add_iterdel(int count) { //수입_삭제전 코드땡기기
+            int mcount = count - 1;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "UPDATE 수입 SET 코드 ='" + mcount + "' WHERE 코드=" + count;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public void add(int count, DateTime aDate, String nam1,String nam2, Int64 number, String etc) { //수입 저장
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
