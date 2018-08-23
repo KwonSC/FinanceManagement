@@ -21,7 +21,7 @@ namespace FinanceManagement {
         }
 
         private void confirm_Click(object sender, EventArgs e) {
-            currentDB.carryOverAdd(long.Parse(carryOverText.Text));
+            currentDB.carryOverAdd(Int64.Parse(carryOverText.Text.Replace(",", "")));
             Setting_Carryover.ActiveForm.Close();
         }
 
