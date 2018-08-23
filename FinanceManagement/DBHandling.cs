@@ -31,6 +31,108 @@ namespace FinanceManagement {
         private String strDBConnection() {
             return this._strDBConnection;
         }
+        public Int64 all_difference() { //총 차액
+            Int64 w,x, y, z;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT 이월금 FROM 환경";
+            object e = connCmd.ExecuteScalar();
+            string f = e.ToString();
+            Int64.TryParse(f, out w);
+            connCmd.CommandText = "SELECT SUM(금액) FROM 수입";
+            object a = connCmd.ExecuteScalar();
+            string c = a.ToString();
+            Int64.TryParse(c, out x);
+            connCmd.CommandText = "SELECT SUM(금액) FROM 지출";
+            object b = connCmd.ExecuteScalar();
+            string d = b.ToString();
+            Int64.TryParse(d, out y);
+            z = w + x - y;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return z;
+        }
+        public Int64 today_difference(DateTime dt) { //금일 차액
+            Int64 x, y, z;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT SUM(금액) FROM 수입 WHERE 날짜 = (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
+            object a = connCmd.ExecuteScalar();
+            string c = a.ToString();
+            Int64.TryParse(c, out x);
+            connCmd.CommandText = "SELECT SUM(금액) FROM 지출 WHERE 날짜 = (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
+            object b = connCmd.ExecuteScalar();
+            string d = b.ToString();
+            Int64.TryParse(d, out y);
+            z =x - y;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return z;
+        }
+
+        public Int64 yesterday_sum() { //이월금 받기
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT 이월금 FROM 환경";
+            object count = connCmd.ExecuteScalar();
+            string k = count.ToString();
+            Int64 z;
+            Int64.TryParse(k,out z);
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return z;
+        }
+
+        public object all_expend_sum() { //총 지출 합계구하기
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT SUM(금액) FROM 지출";
+            object count = connCmd.ExecuteScalar();
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return count;
+        }
+
+        public object all_income_sum() { //총 수입 합계구하기
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT SUM(금액) FROM 수입";
+            object count = connCmd.ExecuteScalar();
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return count;
+        }
+
+        public object today_income_sum(DateTime dt) { //금일수입 합계구하기
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT SUM(금액) FROM 수입 WHERE 날짜 = (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
+            object count = connCmd.ExecuteScalar();
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return count;
+        }
+
+        public object today_expend_sum(DateTime dt) { //금일지출 합계 구하기
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT SUM(금액) FROM 지출 WHERE 날짜 = (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
+            object count = connCmd.ExecuteScalar();
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return count;
+        }
 
         public void exp_iterdel(int count) { //지출_삭제전 코드땡기기
             int mcount = count - 1;

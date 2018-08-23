@@ -17,6 +17,7 @@ namespace FinanceManagement {
         public Setting_Carryover(String path) {
             InitializeComponent();
             currentDB = new DBHandling(path);
+            carryOverText.Text = currentDB.yesterday_sum().ToString();
         }
 
         private void confirm_Click(object sender, EventArgs e) {
@@ -26,6 +27,22 @@ namespace FinanceManagement {
 
         private void cancel_Click(object sender, EventArgs e) {
             Setting_Carryover.ActiveForm.Close();
+        }
+
+        private void carryOverText_TextChanged(object sender, EventArgs e) {
+            if (carryOverText.Text != "") {
+                string lgsText;
+                lgsText = carryOverText.Text.Replace(",", "");
+                carryOverText.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                carryOverText.SelectionStart = carryOverText.TextLength;
+                carryOverText.SelectionLength = 0;
+            }
+        }
+
+        private void carryOverText_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back))) {  //숫자와 백스페이스를 제외한 나머지를 바로 처리
+                e.Handled = true;
+            }
         }
     }
 }
