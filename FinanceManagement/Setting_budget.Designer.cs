@@ -76,13 +76,17 @@
             this.관data.AllowUserToDeleteRows = false;
             this.관data.AllowUserToResizeColumns = false;
             this.관data.AllowUserToResizeRows = false;
+            this.관data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.관data.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.관data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.관data.Location = new System.Drawing.Point(114, 48);
+            this.관data.Location = new System.Drawing.Point(109, 48);
+            this.관data.MultiSelect = false;
             this.관data.Name = "관data";
+            this.관data.ReadOnly = true;
             this.관data.RowTemplate.Height = 27;
-            this.관data.Size = new System.Drawing.Size(134, 388);
+            this.관data.Size = new System.Drawing.Size(200, 388);
             this.관data.TabIndex = 5;
-            this.관data.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.관data_CellContentClick);
+            this.관data.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.관data_CellClick);
             // 
             // title
             // 
@@ -100,11 +104,15 @@
             this.항data.AllowUserToDeleteRows = false;
             this.항data.AllowUserToResizeColumns = false;
             this.항data.AllowUserToResizeRows = false;
+            this.항data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.항data.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.항data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.항data.Location = new System.Drawing.Point(254, 48);
+            this.항data.Location = new System.Drawing.Point(315, 48);
+            this.항data.MultiSelect = false;
             this.항data.Name = "항data";
+            this.항data.ReadOnly = true;
             this.항data.RowTemplate.Height = 27;
-            this.항data.Size = new System.Drawing.Size(134, 388);
+            this.항data.Size = new System.Drawing.Size(200, 388);
             this.항data.TabIndex = 7;
             // 
             // 목data
@@ -113,18 +121,22 @@
             this.목data.AllowUserToDeleteRows = false;
             this.목data.AllowUserToResizeColumns = false;
             this.목data.AllowUserToResizeRows = false;
+            this.목data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.목data.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.목data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.목data.Location = new System.Drawing.Point(394, 48);
+            this.목data.Location = new System.Drawing.Point(521, 48);
+            this.목data.MultiSelect = false;
             this.목data.Name = "목data";
+            this.목data.ReadOnly = true;
             this.목data.RowTemplate.Height = 27;
             this.목data.Size = new System.Drawing.Size(508, 388);
             this.목data.TabIndex = 8;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(114, 442);
+            this.button3.Location = new System.Drawing.Point(109, 442);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(134, 32);
+            this.button3.Size = new System.Drawing.Size(200, 32);
             this.button3.TabIndex = 9;
             this.button3.Text = "관 추가";
             this.button3.UseVisualStyleBackColor = true;
@@ -132,9 +144,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(114, 480);
+            this.button4.Location = new System.Drawing.Point(109, 480);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(134, 32);
+            this.button4.Size = new System.Drawing.Size(200, 32);
             this.button4.TabIndex = 10;
             this.button4.Text = "관 수정";
             this.button4.UseVisualStyleBackColor = true;
@@ -142,9 +154,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(114, 518);
+            this.button5.Location = new System.Drawing.Point(109, 518);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(134, 32);
+            this.button5.Size = new System.Drawing.Size(200, 32);
             this.button5.TabIndex = 11;
             this.button5.Text = "관 삭제";
             this.button5.UseVisualStyleBackColor = true;
@@ -152,9 +164,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(254, 518);
+            this.button6.Location = new System.Drawing.Point(315, 518);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(134, 32);
+            this.button6.Size = new System.Drawing.Size(200, 32);
             this.button6.TabIndex = 14;
             this.button6.Text = "항 삭제";
             this.button6.UseVisualStyleBackColor = true;
@@ -162,9 +174,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(254, 480);
+            this.button7.Location = new System.Drawing.Point(315, 484);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(134, 32);
+            this.button7.Size = new System.Drawing.Size(200, 32);
             this.button7.TabIndex = 13;
             this.button7.Text = "항 수정";
             this.button7.UseVisualStyleBackColor = true;
@@ -172,9 +184,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(254, 442);
+            this.button8.Location = new System.Drawing.Point(315, 442);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(134, 32);
+            this.button8.Size = new System.Drawing.Size(200, 32);
             this.button8.TabIndex = 12;
             this.button8.Text = "항 추가";
             this.button8.UseVisualStyleBackColor = true;
@@ -182,9 +194,9 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(394, 518);
+            this.button9.Location = new System.Drawing.Point(521, 518);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(134, 32);
+            this.button9.Size = new System.Drawing.Size(200, 32);
             this.button9.TabIndex = 17;
             this.button9.Text = "목 삭제";
             this.button9.UseVisualStyleBackColor = true;
@@ -192,9 +204,9 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(394, 480);
+            this.button10.Location = new System.Drawing.Point(521, 480);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(134, 32);
+            this.button10.Size = new System.Drawing.Size(200, 32);
             this.button10.TabIndex = 16;
             this.button10.Text = "목 수정";
             this.button10.UseVisualStyleBackColor = true;
@@ -202,9 +214,9 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(394, 442);
+            this.button11.Location = new System.Drawing.Point(521, 442);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(134, 32);
+            this.button11.Size = new System.Drawing.Size(200, 32);
             this.button11.TabIndex = 15;
             this.button11.Text = "목 추가";
             this.button11.UseVisualStyleBackColor = true;
@@ -213,7 +225,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(674, 451);
+            this.label2.Location = new System.Drawing.Point(802, 450);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 18;
@@ -222,7 +234,7 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(747, 447);
+            this.textBox1.Location = new System.Drawing.Point(875, 446);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(154, 25);
             this.textBox1.TabIndex = 19;
@@ -230,7 +242,7 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(747, 487);
+            this.textBox2.Location = new System.Drawing.Point(875, 486);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(154, 25);
             this.textBox2.TabIndex = 20;
@@ -238,7 +250,7 @@
             // textBox3
             // 
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(747, 525);
+            this.textBox3.Location = new System.Drawing.Point(875, 524);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(154, 25);
             this.textBox3.TabIndex = 21;
@@ -246,7 +258,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(674, 490);
+            this.label3.Location = new System.Drawing.Point(802, 489);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 22;
@@ -255,7 +267,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(609, 527);
+            this.label4.Location = new System.Drawing.Point(737, 526);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 15);
             this.label4.TabIndex = 23;
@@ -265,7 +277,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 562);
+            this.ClientSize = new System.Drawing.Size(1053, 562);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox3);
