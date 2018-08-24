@@ -256,23 +256,21 @@ namespace FinanceManagement {
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void addH(int code, String name, int order) {
+        public void addH(int code, int hgCode, String name, int order) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 수입항(항코드, 항, 순서) VALUES('" + code + "', '" + name + "', '" + order + "')";
+            connCmd.CommandText = "INSERT INTO 수입항(항코드, 항, 순서, 항관코드) VALUES('" + code + "', '" + name + "', '" + order + "', '" + hgCode + "')";
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void addG_order(String sortName, int number) { //지출 수정
+        public void add_order(String sortName, int number) { // 순서 최신화
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
             connCmd.CommandText = "UPDATE "+ sortName + " SET 순서 = 순서 + 1 where 순서 = " + number;
-            connCmd.ExecuteNonQuery();
-            connCmd.CommandText = "SELECT * FROM 수입관 ORDER BY 순서";
             connCmd.ExecuteNonQuery();
             conn.Close();
         }

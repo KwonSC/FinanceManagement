@@ -16,6 +16,7 @@ namespace FinanceManagement {
         Setting_budget k;
         DBHandling db;
         int codeCount;
+        int hgCode;
 
         public Setting_budget_add(int code, String name, String path, Setting_budget sb) {
             InitializeComponent();
@@ -28,6 +29,19 @@ namespace FinanceManagement {
             sb = new Setting_budget(path);
             db = new DBHandling(strPath);
             order.Text = codeCount.ToString();
+        }
+        public Setting_budget_add(int code, int gCode, String name, String path, Setting_budget sb) {
+            InitializeComponent();
+
+            strPath = path;
+            this.Text = name;
+            sortName = name;
+            k = sb;
+            codeCount = code;
+            sb = new Setting_budget(path);
+            db = new DBHandling(strPath);
+            order.Text = codeCount.ToString();
+            hgCode = gCode;
         }
 
         public Setting_budget_add(String name, String path, Setting_budget sb) {
@@ -64,7 +78,7 @@ namespace FinanceManagement {
                     db.addG(codeCount, name.Text, int.Parse(order.Text));
                 }
                 else if (sortName == "항 추가") {
-                    db.addH(codeCount, name.Text, int.Parse(order.Text));
+                    db.addH(codeCount, hgCode, name.Text, int.Parse(order.Text));
                 }
                 else if (sortName == "관 수정") {
                     
