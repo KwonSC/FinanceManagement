@@ -25,11 +25,14 @@ namespace FinanceManagement {
         DataGridViewCellEventArgs k_e = null;
         int incom_rowcount;
         int expen_rowcount;
+        DateTime today_date;
         
 
         public Register(string path)  {
             filepath = path;
             InitializeComponent();
+            dateTimePicker1.Value = DateTime.Today;
+            today_date = dateTimePicker1.Value.Date;
             load_data();
         }
 
@@ -49,31 +52,30 @@ namespace FinanceManagement {
             dataGridView2.DataSource = ds2.Tables[0];
             dataGridView2.Columns[2].DefaultCellStyle.Format = "c";
             expen_rowcount = ds2.Tables[0].Rows.Count;
-            today_income.Text = dbhand.today_income_sum(DateTime.Today.Date).ToString(); //금일수입금액
-            today_expend.Text = dbhand.today_expend_sum(DateTime.Today.Date).ToString(); //금일지출금액
-            all_income.Text = dbhand.all_income_sum().ToString(); //총 수입 금액
-            all_expend.Text = dbhand.all_expend_sum().ToString(); //총 지출 금액
-            yesterday.Text = dbhand.yesterday_sum().ToString(); //이월금액
-            today_differ.Text = dbhand.today_difference(DateTime.Today.Date).ToString(); //금일차액
-            Now_differ.Text = dbhand.all_difference().ToString(); //총 차액
+            today_income.Text = dbhand.today_income_sum(today_date).ToString(); //금일수입금액
+            today_expend.Text = dbhand.today_expend_sum(today_date).ToString(); //금일지출금액
+            all_income.Text = dbhand.all_income_sum(today_date).ToString(); //총 수입 금액
+            all_expend.Text = dbhand.all_expend_sum(today_date).ToString(); //총 지출 금액
+            today_differ.Text = dbhand.today_difference(today_date).ToString(); //금일차액
+            Now_differ.Text = dbhand.all_difference(today_date).ToString(); //총 차액
+            yesterday.Text = dbhand.yesterday_sum(today_date).ToString(); //이월금액
         }
 
 
         private void button3_Click(object sender, EventArgs e) { //수입 저장
             DBHandling currentDB = new DBHandling(filepath);
-            DateTime currentDate = dateTimePicker1.Value.Date;
             if (Sum.Text == String.Empty) {
                 MessageBox.Show("금액을 입력해야합니다.","오류");
             }
             else {
                 if (Name1.Text == String.Empty) {
-                    currentDB.add(incom_rowcount,currentDate, "무명", Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
+                    currentDB.add(incom_rowcount,today_date, "무명", Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
                     Name2.Text = "";
                     Sum.Text = "";
                     Note.Text = "";
                 }
                 else {
-                    currentDB.add(incom_rowcount,currentDate, Name1.Text, Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
+                    currentDB.add(incom_rowcount,today_date, Name1.Text, Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
                     Name1.Text = "";
                     Name2.Text = "";
                     Sum.Text = "";
@@ -85,12 +87,11 @@ namespace FinanceManagement {
 
         private void button10_Click(object sender, EventArgs e) { //지출 저장
             DBHandling currentDB = new DBHandling(filepath);
-            DateTime currentDate = dateTimePicker2.Value.Date;
             if (Sum2.Text == String.Empty) {
                 MessageBox.Show("금액을 입력해야합니다.","오류");
             }
             else {
-                currentDB.exp(expen_rowcount,currentDate, Int64.Parse(Sum2.Text.Replace(",","")), Note2.Text);
+                currentDB.exp(expen_rowcount,today_date, Int64.Parse(Sum2.Text.Replace(",","")), Note2.Text);
                 Sum2.Text = "";
                 Note2.Text = "";
                 load_data();
@@ -218,57 +219,76 @@ namespace FinanceManagement {
         private void yesterday_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = yesterday.Text.Replace(",", "");
-            yesterday.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-            yesterday.SelectionStart = yesterday.TextLength;
-            yesterday.SelectionLength = 0;
+            if (lgsText != "") {
+                yesterday.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                yesterday.SelectionStart = yesterday.TextLength;
+                yesterday.SelectionLength = 0;
+            }
         }
 
         private void today_income_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = today_income.Text.Replace(",", "");
-            today_income.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-            today_income.SelectionStart = today_income.TextLength;
-            today_income.SelectionLength = 0;
+            if (lgsText != "") {
+                today_income.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                today_income.SelectionStart = today_income.TextLength;
+                today_income.SelectionLength = 0;
+            }
         }
 
         private void today_expend_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = today_expend.Text.Replace(",", "");
-            today_expend.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-            today_expend.SelectionStart = today_expend.TextLength;
-            today_expend.SelectionLength = 0;
+            if (lgsText != "") {
+                today_expend.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                today_expend.SelectionStart = today_expend.TextLength;
+                today_expend.SelectionLength = 0;
+            }
         }
 
         private void today_differ_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = today_differ.Text.Replace(",", "");
-            today_differ.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-            today_differ.SelectionStart = today_differ.TextLength;
-            today_differ.SelectionLength = 0;
+            if (lgsText != "") {
+                today_differ.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                today_differ.SelectionStart = today_differ.TextLength;
+                today_differ.SelectionLength = 0;
+            }
         }
 
         private void all_income_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = all_income.Text.Replace(",", "");
-            all_income.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-            all_income.SelectionStart = all_income.TextLength;
-            all_income.SelectionLength = 0;
+            if (lgsText != "") {
+                all_income.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                all_income.SelectionStart = all_income.TextLength;
+                all_income.SelectionLength = 0;
+            }
         }
 
         private void all_expend_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = all_expend.Text.Replace(",", "");
-            all_expend.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-            all_expend.SelectionStart = all_expend.TextLength;
-            all_expend.SelectionLength = 0;
+            if (lgsText != "") {
+                all_expend.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                all_expend.SelectionStart = all_expend.TextLength;
+                all_expend.SelectionLength = 0;
+            }
         }
 
         private void Now_differ_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = Now_differ.Text.Replace(",", "");
-            Now_differ.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-            Now_differ.SelectionStart = Now_differ.TextLength;
-            Now_differ.SelectionLength = 0;
+            if (lgsText != "") {
+                Now_differ.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+                Now_differ.SelectionStart = Now_differ.TextLength;
+                Now_differ.SelectionLength = 0;
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
+            today_date = dateTimePicker1.Value.Date;
+            load_data();
         }
     }
 }

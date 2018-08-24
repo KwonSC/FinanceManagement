@@ -149,6 +149,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "재정관리";
             this.Text = "Zacchaeus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -160,8 +161,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn field1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn field2DataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem 파일;
         private System.Windows.Forms.ToolStripMenuItem fileCreate;
         private System.Windows.Forms.ToolStripMenuItem fileOpen;

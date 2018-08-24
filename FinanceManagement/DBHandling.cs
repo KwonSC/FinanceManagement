@@ -7,13 +7,13 @@ using System.IO;
 using System.Data.OleDb;
 using System.Windows.Forms;
 using System.Data;
+using System.Data.Sql;
 
 namespace FinanceManagement {
     public class DBHandling {
 
         private string _strFilePath;
         private string _strDBConnection;
-
         OleDbConnection conn = new OleDbConnection();
         OleDbCommand connCmd = new OleDbCommand();
 
@@ -31,7 +31,7 @@ namespace FinanceManagement {
         private String strDBConnection() {
             return this._strDBConnection;
         }
-        public Int64 all_difference() { //총 차액
+        public Int64 all_difference(DateTime dt) { //총 차액
             Int64 w,x, y, z;
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
@@ -40,11 +40,13 @@ namespace FinanceManagement {
             object e = connCmd.ExecuteScalar();
             string f = e.ToString();
             Int64.TryParse(f, out w);
-            connCmd.CommandText = "SELECT SUM(금액) FROM 수입";
+            connCmd.CommandText = "SELECT SUM(금액) FROM 수입 WHERE 날짜 <= (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
             object a = connCmd.ExecuteScalar();
             string c = a.ToString();
             Int64.TryParse(c, out x);
-            connCmd.CommandText = "SELECT SUM(금액) FROM 지출";
+            connCmd.CommandText = "SELECT SUM(금액) FROM 지출 WHERE 날짜 <= (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
             object b = connCmd.ExecuteScalar();
             string d = b.ToString();
             Int64.TryParse(d, out y);
@@ -74,36 +76,56 @@ namespace FinanceManagement {
             return z;
         }
 
-        public Int64 yesterday_sum() { //이월금 받기
+        public Int64 yesterday_sum(DateTime dt) { //전일이월금액
+            Int64 z,y;
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
             connCmd.CommandText = "SELECT 이월금 FROM 환경";
-            object count = connCmd.ExecuteScalar();
-            string k = count.ToString();
-            Int64 z;
-            Int64.TryParse(k,out z);
+            object a = connCmd.ExecuteScalar();
+            string b = a.ToString();
+            Int64.TryParse(b,out z);
+            connCmd.CommandText = "SELECT 이월금 FROM 환경";
+            object c = connCmd.ExecuteScalar();
+            string d = c.ToString();
+            Int64.TryParse(d, out y);
             connCmd.ExecuteNonQuery();
             conn.Close();
             return z;
         }
 
-        public object all_expend_sum() { //총 지출 합계구하기
+        public Int64 carryover() { //초기이월금액
+            Int64 z, y;
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
-            connCmd.CommandText = "SELECT SUM(금액) FROM 지출";
+            connCmd.CommandText = "SELECT 이월금 FROM 환경";
+            object a = connCmd.ExecuteScalar();
+            string b = a.ToString();
+            Int64.TryParse(b, out z);
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return z;
+        }
+
+        public object all_expend_sum(DateTime dt) { //총 지출 합계구하기
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT SUM(금액) FROM 지출 WHERE 날짜 <= (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
             object count = connCmd.ExecuteScalar();
             connCmd.ExecuteNonQuery();
             conn.Close();
             return count;
         }
 
-        public object all_income_sum() { //총 수입 합계구하기
+        public object all_income_sum(DateTime dt) { //총 수입 합계구하기
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
-            connCmd.CommandText = "SELECT SUM(금액) FROM 수입";
+            connCmd.CommandText = "SELECT SUM(금액) FROM 수입 WHERE 날짜 <= (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
             object count = connCmd.ExecuteScalar();
             connCmd.ExecuteNonQuery();
             conn.Close();

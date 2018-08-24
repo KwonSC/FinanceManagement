@@ -17,7 +17,7 @@ namespace FinanceManagement {
         public Setting_Carryover(String path) {
             InitializeComponent();
             currentDB = new DBHandling(path);
-            carryOverText.Text = currentDB.yesterday_sum().ToString();
+            carryOverText.Text = currentDB.carryover().ToString();
         }
 
         private void confirm_Click(object sender, EventArgs e) {
