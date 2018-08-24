@@ -72,6 +72,10 @@
             // 
             // 관data
             // 
+            this.관data.AllowUserToAddRows = false;
+            this.관data.AllowUserToDeleteRows = false;
+            this.관data.AllowUserToResizeColumns = false;
+            this.관data.AllowUserToResizeRows = false;
             this.관data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.관data.Location = new System.Drawing.Point(114, 48);
             this.관data.Name = "관data";
@@ -92,6 +96,10 @@
             // 
             // 항data
             // 
+            this.항data.AllowUserToAddRows = false;
+            this.항data.AllowUserToDeleteRows = false;
+            this.항data.AllowUserToResizeColumns = false;
+            this.항data.AllowUserToResizeRows = false;
             this.항data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.항data.Location = new System.Drawing.Point(254, 48);
             this.항data.Name = "항data";
@@ -101,6 +109,10 @@
             // 
             // 목data
             // 
+            this.목data.AllowUserToAddRows = false;
+            this.목data.AllowUserToDeleteRows = false;
+            this.목data.AllowUserToResizeColumns = false;
+            this.목data.AllowUserToResizeRows = false;
             this.목data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.목data.Location = new System.Drawing.Point(394, 48);
             this.목data.Name = "목data";

@@ -61,6 +61,7 @@
             this.order.Name = "order";
             this.order.Size = new System.Drawing.Size(64, 25);
             this.order.TabIndex = 9;
+            this.order.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.order_KeyPress);
             // 
             // label2
             // 
@@ -93,6 +94,7 @@
             this.budget.Name = "budget";
             this.budget.Size = new System.Drawing.Size(192, 25);
             this.budget.TabIndex = 13;
+            this.budget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.budget_KeyPress);
             // 
             // label3
             // 

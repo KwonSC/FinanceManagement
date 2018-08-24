@@ -98,27 +98,37 @@ namespace FinanceManagement {
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "SELECT 이월금 FROM 환경";
             connCmd.CommandText = "UPDATE 환경 SET 이월금 = " + number;
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
 
-        public void addG(String name, int order) {
+        public void addG(int code, String name, int order) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 수입관(관코드, 관, 순서) VALUES('1', '" + name + "', '" + order + "')";
+            connCmd.CommandText = "INSERT INTO 수입관(관코드, 관, 순서) VALUES('" + code + "', '" + name + "', '" + order + "')";
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void addH(String name, int order) {
+        public void addH(int code, String name, int order) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 수입항(항코드, 항, 순서) VALUES('1', '" + name + "', '" + order + "')";
+            connCmd.CommandText = "INSERT INTO 수입항(항코드, 항, 순서) VALUES('" + code + "', '" + name + "', '" + order + "')";
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public void addG_order(String sortName, int number) { //지출 수정
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "UPDATE "+ sortName + " SET 순서 = 순서 + 1 where 순서 = " + number;
+            connCmd.ExecuteNonQuery();
+            connCmd.CommandText = "SELECT * FROM 수입관 ORDER BY 순서";
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -132,6 +142,14 @@ namespace FinanceManagement {
             conn.Close();
         }
 
-       
+        public void modG(String name, int order) {
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "INSERT INTO 수입관(관, 순서) VALUES('" + name + "', '" + order + "')";
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }

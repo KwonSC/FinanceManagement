@@ -46,6 +46,7 @@
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(192, 25);
             this.name.TabIndex = 1;
+            this.name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_KeyDown);
             // 
             // label2
             // 
@@ -62,6 +63,8 @@
             this.order.Name = "order";
             this.order.Size = new System.Drawing.Size(64, 25);
             this.order.TabIndex = 3;
+            this.order.KeyDown += new System.Windows.Forms.KeyEventHandler(this.order_KeyDown);
+            this.order.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.order_KeyPress);
             // 
             // button1
             // 
