@@ -25,7 +25,7 @@ namespace FinanceManagement {
         DataGridViewCellEventArgs k_e = null;
         int incom_rowcount;
         int expen_rowcount;
-
+        
 
         public Register(string path)  {
             filepath = path;
@@ -42,13 +42,22 @@ namespace FinanceManagement {
             adp = new OleDbDataAdapter(sql, conn);
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.Columns[4].DefaultCellStyle.Format = "c";
             incom_rowcount = ds.Tables[0].Rows.Count;
             adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
+            dataGridView2.Columns[2].DefaultCellStyle.Format = "c";
             expen_rowcount = ds2.Tables[0].Rows.Count;
+            today_income.Text = dbhand.today_income_sum(DateTime.Today.Date).ToString(); //금일수입금액
+            today_expend.Text = dbhand.today_expend_sum(DateTime.Today.Date).ToString(); //금일지출금액
+            all_income.Text = dbhand.all_income_sum().ToString(); //총 수입 금액
+            all_expend.Text = dbhand.all_expend_sum().ToString(); //총 지출 금액
+            yesterday.Text = dbhand.yesterday_sum().ToString(); //이월금액
+            today_differ.Text = dbhand.today_difference(DateTime.Today.Date).ToString(); //금일차액
+            Now_differ.Text = dbhand.all_difference().ToString(); //총 차액
         }
-        
+
 
         private void button3_Click(object sender, EventArgs e) { //수입 저장
             DBHandling currentDB = new DBHandling(filepath);
@@ -152,6 +161,11 @@ namespace FinanceManagement {
                 if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     DBHandling currentDB = new DBHandling(filepath);
                     currentDB.add_delete(k_i.RowIndex);
+                    if (incom_rowcount != 0) { //1씩 코드 내리기
+                        for (int i = k_i.RowIndex + 1; i <= incom_rowcount; i++) {
+                            currentDB.add_iterdel(i);
+                        }
+                    }
                     load_data();
                     k_i = null;
                 }
@@ -166,6 +180,11 @@ namespace FinanceManagement {
                 if (MessageBox.Show("해당 자료를 삭제 하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     DBHandling currentDB = new DBHandling(filepath);
                     currentDB.exp_delete(k_e.RowIndex);
+                    if (expen_rowcount != 0) { //1씩 코드 내리기
+                        for (int i = k_e.RowIndex + 1; i <= expen_rowcount; i++) {
+                            currentDB.exp_iterdel(i);
+                        }
+                    }
                     load_data();
                     k_e = null;
                 }
@@ -175,9 +194,9 @@ namespace FinanceManagement {
         private void Sum_TextChanged(object sender, EventArgs e) { //수입금액 세자리 콤마
             if (Sum.Text != "") {
                 string lgsText;
-                lgsText = Sum.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지...
+                lgsText = Sum.Text.Replace(",", "");
                 Sum.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
-                Sum.SelectionStart = Sum.TextLength; //** 캐럿을 맨 뒤로 보낸다...
+                Sum.SelectionStart = Sum.TextLength;
                 Sum.SelectionLength = 0;
             }
         }
@@ -190,6 +209,66 @@ namespace FinanceManagement {
                 Sum2.SelectionStart = Sum2.TextLength; 
                 Sum2.SelectionLength = 0;
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e) {//종료버튼
+            this.Close();
+        }
+        
+        private void yesterday_TextChanged(object sender, EventArgs e) {
+            string lgsText;
+            lgsText = yesterday.Text.Replace(",", "");
+            yesterday.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+            yesterday.SelectionStart = yesterday.TextLength;
+            yesterday.SelectionLength = 0;
+        }
+
+        private void today_income_TextChanged(object sender, EventArgs e) {
+            string lgsText;
+            lgsText = today_income.Text.Replace(",", "");
+            today_income.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+            today_income.SelectionStart = today_income.TextLength;
+            today_income.SelectionLength = 0;
+        }
+
+        private void today_expend_TextChanged(object sender, EventArgs e) {
+            string lgsText;
+            lgsText = today_expend.Text.Replace(",", "");
+            today_expend.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+            today_expend.SelectionStart = today_expend.TextLength;
+            today_expend.SelectionLength = 0;
+        }
+
+        private void today_differ_TextChanged(object sender, EventArgs e) {
+            string lgsText;
+            lgsText = today_differ.Text.Replace(",", "");
+            today_differ.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+            today_differ.SelectionStart = today_differ.TextLength;
+            today_differ.SelectionLength = 0;
+        }
+
+        private void all_income_TextChanged(object sender, EventArgs e) {
+            string lgsText;
+            lgsText = all_income.Text.Replace(",", "");
+            all_income.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+            all_income.SelectionStart = all_income.TextLength;
+            all_income.SelectionLength = 0;
+        }
+
+        private void all_expend_TextChanged(object sender, EventArgs e) {
+            string lgsText;
+            lgsText = all_expend.Text.Replace(",", "");
+            all_expend.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+            all_expend.SelectionStart = all_expend.TextLength;
+            all_expend.SelectionLength = 0;
+        }
+
+        private void Now_differ_TextChanged(object sender, EventArgs e) {
+            string lgsText;
+            lgsText = Now_differ.Text.Replace(",", "");
+            Now_differ.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
+            Now_differ.SelectionStart = Now_differ.TextLength;
+            Now_differ.SelectionLength = 0;
         }
     }
 }

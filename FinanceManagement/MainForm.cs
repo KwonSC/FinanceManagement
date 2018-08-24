@@ -22,7 +22,6 @@ namespace FinanceManagement {
                 cdbc.funcAccessCreate();
                 cdbc.dbCreate();
                 MessageBox.Show(strFilePath + "를 열었습니다.", "Zacchaeus");
-                
             }
         }
 
@@ -41,10 +40,15 @@ namespace FinanceManagement {
         }
 
         private void search_Click(object sender, EventArgs e) {
-            Search form = new Search();
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(250, 200);
-            form.Show();
+            if (strFilePath == null) {
+                MessageBox.Show("파일을 열여야 합니다.", "오류");
+            }
+            else {
+                Search form = new Search();
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = new Point(250, 200);
+                form.Show();
+            }
         }
 
         private void budgetSetting_Click(object sender, EventArgs e) {
@@ -60,10 +64,15 @@ namespace FinanceManagement {
         }
 
         private void carryoverSetting_Click(object sender, EventArgs e) {
-            Setting_Carryover form = new Setting_Carryover(strFilePath);
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(250, 200);
-            form.Show();
+            if (strFilePath == null) {
+                MessageBox.Show("파일을 열여야 합니다.", "오류");
+            }
+            else {
+                Setting_Carryover form = new Setting_Carryover(strFilePath);
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = new Point(250, 200);
+                form.Show();
+            }
         }
 
         private void fileOpen_Click(object sender, EventArgs e) {
@@ -71,7 +80,7 @@ namespace FinanceManagement {
                 try {
                     System.IO.StreamReader sr = new System.IO.StreamReader(openDB.FileName);
                     strFilePath = openDB.FileName;
-                    MessageBox.Show(strFilePath+"를 열었습니다.");
+                    MessageBox.Show(strFilePath+"를 열었습니다.", "Zacchaeus");
                     sr.Close();
                 }
                 catch (Exception) {

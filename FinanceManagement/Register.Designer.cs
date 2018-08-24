@@ -65,6 +65,21 @@
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.listBox6 = new System.Windows.Forms.ListBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.yesterday = new System.Windows.Forms.TextBox();
+            this.today_income = new System.Windows.Forms.TextBox();
+            this.today_expend = new System.Windows.Forms.TextBox();
+            this.today_differ = new System.Windows.Forms.TextBox();
+            this.all_income = new System.Windows.Forms.TextBox();
+            this.all_expend = new System.Windows.Forms.TextBox();
+            this.Now_differ = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.incomepanel.SuspendLayout();
             this.expanel.SuspendLayout();
@@ -483,11 +498,190 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(120, 21);
             this.dateTimePicker2.TabIndex = 3;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(13, 154);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(68, 64);
+            this.button6.TabIndex = 29;
+            this.button6.Text = "종료";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(85, 476);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 12);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "전일 이월금액";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(85, 510);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(81, 12);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "금일 수입금액";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(85, 547);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(81, 12);
+            this.label18.TabIndex = 32;
+            this.label18.Text = "금일 지출금액";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(85, 582);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(57, 12);
+            this.label19.TabIndex = 33;
+            this.label19.Text = "금일 차액";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(300, 476);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(69, 12);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "총 수입금액";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(300, 510);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(69, 12);
+            this.label21.TabIndex = 35;
+            this.label21.Text = "총 지출금액";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(301, 547);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(45, 12);
+            this.label22.TabIndex = 36;
+            this.label22.Text = "현 잔액";
+            // 
+            // yesterday
+            // 
+            this.yesterday.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.yesterday.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.yesterday.ForeColor = System.Drawing.Color.Gray;
+            this.yesterday.Location = new System.Drawing.Point(172, 473);
+            this.yesterday.Name = "yesterday";
+            this.yesterday.ReadOnly = true;
+            this.yesterday.Size = new System.Drawing.Size(120, 21);
+            this.yesterday.TabIndex = 37;
+            this.yesterday.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.yesterday.TextChanged += new System.EventHandler(this.yesterday_TextChanged);
+            // 
+            // today_income
+            // 
+            this.today_income.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.today_income.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.today_income.ForeColor = System.Drawing.Color.Gray;
+            this.today_income.Location = new System.Drawing.Point(172, 510);
+            this.today_income.Name = "today_income";
+            this.today_income.ReadOnly = true;
+            this.today_income.Size = new System.Drawing.Size(120, 21);
+            this.today_income.TabIndex = 38;
+            this.today_income.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.today_income.TextChanged += new System.EventHandler(this.today_income_TextChanged);
+            // 
+            // today_expend
+            // 
+            this.today_expend.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.today_expend.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.today_expend.ForeColor = System.Drawing.Color.Gray;
+            this.today_expend.Location = new System.Drawing.Point(172, 544);
+            this.today_expend.Name = "today_expend";
+            this.today_expend.ReadOnly = true;
+            this.today_expend.Size = new System.Drawing.Size(120, 21);
+            this.today_expend.TabIndex = 39;
+            this.today_expend.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.today_expend.TextChanged += new System.EventHandler(this.today_expend_TextChanged);
+            // 
+            // today_differ
+            // 
+            this.today_differ.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.today_differ.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.today_differ.ForeColor = System.Drawing.Color.Gray;
+            this.today_differ.Location = new System.Drawing.Point(172, 579);
+            this.today_differ.Name = "today_differ";
+            this.today_differ.ReadOnly = true;
+            this.today_differ.Size = new System.Drawing.Size(120, 21);
+            this.today_differ.TabIndex = 40;
+            this.today_differ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.today_differ.TextChanged += new System.EventHandler(this.today_differ_TextChanged);
+            // 
+            // all_income
+            // 
+            this.all_income.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.all_income.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.all_income.ForeColor = System.Drawing.Color.Gray;
+            this.all_income.Location = new System.Drawing.Point(375, 473);
+            this.all_income.Name = "all_income";
+            this.all_income.ReadOnly = true;
+            this.all_income.Size = new System.Drawing.Size(120, 21);
+            this.all_income.TabIndex = 41;
+            this.all_income.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.all_income.TextChanged += new System.EventHandler(this.all_income_TextChanged);
+            // 
+            // all_expend
+            // 
+            this.all_expend.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.all_expend.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.all_expend.ForeColor = System.Drawing.Color.Gray;
+            this.all_expend.Location = new System.Drawing.Point(375, 510);
+            this.all_expend.Name = "all_expend";
+            this.all_expend.ReadOnly = true;
+            this.all_expend.Size = new System.Drawing.Size(120, 21);
+            this.all_expend.TabIndex = 38;
+            this.all_expend.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.all_expend.TextChanged += new System.EventHandler(this.all_expend_TextChanged);
+            // 
+            // Now_differ
+            // 
+            this.Now_differ.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Now_differ.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Now_differ.ForeColor = System.Drawing.Color.Gray;
+            this.Now_differ.Location = new System.Drawing.Point(375, 547);
+            this.Now_differ.Name = "Now_differ";
+            this.Now_differ.ReadOnly = true;
+            this.Now_differ.Size = new System.Drawing.Size(120, 21);
+            this.Now_differ.TabIndex = 42;
+            this.Now_differ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Now_differ.TextChanged += new System.EventHandler(this.Now_differ_TextChanged);
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 497);
+            this.ClientSize = new System.Drawing.Size(879, 612);
+            this.Controls.Add(this.Now_differ);
+            this.Controls.Add(this.all_expend);
+            this.Controls.Add(this.all_income);
+            this.Controls.Add(this.today_differ);
+            this.Controls.Add(this.today_expend);
+            this.Controls.Add(this.today_income);
+            this.Controls.Add(this.yesterday);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.incomepanel);
@@ -505,6 +699,7 @@
             this.expanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -550,5 +745,20 @@
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.ListBox listBox6;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox yesterday;
+        private System.Windows.Forms.TextBox today_income;
+        private System.Windows.Forms.TextBox today_expend;
+        private System.Windows.Forms.TextBox today_differ;
+        private System.Windows.Forms.TextBox all_income;
+        private System.Windows.Forms.TextBox all_expend;
+        private System.Windows.Forms.TextBox Now_differ;
     }
 }
