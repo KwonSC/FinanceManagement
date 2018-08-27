@@ -10,8 +10,22 @@ using System.Windows.Forms;
 
 namespace FinanceManagement {
     public partial class Search : Form {
-        public Search() {
+        string filepath;
+        public Search(string path) {
             InitializeComponent();
+            filepath = path;
+        }
+
+        private void button3_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            expend_panel.BringToFront();
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            income_panel.BringToFront();
         }
     }
 }
