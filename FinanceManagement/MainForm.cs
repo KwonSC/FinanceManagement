@@ -60,6 +60,8 @@ namespace FinanceManagement {
                 form.StartPosition = FormStartPosition.Manual;
                 form.Location = new Point(250, 200);
                 form.Show();
+
+                form.initCell("");
             }
         }
 

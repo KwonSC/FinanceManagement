@@ -10,11 +10,34 @@ using System.Windows.Forms;
 
 namespace FinanceManagement {
     public partial class Setting_budget_delete : Form {
-        public Setting_budget_delete(String name) {
+
+        string strPath;
+        string sortName;
+        DBHandling _db;
+        Setting_budget _sb;
+        Setting_budget.cellContent clickContent;
+
+        public Setting_budget_delete(string name, string path, Setting_budget.cellContent content, Setting_budget sb) {
             InitializeComponent();
 
+            strPath = path;
+            sortName = name;
+            this._db = new DBHandling(strPath);
+            this._sb = sb;
+            clickContent = content;
+
             this.Name = name;
-            this.label1.Text = "정말 이름1을 삭제하시겠습니까?";
+            this.label1.Text = "정말 " + content.cellName + "을 삭제하시겠습니까?";
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            if (sortName == "관 삭제") {
+                this._sb.orderSort(sortName, clickContent.cellCount, 0, clickContent.cellOrder);
+                this._db.budget_delete("관", clickContent.cellName);
+            }
+            this._sb.load_data();
+            this._sb.initCell("삭제");
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e) {

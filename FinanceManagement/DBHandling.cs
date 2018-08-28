@@ -265,12 +265,28 @@ namespace FinanceManagement {
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void add_order(String sortName, int number) { // 순서 최신화
+        public void altOrder(String sortName, int currentNumber, int newNumber) { // 순서 최신화
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "UPDATE "+ sortName + " SET 순서 = 순서 + 1 where 순서 = " + number;
+            connCmd.CommandText = "UPDATE "+ sortName + " SET 순서 = " + newNumber + " where 순서 = " + currentNumber;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public void altName(string sortName, string currentName, string newName) {
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            string query = "";
+
+            if (sortName == "관 수정") {
+                query = @"UPDATE 수입관 SET 관 = ? WHERE 관 = ?";
+            }
+
+            connCmd = new OleDbCommand(query, conn);
+            connCmd.Parameters.AddWithValue("@관", newName);
+            connCmd.Parameters.AddWithValue("@관", currentName);
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -283,13 +299,18 @@ namespace FinanceManagement {
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
-
-        public void modG(String name, int order) {
+        public void budget_delete(string sortName, string cellName) { // 순서 최신화
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
+            string query = "";
 
-            connCmd.CommandText = "INSERT INTO 수입관(관, 순서) VALUES('" + name + "', '" + order + "')";
+            if (sortName == "관") {
+                query = @"DELETE FROM 수입관 WHERE 관 = ?";
+            }
+
+            connCmd = new OleDbCommand(query, conn);
+            connCmd.Parameters.AddWithValue("@관", cellName);
             connCmd.ExecuteNonQuery();
             conn.Close();
         }

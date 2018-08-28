@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
-            this.name = new System.Windows.Forms.TextBox();
+            this.name_text = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.order = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,13 +40,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "이름";
             // 
-            // name
+            // name_text
             // 
-            this.name.Location = new System.Drawing.Point(81, 26);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(192, 25);
-            this.name.TabIndex = 1;
-            this.name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_KeyDown);
+            this.name_text.Location = new System.Drawing.Point(81, 26);
+            this.name_text.Name = "name_text";
+            this.name_text.Size = new System.Drawing.Size(192, 25);
+            this.name_text.TabIndex = 1;
+            this.name_text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_KeyDown);
             // 
             // label2
             // 
@@ -95,7 +95,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.order);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.name);
+            this.Controls.Add(this.name_text);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -109,7 +109,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox name_text;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox order;
         private System.Windows.Forms.Button button1;

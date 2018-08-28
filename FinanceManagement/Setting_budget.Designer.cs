@@ -114,6 +114,7 @@
             this.항data.RowTemplate.Height = 27;
             this.항data.Size = new System.Drawing.Size(200, 388);
             this.항data.TabIndex = 7;
+            this.항data.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.항data_CellClick);
             // 
             // 목data
             // 
@@ -174,7 +175,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(315, 484);
+            this.button7.Location = new System.Drawing.Point(315, 479);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(200, 32);
             this.button7.TabIndex = 13;
