@@ -95,7 +95,7 @@ namespace FinanceManagement {
         }
 
         public Int64 carryover() { //초기이월금액
-            Int64 z, y;
+            Int64 z;
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;

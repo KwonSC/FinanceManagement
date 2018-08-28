@@ -44,7 +44,7 @@ namespace FinanceManagement {
                 MessageBox.Show("파일을 열여야 합니다.", "오류");
             }
             else {
-                Search form = new Search();
+                Search form = new Search(strFilePath);
                 form.StartPosition = FormStartPosition.Manual;
                 form.Location = new Point(250, 200);
                 form.Show();
