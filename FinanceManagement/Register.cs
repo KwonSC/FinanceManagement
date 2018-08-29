@@ -46,11 +46,17 @@ namespace FinanceManagement {
             adp.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
             dataGridView1.Columns[4].DefaultCellStyle.Format = "c";
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[7].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
             incom_rowcount = ds.Tables[0].Rows.Count;
             adp2 = new OleDbDataAdapter(sql2, conn);
             adp2.Fill(ds2);
             dataGridView2.DataSource = ds2.Tables[0];
             dataGridView2.Columns[2].DefaultCellStyle.Format = "c";
+            dataGridView2.Columns[4].Visible = false;
+            dataGridView2.Columns[5].Visible = false;
+            dataGridView2.Columns[6].Visible = false;
             expen_rowcount = ds2.Tables[0].Rows.Count;
             today_income.Text = dbhand.today_income_sum(today_date).ToString(); //금일수입금액
             today_expend.Text = dbhand.today_expend_sum(today_date).ToString(); //금일지출금액
@@ -58,7 +64,7 @@ namespace FinanceManagement {
             all_expend.Text = dbhand.all_expend_sum(today_date).ToString(); //총 지출 금액
             today_differ.Text = dbhand.today_difference(today_date).ToString(); //금일차액
             Now_differ.Text = dbhand.all_difference(today_date).ToString(); //총 차액
-            yesterday.Text = dbhand.yesterday_sum(today_date).ToString(); //이월금액
+            yesterday.Text = dbhand.yesterday_sum(today_date.AddDays(-1)).ToString(); //이월금액
         }
 
 

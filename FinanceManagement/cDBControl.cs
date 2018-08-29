@@ -72,7 +72,7 @@ namespace FinanceManagement {
                 conn.Open();
                 connCmd.Connection = conn;
 
-                connCmd.CommandText = "CREATE TABLE 수입(코드 number, 날짜 date, 이름1 text, 이름2 text, 금액 money, 비고 text)";
+                connCmd.CommandText = "CREATE TABLE 수입(코드 number, 날짜 date, 이름1 text, 이름2 text, 금액 money, 비고 text, 관코드 number, 항코드 number, 목코드 number)";
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 수입관(관코드 number, 관 text, 순서 number)";
                 connCmd.ExecuteNonQuery();
@@ -82,7 +82,7 @@ namespace FinanceManagement {
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 일결산(날짜 date, 항목 text, 금액 number)";
                 connCmd.ExecuteNonQuery();
-                connCmd.CommandText = "CREATE TABLE 지출(코드 number, 날짜 date, 금액 money, 비고 text)";
+                connCmd.CommandText = "CREATE TABLE 지출(코드 number, 날짜 date, 금액 money, 비고 text, 관코드 number, 항코드 number, 목코드 number)";
                 connCmd.ExecuteNonQuery();
                 connCmd.CommandText = "CREATE TABLE 지출관(관코드 number, 관 text, 순서 number)";
                 connCmd.ExecuteNonQuery();

@@ -77,18 +77,25 @@ namespace FinanceManagement {
         }
 
         public Int64 yesterday_sum(DateTime dt) { //전일이월금액
-            Int64 z,y;
+            Int64 w, x, y, z;
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
             connCmd.CommandText = "SELECT 이월금 FROM 환경";
+            object e = connCmd.ExecuteScalar();
+            string f = e.ToString();
+            Int64.TryParse(f, out w);
+            connCmd.CommandText = "SELECT SUM(금액) FROM 수입 WHERE 날짜 < (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
             object a = connCmd.ExecuteScalar();
-            string b = a.ToString();
-            Int64.TryParse(b,out z);
-            connCmd.CommandText = "SELECT 이월금 FROM 환경";
-            object c = connCmd.ExecuteScalar();
-            string d = c.ToString();
+            string c = a.ToString();
+            Int64.TryParse(c, out x);
+            connCmd.CommandText = "SELECT SUM(금액) FROM 지출 WHERE 날짜 < (@value)";
+            connCmd.Parameters.AddWithValue("@value", dt);
+            object b = connCmd.ExecuteScalar();
+            string d = b.ToString();
             Int64.TryParse(d, out y);
+            z = w + x - y;
             connCmd.ExecuteNonQuery();
             conn.Close();
             return z;
