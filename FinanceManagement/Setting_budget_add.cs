@@ -17,40 +17,34 @@ namespace FinanceManagement {
         DBHandling db;
         int codeCount;
         int hgCode;
-        int inner_order;
+        int inner_order; // 관코드, 항코드
         int currentOrder;
         string currentName;
 
-        public Setting_budget_add(int code, Setting_budget.cellContent content, string name, string path, Setting_budget sb) { // 관 추가 생성자, 항 수정 생성자
+        public Setting_budget_add(int code, int gCode, Setting_budget.cellContent content, string name, string path, Setting_budget sb) { // 관 추가,수정은 gCode가 0
             InitializeComponent();
 
             strPath = path;
             this.Text = name;
-            sortName = name;
+            this.sortName = name;
             this._sb = sb;
-            codeCount = content.maxOrder + 1;
-            inner_order = code;
-            db = new DBHandling(strPath);
-            order.Text = codeCount.ToString();
+            this.codeCount = content.cellCount + 1;
+            this.currentName = content.cellName;
+            this.currentOrder = content.cellOrder;
+            this.inner_order = code; // 관코드, 항코드
+            this.db = new DBHandling(strPath);
+            this.hgCode = gCode;
 
+            if (sortName == "관 추가" || sortName == "항 추가") {
+                order.Text = codeCount.ToString();
+            }
             if (sortName == "항 수정") {
-                name_text.Text = content.cellName;
-                order.Text = content.cellOrder.ToString();
+                name_text.Text = this.currentName;
+                order.Text = this.currentOrder.ToString();
+                codeCount = this._sb.sameGNumber();
             }
         }
-        public Setting_budget_add(int code, int gCode, string name, int orderCount, string path, Setting_budget sb) { // 항 추가 생성자
-            InitializeComponent();
 
-            strPath = path;
-            this.Text = name;
-            sortName = name;
-            this._sb = sb;
-            codeCount = code;
-            inner_order = orderCount;
-            db = new DBHandling(strPath);
-            hgCode = gCode;
-            order.Text = orderCount.ToString();
-        }
 
         public Setting_budget_add(string name, Setting_budget.cellContent content, String path, Setting_budget sb) { // 관 수정 생성자
             InitializeComponent();
@@ -62,45 +56,55 @@ namespace FinanceManagement {
             this.inner_order = content.cellCount;
             this.currentOrder = content.cellOrder;
             this.currentName = content.cellName;
+            this.codeCount = this.inner_order;
             db = new DBHandling(strPath);
 
             if (name == "관 수정") {
-                name_text.Text = content.cellName;
-                order.Text = content.cellOrder.ToString();
+                name_text.Text = this.currentName;
+                order.Text = this.currentOrder.ToString();
             }
             
         }
 
         private bool orderValid(int orderText) {
-            if (orderText > inner_order) { // 레코드 수 보다 큰 순서를 입력했을 경우
-                MessageBox.Show(inner_order.ToString() + "까지만 입력 가능합니다.");
+            if (orderText > codeCount) { // 레코드 수 보다 큰 순서를 입력했을 경우
+                MessageBox.Show(codeCount.ToString() + "까지만 입력 가능합니다.");
                 return false;
             }
-            else if (orderText < inner_order) { // 레코드 중간에 삽입해야 하는 경우
-                this._sb.orderSort(sortName, inner_order, orderText, this.currentOrder);
+            else if (orderText < codeCount) { // 레코드 중간에 삽입해야 하는 경우
+                this._sb.orderSort(sortName, codeCount, orderText, this.currentOrder);
                 return true;
             }
             else // 제일 뒤쪽에 삽입해도 되는 경우
                 return true;
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            if (!orderValid(int.Parse(order.Text))) {
+        private bool duplicatedName(string sort, string name) {
+            return this._sb.dupName(sort, name);
+        }
 
+        private void button1_Click(object sender, EventArgs e) {
+            if (this.duplicatedName(sortName, name_text.Text)) {
+                MessageBox.Show("이름이 중복되니 다시 설정하세요"); 
             }
             else {
-                if (sortName == "관 추가") {
-                    db.addG(inner_order, name_text.Text, int.Parse(order.Text));
+                if (!orderValid(int.Parse(order.Text))) {
+
                 }
-                else if (sortName == "항 추가") {
-                    db.addH(inner_order, hgCode, name_text.Text, int.Parse(order.Text));
+                else {
+                    if (sortName == "관 추가") {
+                        db.addG(inner_order, name_text.Text, int.Parse(order.Text));
+                    }
+                    else if (sortName == "항 추가") {
+                        db.addH(inner_order, hgCode, name_text.Text, int.Parse(order.Text));
+                    }
+                    else if (sortName == "관 수정" || sortName == "항 수정") {
+                        db.altName(sortName, this.currentName, name_text.Text);
+                    }
+                    this._sb.load_data();
+                    this._sb.initCell("");
+                    this.Close();
                 }
-                else if (sortName == "관 수정") {
-                    db.altName(sortName, this.currentName, name_text.Text);
-                }
-                this._sb.load_data();
-                this._sb.initCell("");
-                this.Close();
             }
         }
 

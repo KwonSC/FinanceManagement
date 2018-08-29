@@ -282,11 +282,17 @@ namespace FinanceManagement {
 
             if (sortName == "관 수정") {
                 query = @"UPDATE 수입관 SET 관 = ? WHERE 관 = ?";
+                connCmd = new OleDbCommand(query, conn);
+                connCmd.Parameters.AddWithValue("@관", newName);
+                connCmd.Parameters.AddWithValue("@관", currentName);
+            }
+            else if (sortName == "항 수정") {
+                query = @"UPDATE 수입항 SET 항 = ? WHERE 항 = ?";
+                connCmd = new OleDbCommand(query, conn);
+                connCmd.Parameters.AddWithValue("@항", newName);
+                connCmd.Parameters.AddWithValue("@항", currentName);
             }
 
-            connCmd = new OleDbCommand(query, conn);
-            connCmd.Parameters.AddWithValue("@관", newName);
-            connCmd.Parameters.AddWithValue("@관", currentName);
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
