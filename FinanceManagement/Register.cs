@@ -64,7 +64,7 @@ namespace FinanceManagement {
             all_expend.Text = dbhand.all_expend_sum(today_date).ToString(); //총 지출 금액
             today_differ.Text = dbhand.today_difference(today_date).ToString(); //금일차액
             Now_differ.Text = dbhand.all_difference(today_date).ToString(); //총 차액
-            yesterday.Text = dbhand.yesterday_sum(today_date).ToString(); //이월금액
+            yesterday.Text = dbhand.yesterday_sum(today_date.AddDays(-1)).ToString(); //이월금액
         }
 
 

@@ -25,6 +25,17 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search));
             this.income_panel = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.income_date1 = new System.Windows.Forms.DateTimePicker();
+            this.income_date2 = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.i_want = new System.Windows.Forms.RadioButton();
+            this.i_month = new System.Windows.Forms.RadioButton();
+            this.i_week = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -45,23 +56,12 @@
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.income_sumofsear = new System.Windows.Forms.TextBox();
+            this.income_numberofsear = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.income_searchbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -90,39 +90,40 @@
             this.radioButton11 = new System.Windows.Forms.RadioButton();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
             this.radioButton13 = new System.Windows.Forms.RadioButton();
+            this.expend_sumofsear = new System.Windows.Forms.TextBox();
+            this.expend_numberofsear = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
+            this.expend_searchbox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.expend_date1 = new System.Windows.Forms.DateTimePicker();
+            this.expend_date2 = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.e_want = new System.Windows.Forms.RadioButton();
+            this.e_month = new System.Windows.Forms.RadioButton();
+            this.e_week = new System.Windows.Forms.RadioButton();
             this.income_panel.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.expend_panel.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // income_panel
             // 
+            this.income_panel.Controls.Add(this.groupBox1);
             this.income_panel.Controls.Add(this.label10);
             this.income_panel.Controls.Add(this.textBox8);
             this.income_panel.Controls.Add(this.textBox7);
@@ -135,13 +136,12 @@
             this.income_panel.Controls.Add(this.label6);
             this.income_panel.Controls.Add(this.label5);
             this.income_panel.Controls.Add(this.groupBox2);
-            this.income_panel.Controls.Add(this.groupBox1);
-            this.income_panel.Controls.Add(this.textBox3);
-            this.income_panel.Controls.Add(this.textBox2);
+            this.income_panel.Controls.Add(this.income_sumofsear);
+            this.income_panel.Controls.Add(this.income_numberofsear);
             this.income_panel.Controls.Add(this.label3);
             this.income_panel.Controls.Add(this.label2);
             this.income_panel.Controls.Add(this.button6);
-            this.income_panel.Controls.Add(this.textBox1);
+            this.income_panel.Controls.Add(this.income_searchbox);
             this.income_panel.Controls.Add(this.label1);
             this.income_panel.Controls.Add(this.button5);
             this.income_panel.Controls.Add(this.button4);
@@ -150,6 +150,125 @@
             this.income_panel.Name = "income_panel";
             this.income_panel.Size = new System.Drawing.Size(1029, 569);
             this.income_panel.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.income_date1);
+            this.groupBox1.Controls.Add(this.income_date2);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.i_want);
+            this.groupBox1.Controls.Add(this.i_month);
+            this.groupBox1.Controls.Add(this.i_week);
+            this.groupBox1.Location = new System.Drawing.Point(6, 440);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(281, 119);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "검색기간";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(197, 75);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(48, 37);
+            this.button10.TabIndex = 19;
+            this.button10.Text = ">>";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(132, 75);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(48, 37);
+            this.button9.TabIndex = 18;
+            this.button9.Text = ">";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(68, 75);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(48, 37);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "<";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(7, 75);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(48, 37);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "<<";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // income_date1
+            // 
+            this.income_date1.Location = new System.Drawing.Point(6, 48);
+            this.income_date1.Name = "income_date1";
+            this.income_date1.Size = new System.Drawing.Size(118, 21);
+            this.income_date1.TabIndex = 15;
+            this.income_date1.ValueChanged += new System.EventHandler(this.income_date1_ValueChanged);
+            // 
+            // income_date2
+            // 
+            this.income_date2.Location = new System.Drawing.Point(147, 48);
+            this.income_date2.Name = "income_date2";
+            this.income_date2.Size = new System.Drawing.Size(118, 21);
+            this.income_date2.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(130, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "-";
+            // 
+            // i_want
+            // 
+            this.i_want.AutoSize = true;
+            this.i_want.Location = new System.Drawing.Point(136, 20);
+            this.i_want.Name = "i_want";
+            this.i_want.Size = new System.Drawing.Size(71, 16);
+            this.i_want.TabIndex = 11;
+            this.i_want.TabStop = true;
+            this.i_want.Text = "임의지정";
+            this.i_want.UseVisualStyleBackColor = true;
+            this.i_want.CheckedChanged += new System.EventHandler(this.i_want_CheckedChanged);
+            // 
+            // i_month
+            // 
+            this.i_month.AutoSize = true;
+            this.i_month.Location = new System.Drawing.Point(74, 20);
+            this.i_month.Name = "i_month";
+            this.i_month.Size = new System.Drawing.Size(59, 16);
+            this.i_month.TabIndex = 11;
+            this.i_month.TabStop = true;
+            this.i_month.Text = "월간별";
+            this.i_month.UseVisualStyleBackColor = true;
+            this.i_month.CheckedChanged += new System.EventHandler(this.i_month_CheckedChanged);
+            // 
+            // i_week
+            // 
+            this.i_week.AutoSize = true;
+            this.i_week.Location = new System.Drawing.Point(9, 20);
+            this.i_week.Name = "i_week";
+            this.i_week.Size = new System.Drawing.Size(59, 16);
+            this.i_week.TabIndex = 0;
+            this.i_week.TabStop = true;
+            this.i_week.Text = "주간별";
+            this.i_week.UseVisualStyleBackColor = true;
+            this.i_week.CheckedChanged += new System.EventHandler(this.i_week_CheckedChanged);
             // 
             // label10
             // 
@@ -162,36 +281,51 @@
             // 
             // textBox8
             // 
+            this.textBox8.BackColor = System.Drawing.Color.LightGray;
+            this.textBox8.Enabled = false;
             this.textBox8.Location = new System.Drawing.Point(619, 538);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(108, 21);
             this.textBox8.TabIndex = 21;
             // 
             // textBox7
             // 
+            this.textBox7.BackColor = System.Drawing.Color.LightGray;
+            this.textBox7.Enabled = false;
             this.textBox7.Location = new System.Drawing.Point(619, 515);
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(108, 21);
             this.textBox7.TabIndex = 20;
             // 
             // textBox6
             // 
+            this.textBox6.BackColor = System.Drawing.Color.LightGray;
+            this.textBox6.Enabled = false;
             this.textBox6.Location = new System.Drawing.Point(619, 492);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(108, 21);
             this.textBox6.TabIndex = 19;
             // 
             // textBox5
             // 
+            this.textBox5.BackColor = System.Drawing.Color.LightGray;
+            this.textBox5.Enabled = false;
             this.textBox5.Location = new System.Drawing.Point(619, 469);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(108, 21);
             this.textBox5.TabIndex = 18;
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.Color.LightGray;
+            this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(619, 446);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(108, 21);
             this.textBox4.TabIndex = 17;
             // 
@@ -339,130 +473,25 @@
             this.radioButton4.Text = "전체보기";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // income_sumofsear
             // 
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 440);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(281, 119);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "검색기간";
+            this.income_sumofsear.BackColor = System.Drawing.Color.LightGray;
+            this.income_sumofsear.Enabled = false;
+            this.income_sumofsear.Location = new System.Drawing.Point(940, 365);
+            this.income_sumofsear.Name = "income_sumofsear";
+            this.income_sumofsear.ReadOnly = true;
+            this.income_sumofsear.Size = new System.Drawing.Size(81, 21);
+            this.income_sumofsear.TabIndex = 9;
             // 
-            // button10
+            // income_numberofsear
             // 
-            this.button10.Location = new System.Drawing.Point(197, 75);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(48, 37);
-            this.button10.TabIndex = 19;
-            this.button10.Text = ">>";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(132, 75);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(48, 37);
-            this.button9.TabIndex = 18;
-            this.button9.Text = ">";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(68, 75);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(48, 37);
-            this.button8.TabIndex = 17;
-            this.button8.Text = "<";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(7, 75);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(48, 37);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "<<";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 48);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(118, 21);
-            this.dateTimePicker1.TabIndex = 15;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(147, 48);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(118, 21);
-            this.dateTimePicker2.TabIndex = 14;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(130, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 12);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "-";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(136, 20);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(71, 16);
-            this.radioButton3.TabIndex = 11;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "임의지정";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(74, 20);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(59, 16);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "월간별";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(59, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "주간별";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(940, 365);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(81, 21);
-            this.textBox3.TabIndex = 9;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(777, 365);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(81, 21);
-            this.textBox2.TabIndex = 8;
+            this.income_numberofsear.BackColor = System.Drawing.Color.LightGray;
+            this.income_numberofsear.Enabled = false;
+            this.income_numberofsear.Location = new System.Drawing.Point(777, 365);
+            this.income_numberofsear.Name = "income_numberofsear";
+            this.income_numberofsear.ReadOnly = true;
+            this.income_numberofsear.Size = new System.Drawing.Size(81, 21);
+            this.income_numberofsear.TabIndex = 8;
             // 
             // label3
             // 
@@ -490,13 +519,14 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "검색";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // textBox1
+            // income_searchbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(103, 405);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(866, 21);
-            this.textBox1.TabIndex = 4;
+            this.income_searchbox.Location = new System.Drawing.Point(103, 405);
+            this.income_searchbox.Name = "income_searchbox";
+            this.income_searchbox.Size = new System.Drawing.Size(866, 21);
+            this.income_searchbox.TabIndex = 4;
             // 
             // label1
             // 
@@ -571,6 +601,7 @@
             // 
             // expend_panel
             // 
+            this.expend_panel.Controls.Add(this.groupBox4);
             this.expend_panel.Controls.Add(this.label11);
             this.expend_panel.Controls.Add(this.textBox9);
             this.expend_panel.Controls.Add(this.textBox10);
@@ -583,13 +614,12 @@
             this.expend_panel.Controls.Add(this.label15);
             this.expend_panel.Controls.Add(this.label16);
             this.expend_panel.Controls.Add(this.groupBox3);
-            this.expend_panel.Controls.Add(this.groupBox4);
-            this.expend_panel.Controls.Add(this.textBox14);
-            this.expend_panel.Controls.Add(this.textBox15);
+            this.expend_panel.Controls.Add(this.expend_sumofsear);
+            this.expend_panel.Controls.Add(this.expend_numberofsear);
             this.expend_panel.Controls.Add(this.label18);
             this.expend_panel.Controls.Add(this.label19);
             this.expend_panel.Controls.Add(this.button15);
-            this.expend_panel.Controls.Add(this.textBox16);
+            this.expend_panel.Controls.Add(this.expend_searchbox);
             this.expend_panel.Controls.Add(this.label20);
             this.expend_panel.Controls.Add(this.button16);
             this.expend_panel.Controls.Add(this.button17);
@@ -610,36 +640,51 @@
             // 
             // textBox9
             // 
+            this.textBox9.BackColor = System.Drawing.Color.LightGray;
+            this.textBox9.Enabled = false;
             this.textBox9.Location = new System.Drawing.Point(619, 538);
             this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(108, 21);
             this.textBox9.TabIndex = 21;
             // 
             // textBox10
             // 
+            this.textBox10.BackColor = System.Drawing.Color.LightGray;
+            this.textBox10.Enabled = false;
             this.textBox10.Location = new System.Drawing.Point(619, 515);
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(108, 21);
             this.textBox10.TabIndex = 20;
             // 
             // textBox11
             // 
+            this.textBox11.BackColor = System.Drawing.Color.LightGray;
+            this.textBox11.Enabled = false;
             this.textBox11.Location = new System.Drawing.Point(619, 492);
             this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(108, 21);
             this.textBox11.TabIndex = 19;
             // 
             // textBox12
             // 
+            this.textBox12.BackColor = System.Drawing.Color.LightGray;
+            this.textBox12.Enabled = false;
             this.textBox12.Location = new System.Drawing.Point(619, 469);
             this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(108, 21);
             this.textBox12.TabIndex = 18;
             // 
             // textBox13
             // 
+            this.textBox13.BackColor = System.Drawing.Color.LightGray;
+            this.textBox13.Enabled = false;
             this.textBox13.Location = new System.Drawing.Point(619, 446);
             this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(108, 21);
             this.textBox13.TabIndex = 17;
             // 
@@ -787,130 +832,25 @@
             this.radioButton13.Text = "전체보기";
             this.radioButton13.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // expend_sumofsear
             // 
-            this.groupBox4.Controls.Add(this.button11);
-            this.groupBox4.Controls.Add(this.button12);
-            this.groupBox4.Controls.Add(this.button13);
-            this.groupBox4.Controls.Add(this.button14);
-            this.groupBox4.Controls.Add(this.dateTimePicker3);
-            this.groupBox4.Controls.Add(this.dateTimePicker4);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.radioButton14);
-            this.groupBox4.Controls.Add(this.radioButton15);
-            this.groupBox4.Controls.Add(this.radioButton16);
-            this.groupBox4.Location = new System.Drawing.Point(6, 440);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(281, 119);
-            this.groupBox4.TabIndex = 10;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "검색기간";
+            this.expend_sumofsear.BackColor = System.Drawing.Color.LightGray;
+            this.expend_sumofsear.Enabled = false;
+            this.expend_sumofsear.Location = new System.Drawing.Point(940, 365);
+            this.expend_sumofsear.Name = "expend_sumofsear";
+            this.expend_sumofsear.ReadOnly = true;
+            this.expend_sumofsear.Size = new System.Drawing.Size(81, 21);
+            this.expend_sumofsear.TabIndex = 9;
             // 
-            // button11
+            // expend_numberofsear
             // 
-            this.button11.Location = new System.Drawing.Point(197, 75);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(48, 37);
-            this.button11.TabIndex = 19;
-            this.button11.Text = ">>";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(132, 75);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(48, 37);
-            this.button12.TabIndex = 18;
-            this.button12.Text = ">";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(68, 75);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(48, 37);
-            this.button13.TabIndex = 17;
-            this.button13.Text = "<";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(7, 75);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(48, 37);
-            this.button14.TabIndex = 16;
-            this.button14.Text = "<<";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(6, 48);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(118, 21);
-            this.dateTimePicker3.TabIndex = 15;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(147, 48);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(118, 21);
-            this.dateTimePicker4.TabIndex = 14;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(130, 52);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(11, 12);
-            this.label17.TabIndex = 13;
-            this.label17.Text = "-";
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(136, 20);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(71, 16);
-            this.radioButton14.TabIndex = 11;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "임의지정";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(74, 20);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(59, 16);
-            this.radioButton15.TabIndex = 11;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "월간별";
-            this.radioButton15.UseVisualStyleBackColor = true;
-            // 
-            // radioButton16
-            // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Location = new System.Drawing.Point(9, 20);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(59, 16);
-            this.radioButton16.TabIndex = 0;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "주간별";
-            this.radioButton16.UseVisualStyleBackColor = true;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(940, 365);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(81, 21);
-            this.textBox14.TabIndex = 9;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(777, 365);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(81, 21);
-            this.textBox15.TabIndex = 8;
+            this.expend_numberofsear.BackColor = System.Drawing.Color.LightGray;
+            this.expend_numberofsear.Enabled = false;
+            this.expend_numberofsear.Location = new System.Drawing.Point(777, 365);
+            this.expend_numberofsear.Name = "expend_numberofsear";
+            this.expend_numberofsear.ReadOnly = true;
+            this.expend_numberofsear.Size = new System.Drawing.Size(81, 21);
+            this.expend_numberofsear.TabIndex = 8;
             // 
             // label18
             // 
@@ -938,13 +878,14 @@
             this.button15.TabIndex = 5;
             this.button15.Text = "검색";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // textBox16
+            // expend_searchbox
             // 
-            this.textBox16.Location = new System.Drawing.Point(103, 405);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(866, 21);
-            this.textBox16.TabIndex = 4;
+            this.expend_searchbox.Location = new System.Drawing.Point(103, 405);
+            this.expend_searchbox.Name = "expend_searchbox";
+            this.expend_searchbox.Size = new System.Drawing.Size(866, 21);
+            this.expend_searchbox.TabIndex = 4;
             // 
             // label20
             // 
@@ -987,6 +928,125 @@
             this.dataGridView2.Size = new System.Drawing.Size(1016, 339);
             this.dataGridView2.TabIndex = 0;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button11);
+            this.groupBox4.Controls.Add(this.button12);
+            this.groupBox4.Controls.Add(this.button13);
+            this.groupBox4.Controls.Add(this.button14);
+            this.groupBox4.Controls.Add(this.expend_date1);
+            this.groupBox4.Controls.Add(this.expend_date2);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.e_want);
+            this.groupBox4.Controls.Add(this.e_month);
+            this.groupBox4.Controls.Add(this.e_week);
+            this.groupBox4.Location = new System.Drawing.Point(6, 440);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(281, 119);
+            this.groupBox4.TabIndex = 23;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "검색기간";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(197, 75);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(48, 37);
+            this.button11.TabIndex = 19;
+            this.button11.Text = ">>";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(132, 75);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(48, 37);
+            this.button12.TabIndex = 18;
+            this.button12.Text = ">";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(68, 75);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(48, 37);
+            this.button13.TabIndex = 17;
+            this.button13.Text = "<";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(7, 75);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(48, 37);
+            this.button14.TabIndex = 16;
+            this.button14.Text = "<<";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // expend_date1
+            // 
+            this.expend_date1.Location = new System.Drawing.Point(6, 48);
+            this.expend_date1.Name = "expend_date1";
+            this.expend_date1.Size = new System.Drawing.Size(118, 21);
+            this.expend_date1.TabIndex = 15;
+            this.expend_date1.ValueChanged += new System.EventHandler(this.expend_date1_ValueChanged);
+            // 
+            // expend_date2
+            // 
+            this.expend_date2.Location = new System.Drawing.Point(147, 48);
+            this.expend_date2.Name = "expend_date2";
+            this.expend_date2.Size = new System.Drawing.Size(118, 21);
+            this.expend_date2.TabIndex = 14;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(130, 52);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(11, 12);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "-";
+            // 
+            // e_want
+            // 
+            this.e_want.AutoSize = true;
+            this.e_want.Location = new System.Drawing.Point(136, 20);
+            this.e_want.Name = "e_want";
+            this.e_want.Size = new System.Drawing.Size(71, 16);
+            this.e_want.TabIndex = 11;
+            this.e_want.TabStop = true;
+            this.e_want.Text = "임의지정";
+            this.e_want.UseVisualStyleBackColor = true;
+            this.e_want.CheckedChanged += new System.EventHandler(this.e_want_CheckedChanged);
+            // 
+            // e_month
+            // 
+            this.e_month.AutoSize = true;
+            this.e_month.Location = new System.Drawing.Point(74, 20);
+            this.e_month.Name = "e_month";
+            this.e_month.Size = new System.Drawing.Size(59, 16);
+            this.e_month.TabIndex = 11;
+            this.e_month.TabStop = true;
+            this.e_month.Text = "월간별";
+            this.e_month.UseVisualStyleBackColor = true;
+            this.e_month.CheckedChanged += new System.EventHandler(this.e_month_CheckedChanged);
+            // 
+            // e_week
+            // 
+            this.e_week.AutoSize = true;
+            this.e_week.Location = new System.Drawing.Point(9, 20);
+            this.e_week.Name = "e_week";
+            this.e_week.Size = new System.Drawing.Size(59, 16);
+            this.e_week.TabIndex = 0;
+            this.e_week.TabStop = true;
+            this.e_week.Text = "주간별";
+            this.e_week.UseVisualStyleBackColor = true;
+            this.e_week.CheckedChanged += new System.EventHandler(this.e_week_CheckedChanged);
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1004,18 +1064,18 @@
             this.Text = "검색";
             this.income_panel.ResumeLayout(false);
             this.income_panel.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.expend_panel.ResumeLayout(false);
             this.expend_panel.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1051,18 +1111,18 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker income_date1;
+        private System.Windows.Forms.DateTimePicker income_date2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.RadioButton i_want;
+        private System.Windows.Forms.RadioButton i_month;
+        private System.Windows.Forms.RadioButton i_week;
+        private System.Windows.Forms.TextBox income_sumofsear;
+        private System.Windows.Forms.TextBox income_numberofsear;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox income_searchbox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
@@ -1088,26 +1148,26 @@
         private System.Windows.Forms.RadioButton radioButton11;
         private System.Windows.Forms.RadioButton radioButton12;
         private System.Windows.Forms.RadioButton radioButton13;
+        private System.Windows.Forms.TextBox expend_sumofsear;
+        private System.Windows.Forms.TextBox expend_numberofsear;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TextBox expend_searchbox;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.DateTimePicker expend_date1;
+        private System.Windows.Forms.DateTimePicker expend_date2;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton16;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.RadioButton e_want;
+        private System.Windows.Forms.RadioButton e_month;
+        private System.Windows.Forms.RadioButton e_week;
     }
 }
