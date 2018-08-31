@@ -198,6 +198,16 @@ namespace FinanceManagement {
             }
         }
 
+        private void button6_Click(object sender, EventArgs e) {//종료버튼
+            this.Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
+            today_date = dateTimePicker1.Value.Date;
+            load_data();
+        }
+        //----------------------------------------세자리마다 콤마찍기-----------------------------------------------------
+
         private void Sum_TextChanged(object sender, EventArgs e) { //수입금액 세자리 콤마
             if (Sum.Text != "") {
                 string lgsText;
@@ -218,10 +228,6 @@ namespace FinanceManagement {
             }
         }
 
-        private void button6_Click(object sender, EventArgs e) {//종료버튼
-            this.Close();
-        }
-        
         private void yesterday_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = yesterday.Text.Replace(",", "");
@@ -292,9 +298,5 @@ namespace FinanceManagement {
             }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
-            today_date = dateTimePicker1.Value.Date;
-            load_data();
-        }
     }
 }

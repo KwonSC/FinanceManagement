@@ -289,6 +289,7 @@
             this.income_now.ReadOnly = true;
             this.income_now.Size = new System.Drawing.Size(108, 21);
             this.income_now.TabIndex = 21;
+            this.income_now.TextChanged += new System.EventHandler(this.income_now_TextChanged);
             // 
             // income_differ
             // 
@@ -299,6 +300,7 @@
             this.income_differ.ReadOnly = true;
             this.income_differ.Size = new System.Drawing.Size(108, 21);
             this.income_differ.TabIndex = 20;
+            this.income_differ.TextChanged += new System.EventHandler(this.income_differ_TextChanged);
             // 
             // income_expend
             // 
@@ -309,6 +311,7 @@
             this.income_expend.ReadOnly = true;
             this.income_expend.Size = new System.Drawing.Size(108, 21);
             this.income_expend.TabIndex = 19;
+            this.income_expend.TextChanged += new System.EventHandler(this.income_expend_TextChanged);
             // 
             // income_income
             // 
@@ -319,6 +322,7 @@
             this.income_income.ReadOnly = true;
             this.income_income.Size = new System.Drawing.Size(108, 21);
             this.income_income.TabIndex = 18;
+            this.income_income.TextChanged += new System.EventHandler(this.income_income_TextChanged);
             // 
             // income_carry
             // 
@@ -329,6 +333,7 @@
             this.income_carry.ReadOnly = true;
             this.income_carry.Size = new System.Drawing.Size(108, 21);
             this.income_carry.TabIndex = 17;
+            this.income_carry.TextChanged += new System.EventHandler(this.income_carry_TextChanged);
             // 
             // label9
             // 
@@ -483,6 +488,7 @@
             this.income_sumofsear.ReadOnly = true;
             this.income_sumofsear.Size = new System.Drawing.Size(81, 21);
             this.income_sumofsear.TabIndex = 9;
+            this.income_sumofsear.TextChanged += new System.EventHandler(this.income_sumofsear_TextChanged);
             // 
             // income_numberofsear
             // 
@@ -768,6 +774,7 @@
             this.expend_now.ReadOnly = true;
             this.expend_now.Size = new System.Drawing.Size(108, 21);
             this.expend_now.TabIndex = 21;
+            this.expend_now.TextChanged += new System.EventHandler(this.expend_now_TextChanged);
             // 
             // expend_differ
             // 
@@ -778,6 +785,7 @@
             this.expend_differ.ReadOnly = true;
             this.expend_differ.Size = new System.Drawing.Size(108, 21);
             this.expend_differ.TabIndex = 20;
+            this.expend_differ.TextChanged += new System.EventHandler(this.expend_differ_TextChanged);
             // 
             // expend_expend
             // 
@@ -788,6 +796,7 @@
             this.expend_expend.ReadOnly = true;
             this.expend_expend.Size = new System.Drawing.Size(108, 21);
             this.expend_expend.TabIndex = 19;
+            this.expend_expend.TextChanged += new System.EventHandler(this.expend_expend_TextChanged);
             // 
             // expend_income
             // 
@@ -798,6 +807,7 @@
             this.expend_income.ReadOnly = true;
             this.expend_income.Size = new System.Drawing.Size(108, 21);
             this.expend_income.TabIndex = 18;
+            this.expend_income.TextChanged += new System.EventHandler(this.expend_income_TextChanged);
             // 
             // expend_carry
             // 
@@ -808,6 +818,7 @@
             this.expend_carry.ReadOnly = true;
             this.expend_carry.Size = new System.Drawing.Size(108, 21);
             this.expend_carry.TabIndex = 17;
+            this.expend_carry.TextChanged += new System.EventHandler(this.expend_carry_TextChanged);
             // 
             // label12
             // 
@@ -962,6 +973,7 @@
             this.expend_sumofsear.ReadOnly = true;
             this.expend_sumofsear.Size = new System.Drawing.Size(81, 21);
             this.expend_sumofsear.TabIndex = 9;
+            this.expend_sumofsear.TextChanged += new System.EventHandler(this.expend_sumofsear_TextChanged);
             // 
             // expend_numberofsear
             // 
