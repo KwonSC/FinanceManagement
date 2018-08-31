@@ -272,13 +272,19 @@ namespace FinanceManagement {
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void altOrder(String sortName, int currentNumber, int newNumber) { // 순서 최신화
+        public void altOrder(String sortName, int currentNumber, int newNumber, int HGCode) { // 순서 최신화
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
-
-            connCmd.CommandText = "UPDATE "+ sortName + " SET 순서 = " + newNumber + " where 순서 = " + currentNumber;
-            connCmd.ExecuteNonQuery();
+            
+            if (sortName == "관 추가" || sortName == "관 수정" || sortName == "관 삭제") {
+                connCmd.CommandText = "UPDATE 수입관 SET 순서 = " + newNumber + " where 순서 = " + currentNumber;
+                connCmd.ExecuteNonQuery();
+            }
+            else if (sortName == "항 추가" || sortName == "항 수정" || sortName == "항 삭제") {
+                connCmd.CommandText = "UPDATE 수입항 SET 순서 = " + newNumber + " where 순서 = " + currentNumber + "AND 항관코드 = " + HGCode;
+                connCmd.ExecuteNonQuery();
+            }
             conn.Close();
         }
         public void altName(string sortName, string currentName, string newName) {
@@ -320,11 +326,16 @@ namespace FinanceManagement {
 
             if (sortName == "관") {
                 query = @"DELETE FROM 수입관 WHERE 관 = ?";
+                connCmd = new OleDbCommand(query, conn);
+                connCmd.Parameters.AddWithValue("@관", cellName);
+                connCmd.ExecuteNonQuery();
             }
-
-            connCmd = new OleDbCommand(query, conn);
-            connCmd.Parameters.AddWithValue("@관", cellName);
-            connCmd.ExecuteNonQuery();
+            else if (sortName == "항") {
+                query = @"DELETE FROM 수입항 WHERE 항 = ?";
+                connCmd = new OleDbCommand(query, conn);
+                connCmd.Parameters.AddWithValue("@항", cellName);
+                connCmd.ExecuteNonQuery();
+            }
             conn.Close();
         }
     }

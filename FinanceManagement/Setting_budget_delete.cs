@@ -27,7 +27,7 @@ namespace FinanceManagement {
             clickContent = content;
 
             this.Name = name;
-            this.label1.Text = "정말 " + content.cellName + "을 삭제하시겠습니까?";
+            this.label1.Text = "정말 " + content.cellName + " 을(를) 삭제하시겠습니까?";
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -35,8 +35,12 @@ namespace FinanceManagement {
                 this._sb.orderSort(sortName, clickContent.cellCount, 0, clickContent.cellOrder);
                 this._db.budget_delete("관", clickContent.cellName);
             }
+            else if (sortName == "항 삭제") {
+                this._sb.orderSort(sortName, clickContent.cellCount, 0, clickContent.cellOrder);
+                this._db.budget_delete("항", clickContent.cellName);
+            }
             this._sb.load_data();
-            this._sb.initCell("삭제");
+            this._sb.initCell(sortName);
             this.Close();
         }
 

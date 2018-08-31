@@ -32,6 +32,8 @@ namespace FinanceManagement {
         private int m_CodeNumber;
         private int _clickCellOrderNumber;
         private int _sameGNumber;
+        DataGridViewCellEventArgs _args;
+        private int h_order;
 
 
         public Setting_budget(String path) {
@@ -62,6 +64,46 @@ namespace FinanceManagement {
                 cellCount = number;
                 cellOrder = anOrder;
             }
+        }
+        public void setClickArgs(int row) {
+            var args = new DataGridViewCellEventArgs(1, row);
+            this.h_setClickOrder(row);
+            this._args = args;
+        }
+        public DataGridViewCellEventArgs clickArgs() {
+            return this._args;
+        }
+        public void h_setClickOrder(int number) {
+            this.h_order = number;
+        }
+        public int h_clickOrder() {
+            return this.h_order + 1;
+        }
+        public DataGridViewCellEventArgs modHangOrder() {
+            foreach (DataGridViewRow row in this.항data.Rows) {
+                int hgCode = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
+                int order = this.h_clickOrder();
+
+                if (int.Parse(row.Cells[3].Value.ToString()) == hgCode) {
+                    if (order == int.Parse(row.Cells[2].Value.ToString())) {
+                        return new DataGridViewCellEventArgs(1, row.Index);
+                    }
+                }
+            }
+            return null;
+        }
+        public DataGridViewCellEventArgs delHangPreOrder() {
+            foreach (DataGridViewRow row in this.항data.Rows) {
+                int hgCode = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
+                int order = this.h_clickOrder() - 1;
+
+                if (int.Parse(row.Cells[3].Value.ToString()) == hgCode) {
+                    if (order == int.Parse(row.Cells[2].Value.ToString())) {
+                        return new DataGridViewCellEventArgs(1, row.Index);
+                    }
+                }
+            }
+            return null;
         }
 
         public void load_data() {
@@ -111,21 +153,89 @@ namespace FinanceManagement {
                 MessageBox.Show("(항) 셀 없음");
             }
 
-            if (k == null || function == "삭제") {
-                var args = new DataGridViewCellEventArgs(0, 0);
-                this.관data_CellClick(항data, args);
+            if (k == null && h == null) { // 처음 창 열었을 때
+                try { // 자료가 있을 때
+                    var args = new DataGridViewCellEventArgs(0, 0);
+                    this.관data_CellClick(관data, args);
+                    this.항data_CellClick(항data, args);
+                }
+                catch { // 자료가 없을 때
+                }
             }
             else {
-                this.관data_CellClick(항data, k);
-                this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
-            }
-            if (h != null) {
-                try {
-                    this.항data_CellClick(목data, k);
+                if (function == "관 추가" || function == "마지막 관 추가") {
+                    if (function == "마지막 관 추가") {
+                        var args = new DataGridViewCellEventArgs(1, this.관data.RowCount - 1);
+                        this.관data_CellClick(항data, args);
+                        this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+                    }
+                    else {
+                        this.관data_CellClick(항data, this._args);
+                        this.관data.Rows[this._args.RowIndex].Cells[1].Selected = true;
+                    }
+                }
+                else if (function == "관 수정") {
+                    this.관data_CellClick(항data, this._args);
+                    this.관data.Rows[this._args.RowIndex].Cells[1].Selected = true;
+                }
+                else if (function == "관 삭제") { // 삭제 시 바로 위의 셀 클릭
+                    if (this.관data.RowCount-1 > k.RowIndex) { // 삭제하여 밑에 있는 셀이 올라올 때
+                        this.관data_CellClick(항data, k);
+                        this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+                    }
+                    else {
+                        try { // 제일 밑에 있는 셀을 삭제했을 때
+                            var args = new DataGridViewCellEventArgs(1, this.관data.RowCount-1);
+                            this.관data_CellClick(항data, args);
+                            this.관data.Rows[this.관data.RowCount - 1].Cells[1].Selected = true;
+                        }
+                        catch { // 모두 삭제됐을 때
+                            k = null;
+                        }
+                    }
+                }
+                else if (function == "항 추가" || function == "마지막 항 추가") {
+                    if (function == "마지막 항 추가") {
+                        var args = new DataGridViewCellEventArgs(1, this.항data.RowCount - 1);
+                        this.항data_CellClick(항data, args);
+                        this.항data.Rows[args.RowIndex].Cells[1].Selected = true;
+                    }
+                    this.관data_CellClick(관data, k);
+                    this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+
+                    this.항data_CellClick(항data, h);
                     this.항data.Rows[h.RowIndex].Cells[1].Selected = true;
                 }
-                catch {
+                else if (function == "항 수정") {
+                    this.관data_CellClick(관data, k);
+                    this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
 
+                    this.항data_CellClick(항data, this.modHangOrder());
+                    this.항data.Rows[this.modHangOrder().RowIndex].Cells[1].Selected = true;
+                }
+                else if (function == "항 삭제") {
+
+                    if (this.sameGNumber() > this.h_clickOrder()) { // 삭제하여 밑에 있는 셀이 올라올 때
+                        DataGridViewCellEventArgs hh = h;
+
+                        this.관data_CellClick(관data, k);
+                        this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+
+                        h = hh;
+
+                        this.항data_CellClick(항data, h);
+                        this.항data.Rows[h.RowIndex].Cells[1].Selected = true;
+                    }
+                    else {
+                        try { // 제일 밑에 있는 셀을 삭제했을 때
+                            var args = new DataGridViewCellEventArgs(1, this.항data.RowCount - 1);
+                            this.항data_CellClick(항data, k);
+                            this.관data.Rows[this.관data.RowCount - 1].Cells[1].Selected = true;
+                        }
+                        catch { // 모두 삭제됐을 때
+                            k = null;
+                        }
+                    }
                 }
             }
         }
@@ -133,88 +243,57 @@ namespace FinanceManagement {
 
 
         public void orderSort(String sortName, int codeCount, int order, int currentOrder) {
-            int number = codeCount - 1;
-            String name = "";
-            if (sortName == "관 추가" || sortName == "관 수정" || sortName == "관 삭제") {
-                name = "수입관";
-            }
-            else if (sortName == "항 추가" || sortName == "항 수정") {
-                name = "수입항";
-            }
+            int number = codeCount - 1; // 실제로 배열에 들어가는 숫자
 
-            if (order < currentOrder) {
-                switch (sortName) {
-                    case "관 삭제":
-                    case "목 삭제":
-                        while (currentOrder <= codeCount) {
-                            currentDB.altOrder(name, currentOrder + 1, currentOrder);
-                            currentOrder++;
-                        }
-                        break;
-                    default:
-                        if (sortName == "관 추가") {
-                            this.orderPlus(name, number, order);
-                        }
-                        else if (sortName == "관 수정" || sortName == "항 수정") { // 바꾸는 셀의 우선순위를 먼저 0으로 설정 한 후에 1씩 증가 시키고, 0의 셀을 올바른 순서에 입력
-                            currentDB.altOrder(name, currentOrder, 0);
-                            number = currentOrder - 1;
-                            this.orderPlus(name, number, order);
-                            currentDB.altOrder(name, 0, order);
-                        }
-                        else if (sortName == "항 추가") {
-                            foreach (DataGridViewRow row in this.항data.Rows) {
-                                if (row.Cells[3].Value.ToString() == this.관data.Rows[k.RowIndex].Cells[0].Value.ToString()) {
-                                    this.orderPlus(name, number, order);
-                                }
-                            }
-                        }
-                        break;
+            if (sortName == "관 추가") {
+                this.orderPlus(sortName, number, order);
+            }
+            else if (sortName == "항 추가") {
+                foreach (DataGridViewRow row in this.항data.Rows) {
+                    if (row.Cells[3].Value.ToString() == this.관data.Rows[k.RowIndex].Cells[0].Value.ToString()) {
+                        this.orderPlus(sortName, number, order);
+                    }
+                }
+            }
+            else if (sortName == "관 수정" || sortName == "항 수정") {
+                if (order < currentOrder) { // 바꾸는 셀의 우선순위를 먼저 0으로 설정 한 후에 1씩 증가 시키고, 0의 셀을 올바른 순서에 입력
+                        currentDB.altOrder(sortName, currentOrder, 0, this.HGNumber());
+                        number = currentOrder - 1;
+                        this.orderPlus(sortName, number, order);
+                        currentDB.altOrder(sortName, 0, order, this.HGNumber());
+                }
+                else if (order > currentOrder) { // 바꾸는 셀의 우선순위를 먼저 0으로 설정 한 후에 1씩 증가 시키고, 0의 셀을 올바른 순서에 입력
+                        currentDB.altOrder(sortName, currentOrder, 0, this.HGNumber());
+                        number = currentOrder;
+                        this.orderMinus(sortName, number, order);
+                        currentDB.altOrder(sortName, 0, order, this.HGNumber());
                 }
             }
 
-            else if (order > currentOrder) {
-                switch (sortName) {
-                    case "관 삭제":
-                    case "목 삭제":
-                        while (currentOrder <= codeCount) {
-                            currentDB.altOrder(name, currentOrder + 1, currentOrder);
-                            currentOrder++;
-                        }
-                        break;
-                    default:
-                        if (sortName == "관 추가") {
-                            this.orderPlus(name, number, order);
-                        }
-                        else if (sortName == "관 수정" || sortName == "항 수정") { // 바꾸는 셀의 우선순위를 먼저 0으로 설정 한 후에 1씩 증가 시키고, 0의 셀을 올바른 순서에 입력
-                            currentDB.altOrder(name, currentOrder, 0);
-                            number = currentOrder - 1;
-                            this.orderPlus(name, number, order);
-                            currentDB.altOrder(name, 0, order);
-                        }
-                        else if (sortName == "항 추가") {
-                            foreach (DataGridViewRow row in this.항data.Rows) {
-                                if (row.Cells[3].Value.ToString() == this.관data.Rows[k.RowIndex].Cells[0].Value.ToString()) {
-                                    this.orderPlus(name, number, order);
-                                }
-                            }
-                        }
-                        break;
+            if (sortName == "관 삭제" || sortName == "항 삭제") {
+                while (currentOrder <= codeCount) {
+                    currentDB.altOrder(sortName, currentOrder + 1, currentOrder, this.HGNumber());
+                    currentOrder++;
                 }
-            }            
+            }
         }
 
         private void orderPlus(string name, int number, int order) {
             while (number >= order) {
-                currentDB.altOrder(name, number, number + 1);
+                currentDB.altOrder(name, number, number + 1, this.HGNumber());
                 number--;
             }
         }
         // currentNumber, newNumber
         private void orderMinus(string name, int number, int order) {
             while (number < order) {
-                currentDB.altOrder(name, number+1, number);
+                currentDB.altOrder(name, number+1, number, this.HGNumber());
                 number++;
             }
+        }
+
+        private int HGNumber() {
+            return (int.Parse(this.항data.Rows[k.RowIndex].Cells[3].Value.ToString()));
         }
 
         public bool dupName(string sortName, string name) {
@@ -223,8 +302,7 @@ namespace FinanceManagement {
 
             if (sortName == "관 추가" || sortName == "관 수정") {
                 foreach (DataGridViewRow row in this.관data.Rows) {
-
-                    if (row.Cells[0].Value.ToString() == this.관data.Rows[k.RowIndex].Cells[0].Value.ToString())
+                    if (sortName == "관 수정" && row.Cells[0].Value.ToString() == this.관data.Rows[k.RowIndex].Cells[0].Value.ToString())
                         continue;
 
                     if (name == row.Cells[1].Value.ToString()) {
@@ -237,7 +315,13 @@ namespace FinanceManagement {
             }
             else if (sortName == "항 추가" || sortName == "항 수정") {
                 foreach (DataGridViewRow row in this.항data.Rows) {
+                    if (sortName == "항 수정" && row.Cells[0].Value.ToString() == this.항data.Rows[h.RowIndex].Cells[0].Value.ToString())
+                        continue;
+
                     if (name == row.Cells[1].Value.ToString()) {
+                        if (row.Cells[3].Value.ToString() != this.항data.Rows[h.RowIndex].Cells[3].Value.ToString())
+                            continue;
+
                         duplicated = true;
 
                         if (duplicated)
@@ -300,11 +384,7 @@ namespace FinanceManagement {
         // 관항목 '수정'
         private void button4_Click(object sender, EventArgs e) {
             String name = "관 수정";
-
-            if (k == null) {
-                MessageBox.Show("지정된 자료가 없습니다.", "오류");
-            }
-            else {
+            try {
                 string cell_name = this.관data.Rows[k.RowIndex].Cells[1].Value.ToString();
                 string cell_order = this.관data.Rows[k.RowIndex].Cells[2].Value.ToString();
                 cellContent gCell = new cellContent(cell_name, this.관data.RowCount, int.Parse(cell_order));
@@ -313,6 +393,9 @@ namespace FinanceManagement {
                 addForm.StartPosition = FormStartPosition.Manual;
                 addForm.Location = new Point(250, 300);
                 addForm.Show();
+            }
+            catch {
+                MessageBox.Show("지정된 자료가 없습니다.", "오류");
             }
         }
 
@@ -339,10 +422,6 @@ namespace FinanceManagement {
         }
 
         private void button5_Click(object sender, EventArgs e) {
-            if (k == null) {
-                MessageBox.Show("지정된 자료가 없습니다.", "오류");
-            }
-            else {
                 try {
                     String name = "관 삭제";
                     string cell_name = this.관data.Rows[k.RowIndex].Cells[1].Value.ToString();
@@ -354,20 +433,24 @@ namespace FinanceManagement {
                     deleteForm.Show();
                 }
                 catch {
-
+                    MessageBox.Show("지정된 자료가 없습니다.", "오류");
                 }
-            }
         }
 
         private void button6_Click(object sender, EventArgs e) {
-            String name = "항 삭제";
-            string cell_name = this.관data.Rows[k.RowIndex].Cells[1].Value.ToString();
-            string cell_order = this.관data.Rows[k.RowIndex].Cells[2].Value.ToString();
-            cellContent gCell = new cellContent(cell_name, this.관data.RowCount, int.Parse(cell_order));
-            Setting_budget_delete deleteForm = new Setting_budget_delete(name, strPath, gCell, this);
-            deleteForm.StartPosition = FormStartPosition.Manual;
-            deleteForm.Location = new Point(250, 300);
-            deleteForm.Show();
+            try {
+                String name = "항 삭제";
+                string cell_name = this.항data.Rows[h.RowIndex].Cells[1].Value.ToString();
+                string cell_order = this.항data.Rows[h.RowIndex].Cells[2].Value.ToString();
+                cellContent gCell = new cellContent(cell_name, this.항data.RowCount, int.Parse(cell_order));
+                Setting_budget_delete deleteForm = new Setting_budget_delete(name, strPath, gCell, this);
+                deleteForm.StartPosition = FormStartPosition.Manual;
+                deleteForm.Location = new Point(250, 300);
+                deleteForm.Show();
+            }
+            catch {
+                MessageBox.Show("지정된 자료가 없습니다.", "오류");
+            }
         }
 
         private void button9_Click(object sender, EventArgs e) {

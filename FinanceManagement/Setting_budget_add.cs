@@ -75,6 +75,11 @@ namespace FinanceManagement {
                 this._sb.orderSort(sortName, codeCount, orderText, this.currentOrder);
                 return true;
             }
+            else if ((sortName == "관 수정" || sortName == "항 수정") && orderText == codeCount) {
+                this._sb.orderSort(sortName, codeCount, orderText, this.currentOrder);
+                return true;
+            }
+
             else // 제일 뒤쪽에 삽입해도 되는 경우
                 return true;
         }
@@ -84,6 +89,8 @@ namespace FinanceManagement {
         }
 
         private void button1_Click(object sender, EventArgs e) {
+            string etc = sortName;
+
             if (this.duplicatedName(sortName, name_text.Text)) {
                 MessageBox.Show("이름이 중복되니 다시 설정하세요"); 
             }
@@ -93,16 +100,29 @@ namespace FinanceManagement {
                 }
                 else {
                     if (sortName == "관 추가") {
+                        if (this.codeCount == int.Parse(order.Text)) {
+                            etc = "마지막 관 추가";
+                        }
+                        this._sb.setClickArgs(int.Parse(order.Text));
                         db.addG(inner_order, name_text.Text, int.Parse(order.Text));
                     }
+                    else if (sortName == "관 수정") {
+                        this._sb.setClickArgs(int.Parse(order.Text) - 1);
+                        db.altName(sortName, this.currentName, name_text.Text);
+                    }
                     else if (sortName == "항 추가") {
+                        if (this.codeCount == int.Parse(order.Text)) {
+                            etc = "마지막 항 추가";
+                        }
+                        this._sb.setClickArgs(int.Parse(order.Text));
                         db.addH(inner_order, hgCode, name_text.Text, int.Parse(order.Text));
                     }
-                    else if (sortName == "관 수정" || sortName == "항 수정") {
+                    else if (sortName == "항 수정") {
+                        this._sb.setClickArgs(int.Parse(order.Text) - 1);
                         db.altName(sortName, this.currentName, name_text.Text);
                     }
                     this._sb.load_data();
-                    this._sb.initCell("");
+                    this._sb.initCell(etc);
                     this.Close();
                 }
             }
