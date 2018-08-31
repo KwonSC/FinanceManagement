@@ -32,7 +32,7 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
         public Int64 all_difference(DateTime dt) { //총 차액
-            Int64 w,x, y, z;
+            Int64 w, x, y, z;
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;

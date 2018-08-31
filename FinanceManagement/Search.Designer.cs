@@ -37,11 +37,11 @@
             this.i_month = new System.Windows.Forms.RadioButton();
             this.i_week = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.income_now = new System.Windows.Forms.TextBox();
+            this.income_differ = new System.Windows.Forms.TextBox();
+            this.income_expend = new System.Windows.Forms.TextBox();
+            this.income_income = new System.Windows.Forms.TextBox();
+            this.income_carry = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -70,12 +70,23 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.expend_panel = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.expend_date1 = new System.Windows.Forms.DateTimePicker();
+            this.expend_date2 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.e_want = new System.Windows.Forms.RadioButton();
+            this.e_month = new System.Windows.Forms.RadioButton();
+            this.e_week = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.expend_now = new System.Windows.Forms.TextBox();
+            this.expend_differ = new System.Windows.Forms.TextBox();
+            this.expend_expend = new System.Windows.Forms.TextBox();
+            this.expend_income = new System.Windows.Forms.TextBox();
+            this.expend_carry = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -100,36 +111,25 @@
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.expend_date1 = new System.Windows.Forms.DateTimePicker();
-            this.expend_date2 = new System.Windows.Forms.DateTimePicker();
-            this.label17 = new System.Windows.Forms.Label();
-            this.e_want = new System.Windows.Forms.RadioButton();
-            this.e_month = new System.Windows.Forms.RadioButton();
-            this.e_week = new System.Windows.Forms.RadioButton();
             this.income_panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.expend_panel.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // income_panel
             // 
             this.income_panel.Controls.Add(this.groupBox1);
             this.income_panel.Controls.Add(this.label10);
-            this.income_panel.Controls.Add(this.textBox8);
-            this.income_panel.Controls.Add(this.textBox7);
-            this.income_panel.Controls.Add(this.textBox6);
-            this.income_panel.Controls.Add(this.textBox5);
-            this.income_panel.Controls.Add(this.textBox4);
+            this.income_panel.Controls.Add(this.income_now);
+            this.income_panel.Controls.Add(this.income_differ);
+            this.income_panel.Controls.Add(this.income_expend);
+            this.income_panel.Controls.Add(this.income_income);
+            this.income_panel.Controls.Add(this.income_carry);
             this.income_panel.Controls.Add(this.label9);
             this.income_panel.Controls.Add(this.label8);
             this.income_panel.Controls.Add(this.label7);
@@ -224,6 +224,7 @@
             this.income_date2.Name = "income_date2";
             this.income_date2.Size = new System.Drawing.Size(118, 21);
             this.income_date2.TabIndex = 14;
+            this.income_date2.ValueChanged += new System.EventHandler(this.income_date2_ValueChanged);
             // 
             // label4
             // 
@@ -279,55 +280,60 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "수입부";
             // 
-            // textBox8
+            // income_now
             // 
-            this.textBox8.BackColor = System.Drawing.Color.LightGray;
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(619, 538);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(108, 21);
-            this.textBox8.TabIndex = 21;
+            this.income_now.BackColor = System.Drawing.Color.LightGray;
+            this.income_now.Enabled = false;
+            this.income_now.Location = new System.Drawing.Point(619, 538);
+            this.income_now.Name = "income_now";
+            this.income_now.ReadOnly = true;
+            this.income_now.Size = new System.Drawing.Size(108, 21);
+            this.income_now.TabIndex = 21;
+            this.income_now.TextChanged += new System.EventHandler(this.income_now_TextChanged);
             // 
-            // textBox7
+            // income_differ
             // 
-            this.textBox7.BackColor = System.Drawing.Color.LightGray;
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(619, 515);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(108, 21);
-            this.textBox7.TabIndex = 20;
+            this.income_differ.BackColor = System.Drawing.Color.LightGray;
+            this.income_differ.Enabled = false;
+            this.income_differ.Location = new System.Drawing.Point(619, 515);
+            this.income_differ.Name = "income_differ";
+            this.income_differ.ReadOnly = true;
+            this.income_differ.Size = new System.Drawing.Size(108, 21);
+            this.income_differ.TabIndex = 20;
+            this.income_differ.TextChanged += new System.EventHandler(this.income_differ_TextChanged);
             // 
-            // textBox6
+            // income_expend
             // 
-            this.textBox6.BackColor = System.Drawing.Color.LightGray;
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(619, 492);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(108, 21);
-            this.textBox6.TabIndex = 19;
+            this.income_expend.BackColor = System.Drawing.Color.LightGray;
+            this.income_expend.Enabled = false;
+            this.income_expend.Location = new System.Drawing.Point(619, 492);
+            this.income_expend.Name = "income_expend";
+            this.income_expend.ReadOnly = true;
+            this.income_expend.Size = new System.Drawing.Size(108, 21);
+            this.income_expend.TabIndex = 19;
+            this.income_expend.TextChanged += new System.EventHandler(this.income_expend_TextChanged);
             // 
-            // textBox5
+            // income_income
             // 
-            this.textBox5.BackColor = System.Drawing.Color.LightGray;
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(619, 469);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(108, 21);
-            this.textBox5.TabIndex = 18;
+            this.income_income.BackColor = System.Drawing.Color.LightGray;
+            this.income_income.Enabled = false;
+            this.income_income.Location = new System.Drawing.Point(619, 469);
+            this.income_income.Name = "income_income";
+            this.income_income.ReadOnly = true;
+            this.income_income.Size = new System.Drawing.Size(108, 21);
+            this.income_income.TabIndex = 18;
+            this.income_income.TextChanged += new System.EventHandler(this.income_income_TextChanged);
             // 
-            // textBox4
+            // income_carry
             // 
-            this.textBox4.BackColor = System.Drawing.Color.LightGray;
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(619, 446);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(108, 21);
-            this.textBox4.TabIndex = 17;
+            this.income_carry.BackColor = System.Drawing.Color.LightGray;
+            this.income_carry.Enabled = false;
+            this.income_carry.Location = new System.Drawing.Point(619, 446);
+            this.income_carry.Name = "income_carry";
+            this.income_carry.ReadOnly = true;
+            this.income_carry.Size = new System.Drawing.Size(108, 21);
+            this.income_carry.TabIndex = 17;
+            this.income_carry.TextChanged += new System.EventHandler(this.income_carry_TextChanged);
             // 
             // label9
             // 
@@ -482,6 +488,7 @@
             this.income_sumofsear.ReadOnly = true;
             this.income_sumofsear.Size = new System.Drawing.Size(81, 21);
             this.income_sumofsear.TabIndex = 9;
+            this.income_sumofsear.TextChanged += new System.EventHandler(this.income_sumofsear_TextChanged);
             // 
             // income_numberofsear
             // 
@@ -603,11 +610,11 @@
             // 
             this.expend_panel.Controls.Add(this.groupBox4);
             this.expend_panel.Controls.Add(this.label11);
-            this.expend_panel.Controls.Add(this.textBox9);
-            this.expend_panel.Controls.Add(this.textBox10);
-            this.expend_panel.Controls.Add(this.textBox11);
-            this.expend_panel.Controls.Add(this.textBox12);
-            this.expend_panel.Controls.Add(this.textBox13);
+            this.expend_panel.Controls.Add(this.expend_now);
+            this.expend_panel.Controls.Add(this.expend_differ);
+            this.expend_panel.Controls.Add(this.expend_expend);
+            this.expend_panel.Controls.Add(this.expend_income);
+            this.expend_panel.Controls.Add(this.expend_carry);
             this.expend_panel.Controls.Add(this.label12);
             this.expend_panel.Controls.Add(this.label13);
             this.expend_panel.Controls.Add(this.label14);
@@ -629,6 +636,126 @@
             this.expend_panel.Size = new System.Drawing.Size(1029, 569);
             this.expend_panel.TabIndex = 23;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button11);
+            this.groupBox4.Controls.Add(this.button12);
+            this.groupBox4.Controls.Add(this.button13);
+            this.groupBox4.Controls.Add(this.button14);
+            this.groupBox4.Controls.Add(this.expend_date1);
+            this.groupBox4.Controls.Add(this.expend_date2);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.e_want);
+            this.groupBox4.Controls.Add(this.e_month);
+            this.groupBox4.Controls.Add(this.e_week);
+            this.groupBox4.Location = new System.Drawing.Point(6, 440);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(281, 119);
+            this.groupBox4.TabIndex = 23;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "검색기간";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(197, 75);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(48, 37);
+            this.button11.TabIndex = 19;
+            this.button11.Text = ">>";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(132, 75);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(48, 37);
+            this.button12.TabIndex = 18;
+            this.button12.Text = ">";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(68, 75);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(48, 37);
+            this.button13.TabIndex = 17;
+            this.button13.Text = "<";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(7, 75);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(48, 37);
+            this.button14.TabIndex = 16;
+            this.button14.Text = "<<";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // expend_date1
+            // 
+            this.expend_date1.Location = new System.Drawing.Point(6, 48);
+            this.expend_date1.Name = "expend_date1";
+            this.expend_date1.Size = new System.Drawing.Size(118, 21);
+            this.expend_date1.TabIndex = 15;
+            this.expend_date1.ValueChanged += new System.EventHandler(this.expend_date1_ValueChanged);
+            // 
+            // expend_date2
+            // 
+            this.expend_date2.Location = new System.Drawing.Point(147, 48);
+            this.expend_date2.Name = "expend_date2";
+            this.expend_date2.Size = new System.Drawing.Size(118, 21);
+            this.expend_date2.TabIndex = 14;
+            this.expend_date2.ValueChanged += new System.EventHandler(this.expend_date2_ValueChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(130, 52);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(11, 12);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "-";
+            // 
+            // e_want
+            // 
+            this.e_want.AutoSize = true;
+            this.e_want.Location = new System.Drawing.Point(136, 20);
+            this.e_want.Name = "e_want";
+            this.e_want.Size = new System.Drawing.Size(71, 16);
+            this.e_want.TabIndex = 11;
+            this.e_want.TabStop = true;
+            this.e_want.Text = "임의지정";
+            this.e_want.UseVisualStyleBackColor = true;
+            this.e_want.CheckedChanged += new System.EventHandler(this.e_want_CheckedChanged);
+            // 
+            // e_month
+            // 
+            this.e_month.AutoSize = true;
+            this.e_month.Location = new System.Drawing.Point(74, 20);
+            this.e_month.Name = "e_month";
+            this.e_month.Size = new System.Drawing.Size(59, 16);
+            this.e_month.TabIndex = 11;
+            this.e_month.TabStop = true;
+            this.e_month.Text = "월간별";
+            this.e_month.UseVisualStyleBackColor = true;
+            this.e_month.CheckedChanged += new System.EventHandler(this.e_month_CheckedChanged);
+            // 
+            // e_week
+            // 
+            this.e_week.AutoSize = true;
+            this.e_week.Location = new System.Drawing.Point(9, 20);
+            this.e_week.Name = "e_week";
+            this.e_week.Size = new System.Drawing.Size(59, 16);
+            this.e_week.TabIndex = 0;
+            this.e_week.TabStop = true;
+            this.e_week.Text = "주간별";
+            this.e_week.UseVisualStyleBackColor = true;
+            this.e_week.CheckedChanged += new System.EventHandler(this.e_week_CheckedChanged);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -638,55 +765,60 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "지출부";
             // 
-            // textBox9
+            // expend_now
             // 
-            this.textBox9.BackColor = System.Drawing.Color.LightGray;
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(619, 538);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(108, 21);
-            this.textBox9.TabIndex = 21;
+            this.expend_now.BackColor = System.Drawing.Color.LightGray;
+            this.expend_now.Enabled = false;
+            this.expend_now.Location = new System.Drawing.Point(619, 538);
+            this.expend_now.Name = "expend_now";
+            this.expend_now.ReadOnly = true;
+            this.expend_now.Size = new System.Drawing.Size(108, 21);
+            this.expend_now.TabIndex = 21;
+            this.expend_now.TextChanged += new System.EventHandler(this.expend_now_TextChanged);
             // 
-            // textBox10
+            // expend_differ
             // 
-            this.textBox10.BackColor = System.Drawing.Color.LightGray;
-            this.textBox10.Enabled = false;
-            this.textBox10.Location = new System.Drawing.Point(619, 515);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(108, 21);
-            this.textBox10.TabIndex = 20;
+            this.expend_differ.BackColor = System.Drawing.Color.LightGray;
+            this.expend_differ.Enabled = false;
+            this.expend_differ.Location = new System.Drawing.Point(619, 515);
+            this.expend_differ.Name = "expend_differ";
+            this.expend_differ.ReadOnly = true;
+            this.expend_differ.Size = new System.Drawing.Size(108, 21);
+            this.expend_differ.TabIndex = 20;
+            this.expend_differ.TextChanged += new System.EventHandler(this.expend_differ_TextChanged);
             // 
-            // textBox11
+            // expend_expend
             // 
-            this.textBox11.BackColor = System.Drawing.Color.LightGray;
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(619, 492);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(108, 21);
-            this.textBox11.TabIndex = 19;
+            this.expend_expend.BackColor = System.Drawing.Color.LightGray;
+            this.expend_expend.Enabled = false;
+            this.expend_expend.Location = new System.Drawing.Point(619, 492);
+            this.expend_expend.Name = "expend_expend";
+            this.expend_expend.ReadOnly = true;
+            this.expend_expend.Size = new System.Drawing.Size(108, 21);
+            this.expend_expend.TabIndex = 19;
+            this.expend_expend.TextChanged += new System.EventHandler(this.expend_expend_TextChanged);
             // 
-            // textBox12
+            // expend_income
             // 
-            this.textBox12.BackColor = System.Drawing.Color.LightGray;
-            this.textBox12.Enabled = false;
-            this.textBox12.Location = new System.Drawing.Point(619, 469);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(108, 21);
-            this.textBox12.TabIndex = 18;
+            this.expend_income.BackColor = System.Drawing.Color.LightGray;
+            this.expend_income.Enabled = false;
+            this.expend_income.Location = new System.Drawing.Point(619, 469);
+            this.expend_income.Name = "expend_income";
+            this.expend_income.ReadOnly = true;
+            this.expend_income.Size = new System.Drawing.Size(108, 21);
+            this.expend_income.TabIndex = 18;
+            this.expend_income.TextChanged += new System.EventHandler(this.expend_income_TextChanged);
             // 
-            // textBox13
+            // expend_carry
             // 
-            this.textBox13.BackColor = System.Drawing.Color.LightGray;
-            this.textBox13.Enabled = false;
-            this.textBox13.Location = new System.Drawing.Point(619, 446);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(108, 21);
-            this.textBox13.TabIndex = 17;
+            this.expend_carry.BackColor = System.Drawing.Color.LightGray;
+            this.expend_carry.Enabled = false;
+            this.expend_carry.Location = new System.Drawing.Point(619, 446);
+            this.expend_carry.Name = "expend_carry";
+            this.expend_carry.ReadOnly = true;
+            this.expend_carry.Size = new System.Drawing.Size(108, 21);
+            this.expend_carry.TabIndex = 17;
+            this.expend_carry.TextChanged += new System.EventHandler(this.expend_carry_TextChanged);
             // 
             // label12
             // 
@@ -841,6 +973,7 @@
             this.expend_sumofsear.ReadOnly = true;
             this.expend_sumofsear.Size = new System.Drawing.Size(81, 21);
             this.expend_sumofsear.TabIndex = 9;
+            this.expend_sumofsear.TextChanged += new System.EventHandler(this.expend_sumofsear_TextChanged);
             // 
             // expend_numberofsear
             // 
@@ -928,125 +1061,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(1016, 339);
             this.dataGridView2.TabIndex = 0;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button11);
-            this.groupBox4.Controls.Add(this.button12);
-            this.groupBox4.Controls.Add(this.button13);
-            this.groupBox4.Controls.Add(this.button14);
-            this.groupBox4.Controls.Add(this.expend_date1);
-            this.groupBox4.Controls.Add(this.expend_date2);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.e_want);
-            this.groupBox4.Controls.Add(this.e_month);
-            this.groupBox4.Controls.Add(this.e_week);
-            this.groupBox4.Location = new System.Drawing.Point(6, 440);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(281, 119);
-            this.groupBox4.TabIndex = 23;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "검색기간";
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(197, 75);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(48, 37);
-            this.button11.TabIndex = 19;
-            this.button11.Text = ">>";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(132, 75);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(48, 37);
-            this.button12.TabIndex = 18;
-            this.button12.Text = ">";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(68, 75);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(48, 37);
-            this.button13.TabIndex = 17;
-            this.button13.Text = "<";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(7, 75);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(48, 37);
-            this.button14.TabIndex = 16;
-            this.button14.Text = "<<";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // expend_date1
-            // 
-            this.expend_date1.Location = new System.Drawing.Point(6, 48);
-            this.expend_date1.Name = "expend_date1";
-            this.expend_date1.Size = new System.Drawing.Size(118, 21);
-            this.expend_date1.TabIndex = 15;
-            this.expend_date1.ValueChanged += new System.EventHandler(this.expend_date1_ValueChanged);
-            // 
-            // expend_date2
-            // 
-            this.expend_date2.Location = new System.Drawing.Point(147, 48);
-            this.expend_date2.Name = "expend_date2";
-            this.expend_date2.Size = new System.Drawing.Size(118, 21);
-            this.expend_date2.TabIndex = 14;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(130, 52);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(11, 12);
-            this.label17.TabIndex = 13;
-            this.label17.Text = "-";
-            // 
-            // e_want
-            // 
-            this.e_want.AutoSize = true;
-            this.e_want.Location = new System.Drawing.Point(136, 20);
-            this.e_want.Name = "e_want";
-            this.e_want.Size = new System.Drawing.Size(71, 16);
-            this.e_want.TabIndex = 11;
-            this.e_want.TabStop = true;
-            this.e_want.Text = "임의지정";
-            this.e_want.UseVisualStyleBackColor = true;
-            this.e_want.CheckedChanged += new System.EventHandler(this.e_want_CheckedChanged);
-            // 
-            // e_month
-            // 
-            this.e_month.AutoSize = true;
-            this.e_month.Location = new System.Drawing.Point(74, 20);
-            this.e_month.Name = "e_month";
-            this.e_month.Size = new System.Drawing.Size(59, 16);
-            this.e_month.TabIndex = 11;
-            this.e_month.TabStop = true;
-            this.e_month.Text = "월간별";
-            this.e_month.UseVisualStyleBackColor = true;
-            this.e_month.CheckedChanged += new System.EventHandler(this.e_month_CheckedChanged);
-            // 
-            // e_week
-            // 
-            this.e_week.AutoSize = true;
-            this.e_week.Location = new System.Drawing.Point(9, 20);
-            this.e_week.Name = "e_week";
-            this.e_week.Size = new System.Drawing.Size(59, 16);
-            this.e_week.TabIndex = 0;
-            this.e_week.TabStop = true;
-            this.e_week.Text = "주간별";
-            this.e_week.UseVisualStyleBackColor = true;
-            this.e_week.CheckedChanged += new System.EventHandler(this.e_week_CheckedChanged);
-            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1071,11 +1085,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.expend_panel.ResumeLayout(false);
             this.expend_panel.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1087,11 +1101,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox income_now;
+        private System.Windows.Forms.TextBox income_differ;
+        private System.Windows.Forms.TextBox income_expend;
+        private System.Windows.Forms.TextBox income_income;
+        private System.Windows.Forms.TextBox income_carry;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -1129,11 +1143,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel expend_panel;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox expend_now;
+        private System.Windows.Forms.TextBox expend_differ;
+        private System.Windows.Forms.TextBox expend_expend;
+        private System.Windows.Forms.TextBox expend_income;
+        private System.Windows.Forms.TextBox expend_carry;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
