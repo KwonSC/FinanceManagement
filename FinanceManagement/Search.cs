@@ -56,15 +56,7 @@ namespace FinanceManagement {
             dataGridView2.Columns[11].Visible = false;
             dataGridView2.Columns[12].Visible = false;
             i_week.Checked = true;
-            income_date1.Value = set_Sunday(today);
-            income_date2.Value = set_Sunday(today).AddDays(6);
-            income_date2.Enabled = false;
-            between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
             e_week.Checked = true;
-            expend_date1.Value = set_Sunday(today);
-            expend_date2.Value = set_Sunday(today).AddDays(6);
-            expend_date2.Enabled = false;
-            between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
 
@@ -90,7 +82,17 @@ namespace FinanceManagement {
             e_3.Fill(ds2);
             e_4.Fill(ds2);
             dataGridView1.DataSource = ds1.Tables[0];
+            income_date1.Value = set_Sunday(today);
+            income_date2.Value = set_Sunday(today).AddDays(6);
+            income_date2.Enabled = false;
+            between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
+            idv = new DataView(ds1.Tables[0]);
             dataGridView2.DataSource = ds2.Tables[0];
+            expend_date1.Value = set_Sunday(today);
+            expend_date2.Value = set_Sunday(today).AddDays(6);
+            expend_date2.Enabled = false;
+            between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
+            edv = new DataView(ds2.Tables[0]);
             numberofsearch();
         }
 
