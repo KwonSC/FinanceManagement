@@ -29,7 +29,8 @@ namespace FinanceManagement {
         DateTime rdt,backtime;
         OleDbConnection conn;
         bool power = true;
-        
+        DataView idv,edv;
+
         public Search(string path) { //생성자
             InitializeComponent();
             filepath = path;
@@ -97,6 +98,12 @@ namespace FinanceManagement {
             DataView dv = new DataView(ds.Tables[0]);
             dv.RowFilter = " (날짜 >= #" + dt1.ToString("MM/dd/yyyy") + "# AND 날짜 <= #" + dt2.ToString("MM/dd/yyyy") + "# ) ";
             dgv.DataSource = dv;
+            if (ds == ds1) {
+                idv = dv;
+            }
+            else if (ds == ds2) {
+                edv = dv;
+            }
         }
 
         private void button6_Click(object sender, EventArgs e) { //수입_검색버튼 클릭
@@ -104,8 +111,8 @@ namespace FinanceManagement {
                 load_data();
             }
             else {
-                DataView dvi = new DataView(ds1.Tables[0]);
-                dvi.RowFilter = string.Format("비고 LIKE '%{0}%'", income_searchbox.Text);
+                DataView dvi = idv;
+                dvi.RowFilter = " (날짜 >= #" + income_date1.Value.ToString("MM/dd/yyyy") + "# AND 날짜 <= #" + income_date2.Value.ToString("MM/dd/yyyy") + "# ) "+" AND "+string.Format("(비고 LIKE '%{0}%')", income_searchbox.Text);
                 dataGridView1.DataSource = dvi;
             }
             numberofsearch();
@@ -116,8 +123,8 @@ namespace FinanceManagement {
                 load_data();
             }
             else {
-                DataView dve = new DataView(ds2.Tables[0]);
-                dve.RowFilter = string.Format("비고 LIKE '%{0}%'", expend_searchbox.Text);
+                DataView dve = edv;
+                dve.RowFilter = " (날짜 >= #" + expend_date1.Value.ToString("MM/dd/yyyy") + "# AND 날짜 <= #" + expend_date2.Value.ToString("MM/dd/yyyy") + "# ) " + " AND " + string.Format("(비고 LIKE '%{0}%')", expend_searchbox.Text);
                 dataGridView1.DataSource = dve;
             }
             numberofsearch();
