@@ -26,9 +26,108 @@ namespace FinanceManagement {
         Int64 sumi, sume;
         DataSet ds1, ds2;
         DateTime today = DateTime.Today;
-        DateTime rdt;
+        DateTime rdt,backtime;
         OleDbConnection conn;
         bool power = true;
+        
+        public Search(string path) { //생성자
+            InitializeComponent();
+            filepath = path;
+            load_data();
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
+            dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[11].Visible = false;
+            dataGridView1.Columns[12].Visible = false;
+            dataGridView2.Columns[0].Visible = false;
+            dataGridView2.Columns[2].Visible = false;
+            dataGridView2.Columns[3].Visible = false;
+            dataGridView2.Columns[5].Visible = false;
+            dataGridView2.Columns[6].Visible = false;
+            dataGridView2.Columns[8].Visible = false;
+            dataGridView2.Columns[9].Visible = false;
+            dataGridView2.Columns[10].Visible = false;
+            dataGridView2.Columns[11].Visible = false;
+            dataGridView2.Columns[12].Visible = false;
+            i_week.Checked = true;
+            income_date1.Value = set_Sunday(today);
+            income_date2.Value = set_Sunday(today).AddDays(6);
+            income_date2.Enabled = false;
+            e_week.Checked = true;
+            expend_date1.Value = set_Sunday(today);
+            expend_date2.Value = set_Sunday(today).AddDays(6);
+            expend_date2.Enabled = false;
+        }
+
+        public void load_data() {
+            connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
+            conn = new OleDbConnection(connStr);
+            i_1 = new OleDbDataAdapter(sql_i_1, conn);
+            i_2 = new OleDbDataAdapter(sql_i_2, conn);
+            i_3 = new OleDbDataAdapter(sql_i_3, conn);
+            i_4 = new OleDbDataAdapter(sql_i_4, conn);
+            e_1 = new OleDbDataAdapter(sql_e_1, conn);
+            e_2 = new OleDbDataAdapter(sql_e_2, conn);
+            e_3 = new OleDbDataAdapter(sql_e_3, conn);
+            e_4 = new OleDbDataAdapter(sql_e_4, conn);
+            ds1 = new DataSet();
+            ds2 = new DataSet();
+            i_1.Fill(ds1);
+            i_2.Fill(ds1);
+            i_3.Fill(ds1);
+            i_4.Fill(ds1);
+            e_1.Fill(ds2);
+            e_2.Fill(ds2);
+            e_3.Fill(ds2);
+            e_4.Fill(ds2);
+            dataGridView1.DataSource = ds1.Tables[0];
+            dataGridView2.DataSource = ds2.Tables[0];
+            numberofsearch();
+        }
+
+        private void button6_Click(object sender, EventArgs e) { //수입_검색버튼 클릭
+            if (income_searchbox.Text == "") {
+                load_data();
+            }
+            else {
+                DataView dvi = new DataView(ds1.Tables[0]);
+                dvi.RowFilter = string.Format("비고 LIKE '%{0}%'", income_searchbox.Text);
+                dataGridView1.DataSource = dvi;
+            }
+            numberofsearch();
+        }
+
+        private void button15_Click(object sender, EventArgs e) { //지출_검색버튼 클릭
+            if (expend_searchbox.Text == "") {
+                load_data();
+            }
+            else {
+                DataView dve = new DataView(ds2.Tables[0]);
+                dve.RowFilter = string.Format("비고 LIKE '%{0}%'", expend_searchbox.Text);
+                dataGridView1.DataSource = dve;
+            }
+            numberofsearch();
+        }
+
+        public void numberofsearch() { //검색건수, 합계금액 표시
+            sumi = 0;
+            sume = 0;
+            income_numberofsear.Text = dataGridView1.RowCount.ToString();
+            for (int i = 0; i < dataGridView1.RowCount; i++) {
+                sumi = sumi + Int64.Parse(dataGridView1.Rows[i].Cells["금액"].Value.ToString());
+            }
+            income_sumofsear.Text = sumi.ToString();
+            expend_numberofsear.Text = dataGridView2.RowCount.ToString();
+            for (int i = 0; i < dataGridView2.RowCount; i++) {
+                sume = sume + Int64.Parse(dataGridView2.Rows[i].Cells["금액"].Value.ToString());
+            }
+            expend_sumofsear.Text = sume.ToString();
+        }
 
         private void button7_Click(object sender, EventArgs e) { //수입 << 버튼 클릭
             power = false;
@@ -160,42 +259,8 @@ namespace FinanceManagement {
             }
         }
 
-        public Search(string path) {
-            InitializeComponent();
-            filepath = path;
-            load_data();
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[9].Visible = false;
-            dataGridView1.Columns[10].Visible = false;
-            dataGridView1.Columns[11].Visible = false;
-            dataGridView1.Columns[12].Visible = false;
-            dataGridView2.Columns[0].Visible = false;
-            dataGridView2.Columns[2].Visible = false;
-            dataGridView2.Columns[3].Visible = false;
-            dataGridView2.Columns[5].Visible = false;
-            dataGridView2.Columns[6].Visible = false;
-            dataGridView2.Columns[8].Visible = false;
-            dataGridView2.Columns[9].Visible = false;
-            dataGridView2.Columns[10].Visible = false;
-            dataGridView2.Columns[11].Visible = false;
-            dataGridView2.Columns[12].Visible = false;
-            i_week.Checked = true;
-            income_date1.Value = set_Sunday(today);
-            income_date2.Value = set_Sunday(today).AddDays(6);
-            income_date2.Enabled = false;
-            e_week.Checked = true;
-            expend_date1.Value = set_Sunday(today);
-            expend_date2.Value = set_Sunday(today).AddDays(6);
-            expend_date2.Enabled = false;
-
-        }
-
         private void i_month_CheckedChanged(object sender, EventArgs e) { //수입_월간검색 체크
+            power = false;
             income_date1.Value = set_firstday(today);
             income_date2.Value = set_lastday(today);
             income_date2.Enabled = false;
@@ -203,6 +268,7 @@ namespace FinanceManagement {
             button8.Enabled = true;
             button9.Enabled = true;
             button10.Enabled = true;
+            power = true;
         }
 
         public DateTime set_lastday(DateTime dt) { //월간검색_강제 월말 변경
@@ -212,6 +278,7 @@ namespace FinanceManagement {
         }
 
         private void i_week_CheckedChanged(object sender, EventArgs e) { //수입_주간검색 체크
+            power = false;
             income_date1.Value = set_Sunday(today);
             income_date2.Value = set_Sunday(today).AddDays(6);
             income_date2.Enabled = false;
@@ -219,6 +286,7 @@ namespace FinanceManagement {
             button8.Enabled = true;
             button9.Enabled = true;
             button10.Enabled = true;
+            power = true;
         }
 
         private void i_want_CheckedChanged(object sender, EventArgs e) { //수입_임의지정 체크
@@ -230,6 +298,7 @@ namespace FinanceManagement {
         }
 
         private void e_week_CheckedChanged(object sender, EventArgs e) { //지출_주간검색 체크
+            power = false;
             expend_date1.Value = set_Sunday(today);
             expend_date2.Value = set_Sunday(today).AddDays(6);
             expend_date2.Enabled = false;
@@ -237,9 +306,11 @@ namespace FinanceManagement {
             button12.Enabled = true;
             button13.Enabled = true;
             button14.Enabled = true;
+            power = true;
         }
 
         private void e_month_CheckedChanged(object sender, EventArgs e) { //지출_월간검색 체크
+            power = false;
             expend_date1.Value = set_firstday(today);
             expend_date2.Value = set_lastday(today);
             expend_date2.Enabled = false;
@@ -247,6 +318,7 @@ namespace FinanceManagement {
             button12.Enabled = true;
             button13.Enabled = true;
             button14.Enabled = true;
+            power = true;
         }
 
         private void e_want_CheckedChanged(object sender, EventArgs e) { //지출_임의지정 체크
@@ -291,71 +363,6 @@ namespace FinanceManagement {
             return rdt;
         }
 
-        public void load_data() {
-            connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
-            conn = new OleDbConnection(connStr);
-            i_1 = new OleDbDataAdapter(sql_i_1, conn);
-            i_2 = new OleDbDataAdapter(sql_i_2, conn);
-            i_3 = new OleDbDataAdapter(sql_i_3, conn);
-            i_4 = new OleDbDataAdapter(sql_i_4, conn);
-            e_1 = new OleDbDataAdapter(sql_e_1, conn);
-            e_2 = new OleDbDataAdapter(sql_e_2, conn);
-            e_3 = new OleDbDataAdapter(sql_e_3, conn);
-            e_4 = new OleDbDataAdapter(sql_e_4, conn);
-            ds1 = new DataSet();
-            ds2 = new DataSet();
-            i_1.Fill(ds1);
-            i_2.Fill(ds1);
-            i_3.Fill(ds1);
-            i_4.Fill(ds1);
-            e_1.Fill(ds2);
-            e_2.Fill(ds2);
-            e_3.Fill(ds2);
-            e_4.Fill(ds2);
-            dataGridView1.DataSource = ds1.Tables[0];
-            dataGridView2.DataSource = ds2.Tables[0];
-            numberofsearch();
-        }
-
-        public void numberofsearch() {
-            sumi = 0;
-            sume = 0;
-            income_numberofsear.Text = dataGridView1.RowCount.ToString();
-            for(int i = 0; i < dataGridView1.RowCount; i++) {
-                sumi = sumi + Int64.Parse(dataGridView1.Rows[i].Cells["금액"].Value.ToString());
-            }
-            income_sumofsear.Text = sumi.ToString();
-            expend_numberofsear.Text = dataGridView2.RowCount.ToString();
-            for (int i = 0; i < dataGridView2.RowCount; i++) {
-                sume = sume + Int64.Parse(dataGridView2.Rows[i].Cells["금액"].Value.ToString());
-            }
-            expend_sumofsear.Text = sume.ToString();
-        }
-
-        private void button6_Click(object sender, EventArgs e) { //수입_검색버튼 클릭
-            if (income_searchbox.Text == "") {
-                load_data();
-            }
-            else {
-                DataView dvi = new DataView(ds1.Tables[0]);
-                dvi.RowFilter = string.Format("비고 LIKE '%{0}%'", income_searchbox.Text);
-                dataGridView1.DataSource = dvi;
-            }
-            numberofsearch();
-        }
-
-        private void button15_Click(object sender, EventArgs e) { //지출_검색버튼 클릭
-            if (expend_searchbox.Text == "") {
-                load_data();
-            }
-            else {
-                DataView dve = new DataView(ds2.Tables[0]);
-                dve.RowFilter = string.Format("비고 LIKE '%{0}%'", expend_searchbox.Text);
-                dataGridView1.DataSource = dve;
-            }
-            numberofsearch();
-        }
-
         private void button3_Click(object sender, EventArgs e) { //종료버튼
             this.Close();
         }
@@ -366,6 +373,27 @@ namespace FinanceManagement {
 
         private void button1_Click(object sender, EventArgs e) { //수입 변환
             income_panel.BringToFront();
+        }
+        
+        private void income_date2_ValueChanged(object sender, EventArgs e) { //수입_date1 < date2 조건
+            if (income_date1.Value >= income_date2.Value) {
+                MessageBox.Show("날짜범위가 유효하지 않습니다.", "오류");
+                income_date2.Value = backtime;
+            }
+            else {
+                backtime = income_date2.Value;
+            }
+        }
+
+
+        private void expend_date2_ValueChanged(object sender, EventArgs e) { //지출_date1 < date2 조건
+            if (expend_date1.Value >= expend_date2.Value) {
+                MessageBox.Show("날짜범위가 유효하지 않습니다.", "오류");
+                income_date2.Value = backtime;
+            }
+            else {
+                backtime = income_date2.Value;
+            }
         }
     }
 }
