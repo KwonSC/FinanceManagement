@@ -96,6 +96,47 @@ namespace FinanceManagement {
             numberofsearch();
         }
 
+        public void numberofsearch() { //검색건수, 합계금액 표시
+            sumi = 0;
+            sume = 0;
+            income_numberofsear.Text = dataGridView1.RowCount.ToString();
+            for (int i = 0; i < dataGridView1.RowCount; i++) {
+                sumi = sumi + Int64.Parse(dataGridView1.Rows[i].Cells["금액"].Value.ToString());
+            }
+            income_sumofsear.Text = sumi.ToString();
+            expend_numberofsear.Text = dataGridView2.RowCount.ToString();
+            for (int i = 0; i < dataGridView2.RowCount; i++) {
+                sume = sume + Int64.Parse(dataGridView2.Rows[i].Cells["금액"].Value.ToString());
+            }
+            expend_sumofsear.Text = sume.ToString();
+            //------------수입------------
+            income_carry.Text = ""; //이월금액
+            income_income.Text = sumi.ToString(); ; //수입금액
+            income_expend.Text = sume.ToString(); ; //지출금액
+            income_differ.Text = (sumi - sume).ToString(); ; //현 차액
+            income_now.Text = ""; //현 잔액
+            //------------지출-------------------
+            expend_carry.Text = ""; //이월금액
+            expend_income.Text = sumi.ToString(); ; //수입금액
+            expend_expend.Text = sume.ToString(); ; //지출금액
+            expend_differ.Text = (sumi - sume).ToString(); ; //현 차액
+            expend_now.Text = ""; //현 잔액
+        }
+
+        public void add_Days(int a) { //입력하는 수만큼 일 더하기
+            income_date1.Value = income_date1.Value.AddDays(a);
+            income_date2.Value = income_date2.Value.AddDays(a);
+            expend_date1.Value = expend_date1.Value.AddDays(a);
+            expend_date2.Value = expend_date2.Value.AddDays(a);
+        }
+
+        public void add_Month(int a) { //입력하는 수만큼 달 더하기
+            income_date1.Value = set_firstday(income_date1.Value.AddMonths(a));
+            income_date2.Value = set_lastday(income_date2.Value.AddMonths(a));
+            expend_date1.Value = set_firstday(expend_date1.Value.AddMonths(a));
+            expend_date2.Value = set_lastday(expend_date2.Value.AddMonths(a));
+        }
+
         public void between_date(DateTime dt1, DateTime dt2,DataSet ds, DataGridView dgv) { //날짜 사이 검색
             DataView dv = new DataView(ds.Tables[0]);
             dv.RowFilter = " (날짜 >= #" + dt1.ToString("MM/dd/yyyy") + "# AND 날짜 <= #" + dt2.ToString("MM/dd/yyyy") + "# ) ";
@@ -132,92 +173,73 @@ namespace FinanceManagement {
             numberofsearch();
         }
 
-        public void numberofsearch() { //검색건수, 합계금액 표시
-            sumi = 0;
-            sume = 0;
-            income_numberofsear.Text = dataGridView1.RowCount.ToString();
-            for (int i = 0; i < dataGridView1.RowCount; i++) {
-                sumi = sumi + Int64.Parse(dataGridView1.Rows[i].Cells["금액"].Value.ToString());
-            }
-            income_sumofsear.Text = sumi.ToString();
-            expend_numberofsear.Text = dataGridView2.RowCount.ToString();
-            for (int i = 0; i < dataGridView2.RowCount; i++) {
-                sume = sume + Int64.Parse(dataGridView2.Rows[i].Cells["금액"].Value.ToString());
-            }
-            expend_sumofsear.Text = sume.ToString();
-        }
 
         private void button7_Click(object sender, EventArgs e) { //수입 << 버튼 클릭
             power = false;
             if (i_week.Checked == true) {
-                income_date1.Value = income_date1.Value.AddDays(-21);
-                income_date2.Value = income_date2.Value.AddDays(-21);
+                add_Days(-21);
             }
             else if (i_month.Checked == true) {
-                income_date1.Value = set_firstday(income_date1.Value.AddMonths(-3));
-                income_date2.Value = set_lastday(income_date2.Value.AddMonths(-3));
+                add_Month(-3);
             }
             power = true;
             between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
+            between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
 
         private void button8_Click(object sender, EventArgs e) { //수입 < 버튼클릭
             power = false;
             if (i_week.Checked == true) {
-                income_date1.Value = income_date1.Value.AddDays(-7);
-                income_date2.Value = income_date2.Value.AddDays(-7);
+                add_Days(-7);
             }
             else if (i_month.Checked == true) {
-                income_date1.Value = set_firstday(income_date1.Value.AddMonths(-1));
-                income_date2.Value = set_lastday(income_date2.Value.AddMonths(-1));
+                add_Month(1);
             }
             power = true;
             between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
+            between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
 
         private void button9_Click(object sender, EventArgs e) { //수입  > 버튼 클릭
             power = false;
             if (i_week.Checked == true) {
-                income_date1.Value = income_date1.Value.AddDays(7);
-                income_date2.Value = income_date2.Value.AddDays(7);
+                add_Days(7);
             }
             else if (i_month.Checked == true) {
-                income_date1.Value = set_firstday(income_date1.Value.AddMonths(1));
-                income_date2.Value = set_lastday(income_date2.Value.AddMonths(1));
+                add_Month(1);
             }
             power = true;
             between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
+            between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
         
         private void button10_Click(object sender, EventArgs e) { //수입 >> 버튼 클릭
             power = false;
             if (i_week.Checked == true) {
-                income_date1.Value = income_date1.Value.AddDays(21);
-                income_date2.Value = income_date2.Value.AddDays(21);
+                add_Days(21);
             }
             else if (i_month.Checked == true) {
-                income_date1.Value = set_firstday(income_date1.Value.AddMonths(3));
-                income_date2.Value = set_lastday(income_date2.Value.AddMonths(3));
+                add_Month(3);
             }
             power = true;
             between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
+            between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
 
         private void button14_Click(object sender, EventArgs e) { //지출 << 클릭
             power = false;
             if (e_week.Checked == true) {
-                expend_date1.Value = expend_date1.Value.AddDays(-21);
-                expend_date2.Value = expend_date2.Value.AddDays(-21);
+                add_Days(-21);
             }
             else if (e_month.Checked == true) {
-                expend_date1.Value = set_firstday(expend_date1.Value.AddMonths(-3));
-                expend_date2.Value = set_lastday(expend_date2.Value.AddMonths(-3));
+                add_Month(-3);
             }
             power = true;
+            between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
             between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
@@ -225,14 +247,13 @@ namespace FinanceManagement {
         private void button13_Click(object sender, EventArgs e) { //지출 < 클릭
             power = false;
             if (e_week.Checked == true) {
-                expend_date1.Value = expend_date1.Value.AddDays(-7);
-                expend_date2.Value = expend_date2.Value.AddDays(-7);
+                add_Days(-7);
             }
             else if (e_month.Checked == true) {
-                expend_date1.Value = set_firstday(expend_date1.Value.AddMonths(-1));
-                expend_date2.Value = set_lastday(expend_date2.Value.AddMonths(-1));
+                add_Month(-1);
             }
             power = true;
+            between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
             between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
@@ -240,14 +261,13 @@ namespace FinanceManagement {
         private void button12_Click(object sender, EventArgs e) { //지출 > 클릭
             power = false;
             if (e_week.Checked == true) {
-                expend_date1.Value = expend_date1.Value.AddDays(7);
-                expend_date2.Value = expend_date2.Value.AddDays(7);
+                add_Days(7);
             }
             else if (e_month.Checked == true) {
-                expend_date1.Value = set_firstday(expend_date1.Value.AddMonths(1));
-                expend_date2.Value = set_lastday(expend_date2.Value.AddMonths(1));
+                add_Month(1);
             }
             power = true;
+            between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
             between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
@@ -255,28 +275,32 @@ namespace FinanceManagement {
         private void button11_Click(object sender, EventArgs e) { //지출 >> 클릭
             power = false;
             if (e_week.Checked == true) {
-                expend_date1.Value = expend_date1.Value.AddDays(21);
-                expend_date2.Value = expend_date2.Value.AddDays(21);
+                add_Days(21);
             }
             else if (e_month.Checked == true) {
-                expend_date1.Value = set_firstday(expend_date1.Value.AddMonths(3));
-                expend_date2.Value = set_lastday(expend_date2.Value.AddMonths(3));
+                add_Month(3);
             }
             power = true;
+            between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
             between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             numberofsearch();
         }
 
         private void expend_date1_ValueChanged(object sender, EventArgs e) { //지출_날짜 강제변경
             if (power == true) {
-                if (i_week.Checked == true) {
+                if (e_week.Checked == true) {
+                    income_date1.Value = set_Sunday(expend_date1.Value);
+                    income_date2.Value = expend_date1.Value.AddDays(6);
                     expend_date1.Value = set_Sunday(expend_date1.Value);
                     expend_date2.Value = expend_date1.Value.AddDays(6);
                 }
-                else if (i_month.Checked == true) {
+                else if (e_month.Checked == true) {
+                    income_date1.Value = set_firstday(expend_date1.Value);
+                    income_date2.Value = set_lastday(expend_date1.Value);
                     expend_date1.Value = set_firstday(expend_date1.Value);
                     expend_date2.Value = set_lastday(expend_date1.Value);
                 }
+                between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
                 between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
                 numberofsearch();
             }
@@ -287,12 +311,17 @@ namespace FinanceManagement {
                 if (i_week.Checked == true) {
                     income_date1.Value = set_Sunday(income_date1.Value);
                     income_date2.Value = income_date1.Value.AddDays(6);
+                    expend_date1.Value = set_Sunday(income_date1.Value);
+                    expend_date2.Value = income_date1.Value.AddDays(6);
                 }
                 else if (i_month.Checked == true) {
                     income_date1.Value = set_firstday(income_date1.Value);
                     income_date2.Value = set_lastday(income_date1.Value);
+                    expend_date1.Value = set_firstday(income_date1.Value);
+                    expend_date2.Value = set_lastday(income_date1.Value);
                 }
                 between_date(income_date1.Value, income_date2.Value, ds1, dataGridView1);
+                between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
                 numberofsearch();
             }
         }
