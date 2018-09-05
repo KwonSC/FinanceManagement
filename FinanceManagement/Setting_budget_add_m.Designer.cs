@@ -27,11 +27,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.order = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.name = new System.Windows.Forms.TextBox();
+            this.name_text = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.budget = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.etc = new System.Windows.Forms.TextBox();
+            this.etcAdd = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -72,12 +72,12 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "순서";
             // 
-            // name
+            // name_text
             // 
-            this.name.Location = new System.Drawing.Point(82, 39);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(192, 25);
-            this.name.TabIndex = 7;
+            this.name_text.Location = new System.Drawing.Point(82, 39);
+            this.name_text.Name = "name_text";
+            this.name_text.Size = new System.Drawing.Size(192, 25);
+            this.name_text.TabIndex = 7;
             // 
             // label1
             // 
@@ -105,12 +105,12 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "예산액";
             // 
-            // etc
+            // etcAdd
             // 
-            this.etc.Location = new System.Drawing.Point(82, 101);
-            this.etc.Name = "etc";
-            this.etc.Size = new System.Drawing.Size(332, 25);
-            this.etc.TabIndex = 15;
+            this.etcAdd.Location = new System.Drawing.Point(82, 101);
+            this.etcAdd.Name = "etcAdd";
+            this.etcAdd.Size = new System.Drawing.Size(332, 25);
+            this.etcAdd.TabIndex = 15;
             // 
             // label4
             // 
@@ -126,7 +126,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 216);
-            this.Controls.Add(this.etc);
+            this.Controls.Add(this.etcAdd);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.budget);
             this.Controls.Add(this.label3);
@@ -134,7 +134,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.order);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.name);
+            this.Controls.Add(this.name_text);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -151,11 +151,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox order;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox name_text;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox budget;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox etc;
+        private System.Windows.Forms.TextBox etcAdd;
         private System.Windows.Forms.Label label4;
     }
 }

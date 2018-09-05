@@ -132,6 +132,7 @@
             this.목data.RowTemplate.Height = 27;
             this.목data.Size = new System.Drawing.Size(508, 388);
             this.목data.TabIndex = 8;
+            this.목data.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.목data_CellClick);
             // 
             // button3
             // 
