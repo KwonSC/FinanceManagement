@@ -283,10 +283,11 @@
             // 
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(60, 68);
+            this.comboBox3.Location = new System.Drawing.Point(60, 64);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(119, 20);
             this.comboBox3.TabIndex = 29;
+            this.comboBox3.TextChanged += new System.EventHandler(this.comboBox3_TextChanged);
             // 
             // comboBox2
             // 
@@ -333,10 +334,11 @@
             // 
             this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(60, 68);
+            this.comboBox6.Location = new System.Drawing.Point(60, 64);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(119, 20);
             this.comboBox6.TabIndex = 28;
+            this.comboBox6.TextChanged += new System.EventHandler(this.comboBox6_TextChanged);
             // 
             // comboBox5
             // 
