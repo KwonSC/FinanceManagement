@@ -389,6 +389,16 @@ namespace FinanceManagement {
             }
             conn.Close();
         }
+        public void altOrder(String sortName, int currentNumber, int newNumber, int MGCode, int MHCode) { // 순서 최신화
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+
+            connCmd.CommandText = "UPDATE 수입항 SET 순서 = " + newNumber + " where 순서 = " + currentNumber + "AND 목관코드 = " + MGCode + " AND 목항코드 = " + MHCode;
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public void altName(string sortName, string currentName, string newName) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
@@ -411,12 +421,12 @@ namespace FinanceManagement {
             connCmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void addM(String name, long budget, String etc, int order) {
+        public void addM(int code, int mgCode, int mhCode, string name, int order, Int64 budget, String etc) {
             conn.ConnectionString = this.strDBConnection();
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "INSERT INTO 수입목(목코드, 목, 예산액, 예산비고, 순서) VALUES('1', '" + name + "', '" + budget + "', '" + etc + "', '" + order + "')";
+            connCmd.CommandText = "INSERT INTO 수입목(목코드, 목, 예산액, 예산비고, 순서, 목관코드, 목항코드) VALUES(" + code + ", '" + name + "', '" + budget + "', '" + etc + "', '" + order + "', '" + mgCode + "', '" + mhCode + "')";
             connCmd.ExecuteNonQuery();
             conn.Close();
         }

@@ -23,10 +23,11 @@ namespace FinanceManagement {
         private DataSet dsM;
         private DataGridViewCellEventArgs k = null;
         private DataGridViewCellEventArgs h = null;
+        private DataGridViewCellEventArgs m = null;
         private string connStr;
         private string sql1 = "SELECT 관코드, 관, 순서 FROM 수입관";
         private string sql2 = "SELECT 항코드, 항, 순서, 항관코드 FROM 수입항";
-        private string sql3 = "SELECT 목,예산액,예산비고 FROM 수입목";
+        private string sql3 = "SELECT 목코드, 목, 예산액, 예산비고, 순서, 목관코드, 목항코드 FROM 수입목";
         private int g_CodeNumber;
         private int h_CodeNumber;
         private int m_CodeNumber;
@@ -62,7 +63,7 @@ namespace FinanceManagement {
             public cellContent(string anName, int number, int anOrder) {
                 cellName = anName;
                 cellCount = number;
-                cellOrder = anOrder;
+                cellOrder = anOrder; // 수정할 때 필요
             }
         }
         public void setClickArgs(int row) {
@@ -121,17 +122,19 @@ namespace FinanceManagement {
             adp3.Fill(dsM);
             관data.DataSource = dsG.Tables[0];
             항data.DataSource = dsH.Tables[0];
-            목data.DataSource = dsM.Tables[0];       
+            목data.DataSource = null;
+            목data.DataSource = dsM.Tables[0];
+
 
             this.관data.Sort(this.관data.Columns[2], ListSortDirection.Ascending);
             /*this.관data.Columns[0].Visible = false;
             this.관data.Columns[2].Visible = false;*/
             this.항data.Sort(this.항data.Columns[2], ListSortDirection.Ascending);
+            this.목data.Sort(this.목data.Columns[4], ListSortDirection.Ascending);
         }
 
         public void initCell(string function) {
             // 관코드 설정
-
             try {
                 this.g_CodeNumber = int.Parse(this.관data.Rows[this.관data.RowCount - 1].Cells[0].Value.ToString()) + 1;
             }
@@ -144,7 +147,7 @@ namespace FinanceManagement {
                 this.항data.Sort(this.항data.Columns[0], ListSortDirection.Ascending);
 
                 String hCodeNumber = this.항data.Rows[this.항data.RowCount - 1].Cells[0].Value.ToString();
-                this.h_CodeNumber = int.Parse(this.항data.Rows[this.항data.RowCount - 1].Cells[0].Value.ToString()) + 1;
+                this.h_CodeNumber = int.Parse(hCodeNumber) + 1;
 
                 this.항data.Sort(this.항data.Columns[2], ListSortDirection.Ascending);
             }
@@ -152,6 +155,20 @@ namespace FinanceManagement {
                 this.h_CodeNumber = 1;
                 MessageBox.Show("(항) 셀 없음");
             }
+            // 목코드 설정
+            try {
+                this.목data.Sort(this.목data.Columns[0], ListSortDirection.Ascending);
+
+                String mCodeNumber = this.목data.Rows[this.목data.RowCount - 1].Cells[0].Value.ToString();
+                this.m_CodeNumber = int.Parse(mCodeNumber) + 1;
+
+                this.목data.Sort(this.목data.Columns[4], ListSortDirection.Ascending);
+            }
+            catch {
+                this.m_CodeNumber = 1;
+                MessageBox.Show("(목) 셀 없음");
+            }
+
 
             if (k == null && h == null) { // 처음 창 열었을 때
                 try { // 자료가 있을 때
@@ -170,8 +187,8 @@ namespace FinanceManagement {
                         this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
                     }
                     else {
-                        this.관data_CellClick(항data, this._args);
-                        this.관data.Rows[this._args.RowIndex].Cells[1].Selected = true;
+                        this.관data_CellClick(항data, this.clickArgs());
+                        this.관data.Rows[this.clickArgs().RowIndex].Cells[1].Selected = true;
                     }
                 }
                 else if (function == "관 수정") {
@@ -195,16 +212,18 @@ namespace FinanceManagement {
                     }
                 }
                 else if (function == "항 추가" || function == "마지막 항 추가") {
-                    if (function == "마지막 항 추가") {
-                        var args = new DataGridViewCellEventArgs(1, this.항data.RowCount - 1);
+                        this.관data_CellClick(관data, k);
+                        this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+
+                        int rowcount = 0;
+                        foreach (DataGridViewRow row in this.항data.Rows) {
+                            if (this.h_CodeNumber == (int.Parse(row.Cells[0].Value.ToString()) + 1)) {
+                                rowcount = row.Index;
+                            }
+                        }
+                        var args = new DataGridViewCellEventArgs(1, rowcount);
                         this.항data_CellClick(항data, args);
                         this.항data.Rows[args.RowIndex].Cells[1].Selected = true;
-                    }
-                    this.관data_CellClick(관data, k);
-                    this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
-
-                    this.항data_CellClick(항data, h);
-                    this.항data.Rows[h.RowIndex].Cells[1].Selected = true;
                 }
                 else if (function == "항 수정") {
                     this.관data_CellClick(관data, k);
@@ -215,7 +234,7 @@ namespace FinanceManagement {
                 }
                 else if (function == "항 삭제") {
 
-                    if (this.sameGNumber() > this.h_clickOrder()) { // 삭제하여 밑에 있는 셀이 올라올 때
+                    if (this.sameGNumber() >= this.h_clickOrder()) { // 삭제하여 밑에 있는 셀이 올라올 때
                         DataGridViewCellEventArgs hh = h;
 
                         this.관data_CellClick(관data, k);
@@ -228,12 +247,14 @@ namespace FinanceManagement {
                     }
                     else {
                         try { // 제일 밑에 있는 셀을 삭제했을 때
-                            var args = new DataGridViewCellEventArgs(1, this.항data.RowCount - 1);
-                            this.항data_CellClick(항data, k);
-                            this.관data.Rows[this.관data.RowCount - 1].Cells[1].Selected = true;
+                            this.관data_CellClick(관data, k);
+                            this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+
+                            this.항data_CellClick(항data, this.delHangPreOrder());
+                            this.항data.Rows[this.delHangPreOrder().RowIndex].Selected = true;
                         }
                         catch { // 모두 삭제됐을 때
-                            k = null;
+                            h = null;
                         }
                     }
                 }
@@ -245,15 +266,8 @@ namespace FinanceManagement {
         public void orderSort(String sortName, int codeCount, int order, int currentOrder) {
             int number = codeCount - 1; // 실제로 배열에 들어가는 숫자
 
-            if (sortName == "관 추가") {
+            if (sortName == "관 추가" || sortName == "항 추가" || sortName == "목 추가") {
                 this.orderPlus(sortName, number, order);
-            }
-            else if (sortName == "항 추가") {
-                foreach (DataGridViewRow row in this.항data.Rows) {
-                    if (row.Cells[3].Value.ToString() == this.관data.Rows[k.RowIndex].Cells[0].Value.ToString()) {
-                        this.orderPlus(sortName, number, order);
-                    }
-                }
             }
             else if (sortName == "관 수정" || sortName == "항 수정") {
                 if (order < currentOrder) { // 바꾸는 셀의 우선순위를 먼저 0으로 설정 한 후에 1씩 증가 시키고, 0의 셀을 올바른 순서에 입력
@@ -279,9 +293,17 @@ namespace FinanceManagement {
         }
 
         private void orderPlus(string name, int number, int order) {
-            while (number >= order) {
-                currentDB.altOrder(name, number, number + 1, this.HGNumber());
-                number--;
+            if (name == "목 추가") {
+                while (number >= order) {
+                    currentDB.altOrder(name, number, number + 1, this.MGNumber(), this.MHNumber());
+                    number--;
+                }
+            }
+            else {
+                while (number >= order) {
+                    currentDB.altOrder(name, number, number + 1, this.HGNumber());
+                    number--;
+                }
             }
         }
         // currentNumber, newNumber
@@ -294,6 +316,12 @@ namespace FinanceManagement {
 
         private int HGNumber() {
             return (int.Parse(this.항data.Rows[k.RowIndex].Cells[3].Value.ToString()));
+        }
+        private int MGNumber() {
+            return (int.Parse(this.목data.Rows[k.RowIndex].Cells[3].Value.ToString()));
+        }
+        private int MHNumber() {
+            return (int.Parse(this.항data.Rows[h.RowIndex].Cells[3].Value.ToString()));
         }
 
         public bool dupName(string sortName, string name) {
@@ -329,8 +357,22 @@ namespace FinanceManagement {
                     }
                 }
             }
-            else {
+            else { // 목 추가, 목 수정
+                foreach (DataGridViewRow row in this.목data.Rows) {
+                    /* 수정할 때 다시 보자
+                    if (sortName == "목 수정" && row.Cells[0].Value.ToString() == this.항data.Rows[h.RowIndex].Cells[0].Value.ToString())
+                        continue;
+                        */
+                    if (name == row.Cells[1].Value.ToString()) {
+                        if ((row.Cells[5].Value.ToString() != this.관data.Rows[k.RowIndex].Cells[0].Value.ToString()) || (row.Cells[6].Value.ToString() != this.항data.Rows[h.RowIndex].Cells[0].Value.ToString()))
+                            continue;
 
+                        duplicated = true;
+
+                        if (duplicated)
+                            break;
+                    }
+                }
             }
 
             return duplicated;
@@ -350,32 +392,36 @@ namespace FinanceManagement {
 
         private void button8_Click(object sender, EventArgs e) {
             String name = "항 추가";
+            int cellCount = 0;
+            int gCode = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
 
-            if (k == null) {
-                MessageBox.Show("지정된 자료가 없습니다.", "오류");
-            }
-            else {
-                int cellCount = 0;
-                int gCode = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
-
-                foreach (DataGridViewRow row in this.항data.Rows) {
-                    if (int.Parse(row.Cells[3].Value.ToString()) == gCode) {
+            foreach (DataGridViewRow row in this.항data.Rows) {
+                if (int.Parse(row.Cells[3].Value.ToString()) == gCode) {
                         cellCount++;
-                    }
                 }
+             }
+             cellContent gCell = new cellContent("", cellCount, 0);
 
-                cellContent gCell = new cellContent("", cellCount, 0);
-
-                Setting_budget_add addForm = new Setting_budget_add(h_CodeNumber, gCode, gCell, name, strPath, this);
-                addForm.StartPosition = FormStartPosition.Manual;
-                addForm.Location = new Point(250, 300);
-                addForm.Show();
+             Setting_budget_add addForm = new Setting_budget_add(h_CodeNumber, gCode, gCell, name, strPath, this);
+             addForm.StartPosition = FormStartPosition.Manual;
+             addForm.Location = new Point(250, 300);
+             addForm.Show();
             }
-        }
 
         private void button11_Click(object sender, EventArgs e) {
             String name = "목 추가";
-            Setting_budget_add_m addForm = new Setting_budget_add_m(m_CodeNumber, name, strPath, this);
+            int cellCount = 0;
+            int gCode = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
+            int hCode = int.Parse(this.항data.Rows[h.RowIndex].Cells[0].Value.ToString());
+
+            foreach (DataGridViewRow row in this.목data.Rows) {
+                if ((int.Parse(row.Cells[5].Value.ToString()) == gCode) && (int.Parse(row.Cells[6].Value.ToString()) == hCode)) {
+                    cellCount++;
+                }
+            }
+            cellContent gCell = new cellContent("", cellCount, 0);
+
+            Setting_budget_add_m addForm = new Setting_budget_add_m(m_CodeNumber, gCode, hCode, gCell, name, strPath, this);
             addForm.StartPosition = FormStartPosition.Manual;
             addForm.Location = new Point(250, 300);
             addForm.Show();
@@ -506,12 +552,54 @@ namespace FinanceManagement {
                 if (e.RowIndex == -1) {
                     continue;
                 }
+                try { // 일반적인 경우
+                    string a = row.Cells[3].Value.ToString();
+                    string b = this.항data.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    if (row.Cells[3].Value.ToString() == this.항data.Rows[e.RowIndex].Cells[3].Value.ToString()) {
+                        number++;
+                    }
+                } // 제일 끝의 항을 삭제하여 e가 없는 경우
+                catch {
 
-                if (row.Cells[3].Value.ToString() == this.항data.Rows[e.RowIndex].Cells[3].Value.ToString()) {
-                    number++;
                 }
             }
             this.setSameGNumber(number);
+
+            int i = 0;
+            int k_codeNumber;
+            int h_codeNumber;
+            try {
+                k_codeNumber = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
+                h_codeNumber = int.Parse(this.항data.Rows[h.RowIndex].Cells[0].Value.ToString());
+
+                foreach (DataGridViewRow row in this.목data.Rows) {
+                    if (int.Parse(row.Cells[5].Value.ToString()) == k_codeNumber && int.Parse(row.Cells[6].Value.ToString()) == h_codeNumber) {
+                        row.Visible = true;
+
+                        if (i == 0) {
+                            var args = new DataGridViewCellEventArgs(1, row.Index);
+                            row.Cells[1].Selected = true;
+                            this.목data_CellClick(관data, args);
+                            i++;
+                        }
+                    }
+                    else {
+                        CurrencyManager cm = (CurrencyManager)BindingContext[this.목data.DataSource];
+                        cm.SuspendBinding();
+                        row.Visible = false;
+                        cm.ResumeBinding();
+                    }
+                }
+                if (i == 0) {
+                    this.m = null;
+                }
+            }
+            catch {
+            }
+        }
+
+        private void 목data_CellClick(object sender, DataGridViewCellEventArgs e) {
+            this.m = e;
         }
     }
 }
