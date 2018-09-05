@@ -26,8 +26,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.Name1 = new System.Windows.Forms.TextBox();
             this.Name2 = new System.Windows.Forms.TextBox();
             this.Sum = new System.Windows.Forms.TextBox();
@@ -43,13 +41,16 @@
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.incomepanel = new System.Windows.Forms.Panel();
-            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.expanel = new System.Windows.Forms.Panel();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.listBox4 = new System.Windows.Forms.ListBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.Sum2 = new System.Windows.Forms.TextBox();
-            this.listBox6 = new System.Windows.Forms.ListBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -103,24 +103,6 @@
             this.button2.Text = "지출";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(60, 68);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 16);
-            this.listBox1.TabIndex = 4;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 12;
-            this.listBox2.Location = new System.Drawing.Point(60, 34);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 16);
-            this.listBox2.TabIndex = 5;
             // 
             // Name1
             // 
@@ -262,15 +244,6 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "관";
             // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 12;
-            this.listBox3.Location = new System.Drawing.Point(60, 3);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 16);
-            this.listBox3.TabIndex = 24;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -282,9 +255,11 @@
             // 
             // incomepanel
             // 
+            this.incomepanel.Controls.Add(this.comboBox3);
+            this.incomepanel.Controls.Add(this.comboBox2);
+            this.incomepanel.Controls.Add(this.comboBox1);
             this.incomepanel.Controls.Add(this.label10);
             this.incomepanel.Controls.Add(this.label9);
-            this.incomepanel.Controls.Add(this.listBox3);
             this.incomepanel.Controls.Add(this.dataGridView1);
             this.incomepanel.Controls.Add(this.button5);
             this.incomepanel.Controls.Add(this.button4);
@@ -299,24 +274,45 @@
             this.incomepanel.Controls.Add(this.Sum);
             this.incomepanel.Controls.Add(this.Name2);
             this.incomepanel.Controls.Add(this.Name1);
-            this.incomepanel.Controls.Add(this.listBox2);
-            this.incomepanel.Controls.Add(this.listBox1);
             this.incomepanel.Location = new System.Drawing.Point(87, 54);
             this.incomepanel.Name = "incomepanel";
             this.incomepanel.Size = new System.Drawing.Size(787, 419);
             this.incomepanel.TabIndex = 27;
             // 
-            // listBox5
+            // comboBox3
             // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.ItemHeight = 12;
-            this.listBox5.Location = new System.Drawing.Point(60, 34);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(120, 16);
-            this.listBox5.TabIndex = 5;
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(60, 68);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(119, 20);
+            this.comboBox3.TabIndex = 29;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(60, 35);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(119, 20);
+            this.comboBox2.TabIndex = 28;
+            this.comboBox2.TextChanged += new System.EventHandler(this.comboBox2_TextChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(60, 6);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(119, 20);
+            this.comboBox1.TabIndex = 27;
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
             // expanel
             // 
+            this.expanel.Controls.Add(this.comboBox6);
+            this.expanel.Controls.Add(this.comboBox5);
+            this.expanel.Controls.Add(this.comboBox4);
             this.expanel.Controls.Add(this.label12);
             this.expanel.Controls.Add(this.dataGridView2);
             this.expanel.Controls.Add(this.button8);
@@ -328,13 +324,39 @@
             this.expanel.Controls.Add(this.label16);
             this.expanel.Controls.Add(this.label17);
             this.expanel.Controls.Add(this.Sum2);
-            this.expanel.Controls.Add(this.listBox6);
-            this.expanel.Controls.Add(this.listBox5);
-            this.expanel.Controls.Add(this.listBox4);
             this.expanel.Location = new System.Drawing.Point(87, 54);
             this.expanel.Name = "expanel";
             this.expanel.Size = new System.Drawing.Size(787, 419);
             this.expanel.TabIndex = 28;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(60, 68);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(119, 20);
+            this.comboBox6.TabIndex = 28;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(60, 35);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(119, 20);
+            this.comboBox5.TabIndex = 27;
+            this.comboBox5.TextChanged += new System.EventHandler(this.comboBox5_TextChanged);
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(60, 6);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(119, 20);
+            this.comboBox4.TabIndex = 26;
+            this.comboBox4.TextChanged += new System.EventHandler(this.comboBox4_TextChanged);
             // 
             // label12
             // 
@@ -344,15 +366,6 @@
             this.label12.Size = new System.Drawing.Size(17, 12);
             this.label12.TabIndex = 25;
             this.label12.Text = "관";
-            // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 12;
-            this.listBox4.Location = new System.Drawing.Point(60, 3);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 16);
-            this.listBox4.TabIndex = 24;
             // 
             // dataGridView2
             // 
@@ -450,15 +463,6 @@
             this.Sum2.TabIndex = 9;
             this.Sum2.TextChanged += new System.EventHandler(this.Sum2_TextChanged);
             this.Sum2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sum2_KeyPress);
-            // 
-            // listBox6
-            // 
-            this.listBox6.FormattingEnabled = true;
-            this.listBox6.ItemHeight = 12;
-            this.listBox6.Location = new System.Drawing.Point(60, 68);
-            this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(120, 16);
-            this.listBox6.TabIndex = 4;
             // 
             // button6
             // 
@@ -687,8 +691,6 @@
         #endregion
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.TextBox Name1;
         private System.Windows.Forms.TextBox Name2;
         private System.Windows.Forms.TextBox Sum;
@@ -704,12 +706,10 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel incomepanel;
         private System.Windows.Forms.Panel expanel;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
@@ -720,8 +720,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox Sum2;
-        private System.Windows.Forms.ListBox listBox5;
-        private System.Windows.Forms.ListBox listBox6;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label11;
@@ -739,5 +737,11 @@
         private System.Windows.Forms.TextBox Now_differ;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox4;
     }
 }

@@ -48,9 +48,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
@@ -93,9 +90,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.listBox5 = new System.Windows.Forms.ListBox();
-            this.listBox6 = new System.Windows.Forms.ListBox();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.radioButton11 = new System.Windows.Forms.RadioButton();
@@ -111,6 +105,12 @@
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.combo4 = new System.Windows.Forms.ComboBox();
+            this.combo5 = new System.Windows.Forms.ComboBox();
+            this.combo6 = new System.Windows.Forms.ComboBox();
+            this.combo1 = new System.Windows.Forms.ComboBox();
+            this.combo2 = new System.Windows.Forms.ComboBox();
+            this.combo3 = new System.Windows.Forms.ComboBox();
             this.income_panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -135,7 +135,6 @@
             this.income_panel.Controls.Add(this.label7);
             this.income_panel.Controls.Add(this.label6);
             this.income_panel.Controls.Add(this.label5);
-            this.income_panel.Controls.Add(this.groupBox2);
             this.income_panel.Controls.Add(this.income_sumofsear);
             this.income_panel.Controls.Add(this.income_numberofsear);
             this.income_panel.Controls.Add(this.label3);
@@ -146,6 +145,7 @@
             this.income_panel.Controls.Add(this.button5);
             this.income_panel.Controls.Add(this.button4);
             this.income_panel.Controls.Add(this.dataGridView1);
+            this.income_panel.Controls.Add(this.groupBox2);
             this.income_panel.Location = new System.Drawing.Point(77, 6);
             this.income_panel.Name = "income_panel";
             this.income_panel.Size = new System.Drawing.Size(1029, 569);
@@ -382,9 +382,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listBox3);
-            this.groupBox2.Controls.Add(this.listBox2);
-            this.groupBox2.Controls.Add(this.listBox1);
+            this.groupBox2.Controls.Add(this.combo3);
+            this.groupBox2.Controls.Add(this.combo2);
+            this.groupBox2.Controls.Add(this.combo1);
             this.groupBox2.Controls.Add(this.radioButton8);
             this.groupBox2.Controls.Add(this.radioButton7);
             this.groupBox2.Controls.Add(this.radioButton6);
@@ -397,37 +397,10 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "검색범위";
             // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 12;
-            this.listBox3.Location = new System.Drawing.Point(47, 86);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(127, 16);
-            this.listBox3.TabIndex = 8;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 12;
-            this.listBox2.Location = new System.Drawing.Point(47, 64);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(127, 16);
-            this.listBox2.TabIndex = 7;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(47, 42);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(127, 16);
-            this.listBox1.TabIndex = 6;
-            // 
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(6, 86);
+            this.radioButton8.Location = new System.Drawing.Point(6, 91);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(35, 16);
             this.radioButton8.TabIndex = 5;
@@ -438,7 +411,7 @@
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(6, 64);
+            this.radioButton7.Location = new System.Drawing.Point(6, 65);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(35, 16);
             this.radioButton7.TabIndex = 4;
@@ -449,7 +422,7 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(6, 42);
+            this.radioButton6.Location = new System.Drawing.Point(6, 39);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(35, 16);
             this.radioButton6.TabIndex = 3;
@@ -620,7 +593,6 @@
             this.expend_panel.Controls.Add(this.label14);
             this.expend_panel.Controls.Add(this.label15);
             this.expend_panel.Controls.Add(this.label16);
-            this.expend_panel.Controls.Add(this.groupBox3);
             this.expend_panel.Controls.Add(this.expend_sumofsear);
             this.expend_panel.Controls.Add(this.expend_numberofsear);
             this.expend_panel.Controls.Add(this.label18);
@@ -631,6 +603,7 @@
             this.expend_panel.Controls.Add(this.button16);
             this.expend_panel.Controls.Add(this.button17);
             this.expend_panel.Controls.Add(this.dataGridView2);
+            this.expend_panel.Controls.Add(this.groupBox3);
             this.expend_panel.Location = new System.Drawing.Point(77, 6);
             this.expend_panel.Name = "expend_panel";
             this.expend_panel.Size = new System.Drawing.Size(1029, 569);
@@ -867,9 +840,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox4);
-            this.groupBox3.Controls.Add(this.listBox5);
-            this.groupBox3.Controls.Add(this.listBox6);
+            this.groupBox3.Controls.Add(this.combo6);
+            this.groupBox3.Controls.Add(this.combo5);
+            this.groupBox3.Controls.Add(this.combo4);
             this.groupBox3.Controls.Add(this.radioButton9);
             this.groupBox3.Controls.Add(this.radioButton10);
             this.groupBox3.Controls.Add(this.radioButton11);
@@ -882,37 +855,10 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "검색범위";
             // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 12;
-            this.listBox4.Location = new System.Drawing.Point(47, 86);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(127, 16);
-            this.listBox4.TabIndex = 8;
-            // 
-            // listBox5
-            // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.ItemHeight = 12;
-            this.listBox5.Location = new System.Drawing.Point(47, 64);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(127, 16);
-            this.listBox5.TabIndex = 7;
-            // 
-            // listBox6
-            // 
-            this.listBox6.FormattingEnabled = true;
-            this.listBox6.ItemHeight = 12;
-            this.listBox6.Location = new System.Drawing.Point(47, 42);
-            this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(127, 16);
-            this.listBox6.TabIndex = 6;
-            // 
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(6, 86);
+            this.radioButton9.Location = new System.Drawing.Point(6, 91);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(35, 16);
             this.radioButton9.TabIndex = 5;
@@ -923,7 +869,7 @@
             // radioButton10
             // 
             this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(6, 64);
+            this.radioButton10.Location = new System.Drawing.Point(6, 65);
             this.radioButton10.Name = "radioButton10";
             this.radioButton10.Size = new System.Drawing.Size(35, 16);
             this.radioButton10.TabIndex = 4;
@@ -934,7 +880,7 @@
             // radioButton11
             // 
             this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(6, 42);
+            this.radioButton11.Location = new System.Drawing.Point(6, 39);
             this.radioButton11.Name = "radioButton11";
             this.radioButton11.Size = new System.Drawing.Size(35, 16);
             this.radioButton11.TabIndex = 3;
@@ -1061,6 +1007,60 @@
             this.dataGridView2.Size = new System.Drawing.Size(1016, 339);
             this.dataGridView2.TabIndex = 0;
             // 
+            // combo4
+            // 
+            this.combo4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo4.FormattingEnabled = true;
+            this.combo4.Location = new System.Drawing.Point(47, 38);
+            this.combo4.Name = "combo4";
+            this.combo4.Size = new System.Drawing.Size(119, 20);
+            this.combo4.TabIndex = 6;
+            // 
+            // combo5
+            // 
+            this.combo5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo5.FormattingEnabled = true;
+            this.combo5.Location = new System.Drawing.Point(47, 64);
+            this.combo5.Name = "combo5";
+            this.combo5.Size = new System.Drawing.Size(119, 20);
+            this.combo5.TabIndex = 7;
+            // 
+            // combo6
+            // 
+            this.combo6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo6.FormattingEnabled = true;
+            this.combo6.Location = new System.Drawing.Point(47, 90);
+            this.combo6.Name = "combo6";
+            this.combo6.Size = new System.Drawing.Size(119, 20);
+            this.combo6.TabIndex = 8;
+            // 
+            // combo1
+            // 
+            this.combo1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo1.FormattingEnabled = true;
+            this.combo1.Location = new System.Drawing.Point(47, 38);
+            this.combo1.Name = "combo1";
+            this.combo1.Size = new System.Drawing.Size(119, 20);
+            this.combo1.TabIndex = 7;
+            // 
+            // combo2
+            // 
+            this.combo2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo2.FormattingEnabled = true;
+            this.combo2.Location = new System.Drawing.Point(47, 64);
+            this.combo2.Name = "combo2";
+            this.combo2.Size = new System.Drawing.Size(119, 20);
+            this.combo2.TabIndex = 8;
+            // 
+            // combo3
+            // 
+            this.combo3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo3.FormattingEnabled = true;
+            this.combo3.Location = new System.Drawing.Point(47, 90);
+            this.combo3.Name = "combo3";
+            this.combo3.Size = new System.Drawing.Size(119, 20);
+            this.combo3.TabIndex = 9;
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1112,9 +1112,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton6;
@@ -1154,9 +1151,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.ListBox listBox5;
-        private System.Windows.Forms.ListBox listBox6;
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.RadioButton radioButton10;
         private System.Windows.Forms.RadioButton radioButton11;
@@ -1183,5 +1177,11 @@
         private System.Windows.Forms.RadioButton e_want;
         private System.Windows.Forms.RadioButton e_month;
         private System.Windows.Forms.RadioButton e_week;
+        private System.Windows.Forms.ComboBox combo3;
+        private System.Windows.Forms.ComboBox combo2;
+        private System.Windows.Forms.ComboBox combo1;
+        private System.Windows.Forms.ComboBox combo6;
+        private System.Windows.Forms.ComboBox combo5;
+        private System.Windows.Forms.ComboBox combo4;
     }
 }
