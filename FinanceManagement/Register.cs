@@ -21,6 +21,13 @@ namespace FinanceManagement {
         string sql2 = "SELECT * FROM 지출";
         string igwan = "수입관";
         string egwan = "지출관";
+        string ihang = "수입항";
+        string ehang = "지출항";
+        string imok = "수입목";
+        string emok = "지출목";
+        string hgcode = "항관코드";
+        string mgcode = "목관코드";
+        string mhcode = "목항코드";
         OleDbConnection conn;
         string connStr;
         DataGridViewCellEventArgs k_i = null;
@@ -77,7 +84,35 @@ namespace FinanceManagement {
             yesterday.Text = dbhand.yesterday_sum(today_date.AddDays(-1)).ToString(); //이월금액
         }
 
+        private void comboBox2_TextChanged(object sender, EventArgs e) {
 
+        }
+
+        private void comboBox5_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e) { //수입_관선택시(항표시)
+            comboBox2.Items.Clear();
+            int gcode = dbhand.get_gwancode(igwan, comboBox1.Text.ToString());
+            int ihang_count = dbhand.count_row(ihang);
+            for (int i = 1; i <= ihang_count; i++) {
+                if (dbhand.hang(ihang, gcode, i) != "") {
+                    comboBox2.Items.Add(dbhand.hang(ihang, gcode, i));
+                }
+            }
+        }
+        
+        private void comboBox4_TextChanged(object sender, EventArgs e) { //지출_관선택시(항표시)
+            comboBox5.Items.Clear();
+            int gcode = dbhand.get_gwancode(egwan, comboBox4.Text.ToString());
+            int ehang_count = dbhand.count_row(ehang);
+            for (int i = 1; i <= ehang_count; i++) {
+                if (dbhand.hang(ehang, gcode, i) != "") {
+                    comboBox5.Items.Add(dbhand.hang(ehang, gcode, i));
+                }
+            }
+        }
         private void button3_Click(object sender, EventArgs e) { //수입 저장
             DBHandling currentDB = new DBHandling(filepath);
             if (Sum.Text == String.Empty) {
@@ -307,6 +342,5 @@ namespace FinanceManagement {
                 Now_differ.SelectionLength = 0;
             }
         }
-
     }
 }
