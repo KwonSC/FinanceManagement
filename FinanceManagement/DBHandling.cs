@@ -32,6 +32,50 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
 
+        public string mok(string str1, int gcode,int hcode, int i) { //목이름 가져오기
+            string c;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT 목 FROM " + str1 + " WHERE 목관코드 = " + gcode + "AND 목항코드 = " + hcode + " AND 목코드 = " + i;
+            object a = connCmd.ExecuteScalar();
+            if (a != null) {
+                c = a.ToString();
+            }
+            else {
+                c = "";
+            }
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return c;
+        }
+
+        public int get_mokcode(string str1, string str2) { //목코드 검색
+            int x;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT 목코드 FROM " + str1 + " WHERE 목 = '" + str2 + "'";
+            object a = connCmd.ExecuteScalar();
+            int.TryParse(a.ToString(), out x);
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return x;
+        }
+
+        public int get_hangcode(string str1, string str2) { //항코드 검색
+            int x;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT 항코드 FROM " + str1 + " WHERE 항 = '" + str2 + "'";
+            object a = connCmd.ExecuteScalar();
+            int.TryParse(a.ToString(), out x);
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return x;
+        }
+
         public int get_gwancode(string str1, string str2) { //관코드 검색
             int x;
             conn.ConnectionString = this.strDBConnection();

@@ -25,9 +25,6 @@ namespace FinanceManagement {
         string ehang = "지출항";
         string imok = "수입목";
         string emok = "지출목";
-        string hgcode = "항관코드";
-        string mgcode = "목관코드";
-        string mhcode = "목항코드";
         OleDbConnection conn;
         string connStr;
         DataGridViewCellEventArgs k_i = null;
@@ -84,12 +81,28 @@ namespace FinanceManagement {
             yesterday.Text = dbhand.yesterday_sum(today_date.AddDays(-1)).ToString(); //이월금액
         }
 
-        private void comboBox2_TextChanged(object sender, EventArgs e) {
-
+        private void comboBox2_TextChanged(object sender, EventArgs e) { //수입_항선택시(목표시)
+            comboBox3.Items.Clear();
+            int gcode = dbhand.get_gwancode(igwan, comboBox1.Text.ToString());
+            int hcode = dbhand.get_hangcode(ihang, comboBox2.Text.ToString());
+            int imok_count = dbhand.count_row(imok);
+            for (int i = 1; i<= imok_count; i++) {
+                if (dbhand.mok(imok,gcode,hcode,i) != "") {
+                    comboBox3.Items.Add(dbhand.mok(imok, gcode, hcode, i));
+                }
+            }
         }
 
-        private void comboBox5_TextChanged(object sender, EventArgs e) {
-
+        private void comboBox5_TextChanged(object sender, EventArgs e) { //지출_항선택시(목표시)
+            comboBox6.Items.Clear();
+            int gcode = dbhand.get_gwancode(egwan, comboBox3.Text.ToString());
+            int hcode = dbhand.get_hangcode(ehang, comboBox4.Text.ToString());
+            int emok_count = dbhand.count_row(emok);
+            for (int i = 1; i <= emok_count; i++) {
+                if (dbhand.mok(emok, gcode, hcode, i) != "") {
+                    comboBox6.Items.Add(dbhand.mok(emok, gcode, hcode, i));
+                }
+            }
         }
 
         private void comboBox1_TextChanged(object sender, EventArgs e) { //수입_관선택시(항표시)
