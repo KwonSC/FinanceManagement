@@ -32,7 +32,17 @@ namespace FinanceManagement {
             return this._strDBConnection;
         }
 
-
+        public string gwan(string str1, int i) { //관이름 가져오기
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT 관 FROM "+str1+" WHERE 관코드 = "+i;
+            object a = connCmd.ExecuteScalar();
+            string c = a.ToString();
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return c;
+        }
 
         public int count_row(string str) { //행 개수세기
             int x;
@@ -71,6 +81,7 @@ namespace FinanceManagement {
             conn.Close();
             return z;
         }
+
         public Int64 today_difference(DateTime dt) { //금일 차액
             Int64 x, y, z;
             conn.ConnectionString = this.strDBConnection();

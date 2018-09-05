@@ -37,12 +37,12 @@ namespace FinanceManagement {
             today_date = dateTimePicker1.Value.Date;
             load_data();
             int igwan_count = dbhand.count_row(igwan);
-            for (int i = 0; i < igwan_count; i++) {
-
+            for (int i = 1; i <= igwan_count; i++) {
+                comboBox1.Items.Add(dbhand.gwan(igwan,i));
             }
             int egwan_count = dbhand.count_row(egwan);
-            for (int i = 0; i < egwan_count; i++) {
-
+            for (int i = 1; i <= egwan_count; i++) {
+                comboBox4.Items.Add(dbhand.gwan(egwan, i));
             }
         }
 
