@@ -23,6 +23,12 @@ namespace FinanceManagement {
         string sql_e_2 = "SELECT * FROM 지출항";
         string sql_e_3 = "SELECT * FROM 지출목";
         string sql_e_4 = "SELECT * FROM 지출";
+        string igwan = "수입관";
+        string egwan = "지출관";
+        string ihang = "수입항";
+        string ehang = "지출항";
+        string imok = "수입목";
+        string emok = "지출목";
         Int64 sumi, sume;
         DataSet ds1, ds2;
         DateTime today = DateTime.Today;
@@ -30,10 +36,13 @@ namespace FinanceManagement {
         OleDbConnection conn;
         bool power = true;
         DataView idv,edv;
+        int igcode, ihcode, imcode, egcode, ehcode, emcode;
+        DBHandling dbhand;
 
         public Search(string path) { //생성자
             InitializeComponent();
             filepath = path;
+            dbhand = new DBHandling(filepath);
             load_data();
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[2].Visible = false;
@@ -58,6 +67,14 @@ namespace FinanceManagement {
             i_week.Checked = true;
             e_week.Checked = true;
             numberofsearch();
+            int igwan_count = dbhand.count_row(igwan);
+            for (int i = 1; i <= igwan_count; i++) {
+                combo1.Items.Add(dbhand.gwan(igwan, i));
+            }
+            int egwan_count = dbhand.count_row(egwan);
+            for (int i = 1; i <= egwan_count; i++) {
+                combo4.Items.Add(dbhand.gwan(egwan, i));
+            }
         }
 
         public void load_data() {
@@ -94,6 +111,60 @@ namespace FinanceManagement {
             between_date(expend_date1.Value, expend_date2.Value, ds2, dataGridView2);
             edv = new DataView(ds2.Tables[0]);
             numberofsearch();
+        }
+
+        private void combo1_TextChanged(object sender, EventArgs e) { //수입_관선택
+            combo2.Items.Clear();
+            combo3.Items.Clear();
+            igcode = dbhand.get_gwancode(igwan, combo1.Text.ToString());
+            int ihang_count = dbhand.count_row(ihang);
+            for (int i = 1; i <= ihang_count; i++) {
+                if (dbhand.hang(ihang, igcode, i) != "") {
+                    combo2.Items.Add(dbhand.hang(ihang, igcode, i));
+                }
+            }
+        }
+
+        private void combo2_TextChanged(object sender, EventArgs e) { //수입_항선택
+            combo3.Items.Clear();
+            ihcode = dbhand.get_hangcode(ihang, combo2.Text.ToString());
+            int imok_count = dbhand.count_row(imok);
+            for (int i = 1; i <= imok_count; i++) {
+                if (dbhand.mok(imok, igcode, ihcode, i) != "") {
+                    combo3.Items.Add(dbhand.mok(imok, igcode, ihcode, i));
+                }
+            }
+        }
+
+        private void combo3_TextChanged(object sender, EventArgs e) { //수입_목선택
+            imcode = dbhand.get_mokcode(imok, combo3.Text.ToString());
+        }
+
+        private void combo4_TextChanged(object sender, EventArgs e) { //지출_관선택
+            combo5.Items.Clear();
+            combo6.Items.Clear();
+            egcode = dbhand.get_gwancode(egwan, combo4.Text.ToString());
+            int ehang_count = dbhand.count_row(ehang);
+            for (int i = 1; i <= ehang_count; i++) {
+                if (dbhand.hang(ehang, egcode, i) != "") {
+                    combo5.Items.Add(dbhand.hang(ehang, egcode, i));
+                }
+            }
+        }
+
+        private void combo5_TextChanged(object sender, EventArgs e) { //지출_항선택
+            combo6.Items.Clear();
+            ehcode = dbhand.get_hangcode(ehang, combo4.Text.ToString());
+            int emok_count = dbhand.count_row(emok);
+            for (int i = 1; i <= emok_count; i++) {
+                if (dbhand.mok(emok, egcode, ehcode, i) != "") {
+                    combo6.Items.Add(dbhand.mok(emok, egcode, ehcode, i));
+                }
+            }
+        }
+
+        private void combo6_TextChanged(object sender, EventArgs e) { //지출_목선택
+            emcode = dbhand.get_mokcode(emok, combo6.Text.ToString());
         }
 
         public void numberofsearch() { //검색건수, 합계금액 표시
@@ -481,6 +552,7 @@ namespace FinanceManagement {
                 income_sumofsear.SelectionLength = 0;
             }
         }
+
 
         private void income_carry_TextChanged(object sender, EventArgs e) {
             string lgsText;

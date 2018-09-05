@@ -35,6 +35,7 @@ namespace FinanceManagement {
 
         public Register(string path)  {
             filepath = path;
+            dbhand = new DBHandling(filepath);
             InitializeComponent();
             dateTimePicker1.Value = DateTime.Today;
             today_date = dateTimePicker1.Value.Date;
@@ -52,7 +53,6 @@ namespace FinanceManagement {
         public void load_data() {
             ds = new DataSet();
             ds2 = new DataSet();
-            dbhand = new DBHandling(filepath);
             connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
             conn = new OleDbConnection(connStr);
             adp = new OleDbDataAdapter(sql, conn);
