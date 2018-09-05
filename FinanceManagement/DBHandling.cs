@@ -31,6 +31,22 @@ namespace FinanceManagement {
         private String strDBConnection() {
             return this._strDBConnection;
         }
+
+
+
+        public int count_row(string str) { //행 개수세기
+            int x;
+            conn.ConnectionString = this.strDBConnection();
+            conn.Open();
+            connCmd.Connection = conn;
+            connCmd.CommandText = "SELECT COUNT(*) FROM "+ str;
+            object a = connCmd.ExecuteScalar();
+            int.TryParse(a.ToString(), out x);
+            connCmd.ExecuteNonQuery();
+            conn.Close();
+            return x;
+        }
+
         public Int64 all_difference(DateTime dt) { //총 차액
             Int64 w, x, y, z;
             conn.ConnectionString = this.strDBConnection();

@@ -19,6 +19,8 @@ namespace FinanceManagement {
         DataSet ds2;
         string sql = "SELECT * FROM 수입";
         string sql2 = "SELECT * FROM 지출";
+        string igwan = "수입관";
+        string egwan = "지출관";
         OleDbConnection conn;
         string connStr;
         DataGridViewCellEventArgs k_i = null;
@@ -26,7 +28,7 @@ namespace FinanceManagement {
         int incom_rowcount;
         int expen_rowcount;
         DateTime today_date;
-        
+        DBHandling dbhand;
 
         public Register(string path)  {
             filepath = path;
@@ -34,12 +36,20 @@ namespace FinanceManagement {
             dateTimePicker1.Value = DateTime.Today;
             today_date = dateTimePicker1.Value.Date;
             load_data();
+            int igwan_count = dbhand.count_row(igwan);
+            for (int i = 0; i < igwan_count; i++) {
+
+            }
+            int egwan_count = dbhand.count_row(egwan);
+            for (int i = 0; i < egwan_count; i++) {
+
+            }
         }
 
         public void load_data() {
             ds = new DataSet();
             ds2 = new DataSet();
-            DBHandling dbhand = new DBHandling(filepath);
+            dbhand = new DBHandling(filepath);
             connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
             conn = new OleDbConnection(connStr);
             adp = new OleDbDataAdapter(sql, conn);
