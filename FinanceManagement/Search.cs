@@ -40,6 +40,8 @@ namespace FinanceManagement {
             load_data();
             i_week.Checked = true;
             e_week.Checked = true;
+            i_viewall.Checked = true;
+            e_viewall.Checked = true;
             numberofsearch();
             int igwan_count = dbhand.count_row(igwan);
             for (int i = 1; i <= igwan_count; i++) {
@@ -442,6 +444,7 @@ namespace FinanceManagement {
         }
 
         public DateTime set_Sunday(DateTime dt) { //주간검색_강제일요일 변경
+            rdt = dt;
             if (dt.DayOfWeek == DayOfWeek.Monday) {
                 rdt = dt.AddDays(-1);
             }
@@ -523,6 +526,44 @@ namespace FinanceManagement {
                 income_carry.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
                 income_carry.SelectionStart = income_carry.TextLength;
                 income_carry.SelectionLength = 0;
+            }
+        }
+
+        private void i_viewall_CheckedChanged(object sender, EventArgs e) { //수입_전체보기 값변경
+            if (i_viewall.Checked == true) {
+                i_gwan.Enabled = false;
+                i_hang.Enabled = false;
+                i_mok.Enabled = false;
+                combo1.Enabled = false;
+                combo2.Enabled = false;
+                combo3.Enabled = false;
+            }
+            else {
+                i_gwan.Enabled = true;
+                i_hang.Enabled = true;
+                i_mok.Enabled = true;
+                combo1.Enabled = true;
+                combo2.Enabled = true;
+                combo3.Enabled = true;
+            }
+        }
+
+        private void e_viewall_CheckedChanged(object sender, EventArgs e) { //지출_전체보기 값변경
+            if (e_viewall.Checked == true) {
+                e_gwan.Enabled = false;
+                e_hang.Enabled = false;
+                e_mok.Enabled = false;
+                combo4.Enabled = false;
+                combo5.Enabled = false;
+                combo6.Enabled = false;
+            }
+            else {
+                e_gwan.Enabled = true;
+                e_hang.Enabled = true;
+                e_mok.Enabled = true;
+                combo4.Enabled = true;
+                combo5.Enabled = true;
+                combo6.Enabled = true;
             }
         }
 
