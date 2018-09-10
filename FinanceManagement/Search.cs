@@ -87,6 +87,11 @@ namespace FinanceManagement {
                     combo2.Items.Add(dbhand.hang(ihang, igcode, i));
                 }
             }
+            if (i_gwan.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "관코드 = " + dbhand.get_gwancode(igwan, combo1.Text);
+                dataGridView1.DataSource = dvi;
+            }
         }
 
         private void combo2_TextChanged(object sender, EventArgs e) { //수입_항선택
@@ -98,10 +103,20 @@ namespace FinanceManagement {
                     combo3.Items.Add(dbhand.mok(imok, igcode, ihcode, i));
                 }
             }
+            if (i_hang.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "항코드 = " + dbhand.get_hangcode(ihang, combo2.Text);
+                dataGridView1.DataSource = dvi;
+            }
         }
 
         private void combo3_TextChanged(object sender, EventArgs e) { //수입_목선택
             imcode = dbhand.get_mokcode(imok, combo3.Text.ToString());
+            if (i_mok.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "목코드 = " + dbhand.get_mokcode(imok, combo3.Text);
+                dataGridView1.DataSource = dvi;
+            }
         }
 
         private void combo4_TextChanged(object sender, EventArgs e) { //지출_관선택
@@ -114,6 +129,11 @@ namespace FinanceManagement {
                     combo5.Items.Add(dbhand.hang(ehang, egcode, i));
                 }
             }
+            if (e_gwan.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "관코드 = " + dbhand.get_gwancode(egwan, combo4.Text);
+                dataGridView2.DataSource = dve;
+            }
         }
 
         private void combo5_TextChanged(object sender, EventArgs e) { //지출_항선택
@@ -125,12 +145,69 @@ namespace FinanceManagement {
                     combo6.Items.Add(dbhand.mok(emok, egcode, ehcode, i));
                 }
             }
+            if(e_hang.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "항코드 = " + dbhand.get_hangcode(ehang, combo5.Text);
+                dataGridView2.DataSource = dve;
+            }
         }
 
         private void combo6_TextChanged(object sender, EventArgs e) { //지출_목선택
             emcode = dbhand.get_mokcode(emok, combo6.Text.ToString());
+            if (e_mok.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "목코드 = " + dbhand.get_mokcode(emok, combo6.Text);
+                dataGridView2.DataSource = dve;
+            }
         }
 
+        private void i_gwan_CheckedChanged(object sender, EventArgs e) { //수입_관체크
+            if (combo1.Text != "" && i_gwan.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "관코드 = " + dbhand.get_gwancode(igwan, combo1.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void i_hang_CheckedChanged(object sender, EventArgs e) { //수입_항체크
+            if (combo2.Text != "" && i_hang.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "항코드 = " + dbhand.get_hangcode(ihang, combo2.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void i_mok_CheckedChanged(object sender, EventArgs e) { //수입_목체크
+            if (combo3.Text != "" && i_mok.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "목코드 = " + dbhand.get_mokcode(imok, combo3.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void e_gwan_CheckedChanged(object sender, EventArgs e) { //지출_관체크
+            if (combo4.Text != "" && e_gwan.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "관코드 = " + dbhand.get_gwancode(egwan, combo4.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
+
+        private void e_hang_CheckedChanged(object sender, EventArgs e) { //지출_항체크
+            if (combo5.Text != "" && e_hang.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "항코드 = " + dbhand.get_hangcode(ehang, combo5.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
+
+        private void e_mok_CheckedChanged(object sender, EventArgs e) { //지출_목체크
+            if (combo6.Text != "" && e_mok.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "목코드 = " + dbhand.get_mokcode(emok, combo6.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
         public void numberofsearch() { //검색건수, 합계금액 표시
             sumi = 0;
             sume = 0;

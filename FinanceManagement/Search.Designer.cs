@@ -41,6 +41,8 @@
             this.income_differ = new System.Windows.Forms.TextBox();
             this.income_expend = new System.Windows.Forms.TextBox();
             this.income_income = new System.Windows.Forms.TextBox();
+            this.i_viewall = new System.Windows.Forms.RadioButton();
+            this.i_viewselect = new System.Windows.Forms.RadioButton();
             this.income_carry = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -64,8 +66,6 @@
             this.i_mok = new System.Windows.Forms.RadioButton();
             this.i_hang = new System.Windows.Forms.RadioButton();
             this.i_gwan = new System.Windows.Forms.RadioButton();
-            this.i_viewselect = new System.Windows.Forms.RadioButton();
-            this.i_viewall = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -86,7 +86,9 @@
             this.expend_differ = new System.Windows.Forms.TextBox();
             this.expend_expend = new System.Windows.Forms.TextBox();
             this.expend_income = new System.Windows.Forms.TextBox();
+            this.e_viewselect = new System.Windows.Forms.RadioButton();
             this.expend_carry = new System.Windows.Forms.TextBox();
+            this.e_viewall = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -109,8 +111,6 @@
             this.e_mok = new System.Windows.Forms.RadioButton();
             this.e_hang = new System.Windows.Forms.RadioButton();
             this.e_gwan = new System.Windows.Forms.RadioButton();
-            this.e_viewselect = new System.Windows.Forms.RadioButton();
-            this.e_viewall = new System.Windows.Forms.RadioButton();
             this.income_panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -326,6 +326,29 @@
             this.income_income.TabIndex = 18;
             this.income_income.TextChanged += new System.EventHandler(this.income_income_TextChanged);
             // 
+            // i_viewall
+            // 
+            this.i_viewall.AutoSize = true;
+            this.i_viewall.Location = new System.Drawing.Point(307, 438);
+            this.i_viewall.Name = "i_viewall";
+            this.i_viewall.Size = new System.Drawing.Size(71, 16);
+            this.i_viewall.TabIndex = 1;
+            this.i_viewall.TabStop = true;
+            this.i_viewall.Text = "전체보기";
+            this.i_viewall.UseVisualStyleBackColor = true;
+            this.i_viewall.CheckedChanged += new System.EventHandler(this.i_viewall_CheckedChanged);
+            // 
+            // i_viewselect
+            // 
+            this.i_viewselect.AutoSize = true;
+            this.i_viewselect.Location = new System.Drawing.Point(403, 438);
+            this.i_viewselect.Name = "i_viewselect";
+            this.i_viewselect.Size = new System.Drawing.Size(127, 16);
+            this.i_viewselect.TabIndex = 2;
+            this.i_viewselect.TabStop = true;
+            this.i_viewselect.Text = "선택한 계정만 보기";
+            this.i_viewselect.UseVisualStyleBackColor = true;
+            // 
             // income_carry
             // 
             this.income_carry.BackColor = System.Drawing.Color.LightGray;
@@ -534,6 +557,7 @@
             this.i_mok.TabStop = true;
             this.i_mok.Text = "목";
             this.i_mok.UseVisualStyleBackColor = true;
+            this.i_mok.CheckedChanged += new System.EventHandler(this.i_mok_CheckedChanged);
             // 
             // i_hang
             // 
@@ -545,6 +569,7 @@
             this.i_hang.TabStop = true;
             this.i_hang.Text = "항";
             this.i_hang.UseVisualStyleBackColor = true;
+            this.i_hang.CheckedChanged += new System.EventHandler(this.i_hang_CheckedChanged);
             // 
             // i_gwan
             // 
@@ -556,29 +581,7 @@
             this.i_gwan.TabStop = true;
             this.i_gwan.Text = "관";
             this.i_gwan.UseVisualStyleBackColor = true;
-            // 
-            // i_viewselect
-            // 
-            this.i_viewselect.AutoSize = true;
-            this.i_viewselect.Location = new System.Drawing.Point(403, 438);
-            this.i_viewselect.Name = "i_viewselect";
-            this.i_viewselect.Size = new System.Drawing.Size(127, 16);
-            this.i_viewselect.TabIndex = 2;
-            this.i_viewselect.TabStop = true;
-            this.i_viewselect.Text = "선택한 계정만 보기";
-            this.i_viewselect.UseVisualStyleBackColor = true;
-            // 
-            // i_viewall
-            // 
-            this.i_viewall.AutoSize = true;
-            this.i_viewall.Location = new System.Drawing.Point(307, 438);
-            this.i_viewall.Name = "i_viewall";
-            this.i_viewall.Size = new System.Drawing.Size(71, 16);
-            this.i_viewall.TabIndex = 1;
-            this.i_viewall.TabStop = true;
-            this.i_viewall.Text = "전체보기";
-            this.i_viewall.UseVisualStyleBackColor = true;
-            this.i_viewall.CheckedChanged += new System.EventHandler(this.i_viewall_CheckedChanged);
+            this.i_gwan.CheckedChanged += new System.EventHandler(this.i_gwan_CheckedChanged);
             // 
             // button1
             // 
@@ -815,6 +818,17 @@
             this.expend_income.TabIndex = 18;
             this.expend_income.TextChanged += new System.EventHandler(this.expend_income_TextChanged);
             // 
+            // e_viewselect
+            // 
+            this.e_viewselect.AutoSize = true;
+            this.e_viewselect.Location = new System.Drawing.Point(403, 438);
+            this.e_viewselect.Name = "e_viewselect";
+            this.e_viewselect.Size = new System.Drawing.Size(127, 16);
+            this.e_viewselect.TabIndex = 2;
+            this.e_viewselect.TabStop = true;
+            this.e_viewselect.Text = "선택한 계정만 보기";
+            this.e_viewselect.UseVisualStyleBackColor = true;
+            // 
             // expend_carry
             // 
             this.expend_carry.BackColor = System.Drawing.Color.LightGray;
@@ -825,6 +839,18 @@
             this.expend_carry.Size = new System.Drawing.Size(108, 21);
             this.expend_carry.TabIndex = 17;
             this.expend_carry.TextChanged += new System.EventHandler(this.expend_carry_TextChanged);
+            // 
+            // e_viewall
+            // 
+            this.e_viewall.AutoSize = true;
+            this.e_viewall.Location = new System.Drawing.Point(307, 438);
+            this.e_viewall.Name = "e_viewall";
+            this.e_viewall.Size = new System.Drawing.Size(71, 16);
+            this.e_viewall.TabIndex = 1;
+            this.e_viewall.TabStop = true;
+            this.e_viewall.Text = "전체보기";
+            this.e_viewall.UseVisualStyleBackColor = true;
+            this.e_viewall.CheckedChanged += new System.EventHandler(this.e_viewall_CheckedChanged);
             // 
             // label12
             // 
@@ -1023,6 +1049,7 @@
             this.e_mok.TabStop = true;
             this.e_mok.Text = "목";
             this.e_mok.UseVisualStyleBackColor = true;
+            this.e_mok.CheckedChanged += new System.EventHandler(this.e_mok_CheckedChanged);
             // 
             // e_hang
             // 
@@ -1034,6 +1061,7 @@
             this.e_hang.TabStop = true;
             this.e_hang.Text = "항";
             this.e_hang.UseVisualStyleBackColor = true;
+            this.e_hang.CheckedChanged += new System.EventHandler(this.e_hang_CheckedChanged);
             // 
             // e_gwan
             // 
@@ -1045,29 +1073,7 @@
             this.e_gwan.TabStop = true;
             this.e_gwan.Text = "관";
             this.e_gwan.UseVisualStyleBackColor = true;
-            // 
-            // e_viewselect
-            // 
-            this.e_viewselect.AutoSize = true;
-            this.e_viewselect.Location = new System.Drawing.Point(403, 438);
-            this.e_viewselect.Name = "e_viewselect";
-            this.e_viewselect.Size = new System.Drawing.Size(127, 16);
-            this.e_viewselect.TabIndex = 2;
-            this.e_viewselect.TabStop = true;
-            this.e_viewselect.Text = "선택한 계정만 보기";
-            this.e_viewselect.UseVisualStyleBackColor = true;
-            // 
-            // e_viewall
-            // 
-            this.e_viewall.AutoSize = true;
-            this.e_viewall.Location = new System.Drawing.Point(307, 438);
-            this.e_viewall.Name = "e_viewall";
-            this.e_viewall.Size = new System.Drawing.Size(71, 16);
-            this.e_viewall.TabIndex = 1;
-            this.e_viewall.TabStop = true;
-            this.e_viewall.Text = "전체보기";
-            this.e_viewall.UseVisualStyleBackColor = true;
-            this.e_viewall.CheckedChanged += new System.EventHandler(this.e_viewall_CheckedChanged);
+            this.e_gwan.CheckedChanged += new System.EventHandler(this.e_gwan_CheckedChanged);
             // 
             // Search
             // 
