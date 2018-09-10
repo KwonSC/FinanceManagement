@@ -340,7 +340,7 @@ namespace FinanceManagement {
                 connCmd.ExecuteNonQuery();
             }
             else if (sortName == "항 추가" || sortName == "항 수정" || sortName == "항 삭제") {
-                connCmd.CommandText = "UPDATE 수입항 SET 순서 = " + newNumber + " where 순서 = " + currentNumber + "AND 항관코드 = " + HGCode;
+                connCmd.CommandText = "UPDATE 수입항 SET 순서 = " + newNumber + " where 순서 = " + currentNumber + " AND 항관코드 = " + HGCode;
                 connCmd.ExecuteNonQuery();
             }
             conn.Close();
@@ -350,7 +350,7 @@ namespace FinanceManagement {
             conn.Open();
             connCmd.Connection = conn;
 
-            connCmd.CommandText = "UPDATE 수입항 SET 순서 = " + newNumber + " where 순서 = " + currentNumber + "AND 목관코드 = " + MGCode + " AND 목항코드 = " + MHCode;
+            connCmd.CommandText = "UPDATE 수입목 SET 순서 = " + newNumber + " where 순서 = " + currentNumber + " AND 목관코드 = " + MGCode + " AND 목항코드 = " + MHCode;
             connCmd.ExecuteNonQuery();
             conn.Close();
         }

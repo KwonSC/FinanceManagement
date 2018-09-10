@@ -35,6 +35,7 @@ namespace FinanceManagement {
         private int _sameGNumber;
         DataGridViewCellEventArgs _args;
         private int h_order;
+        static DataGridViewCellEventArgs zeroArgs = new DataGridViewCellEventArgs(-1, 0);
 
 
         public Setting_budget(String path) {
@@ -93,10 +94,10 @@ namespace FinanceManagement {
             }
             return null;
         }
-        public DataGridViewCellEventArgs delHangPreOrder() {
+        public DataGridViewCellEventArgs delHangPreOrder(int preNumber) {
             foreach (DataGridViewRow row in this.항data.Rows) {
                 int hgCode = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
-                int order = this.h_clickOrder() - 1;
+                int order = preNumber;
 
                 if (int.Parse(row.Cells[3].Value.ToString()) == hgCode) {
                     if (order == int.Parse(row.Cells[2].Value.ToString())) {
@@ -185,6 +186,7 @@ namespace FinanceManagement {
                         var args = new DataGridViewCellEventArgs(1, this.관data.RowCount - 1);
                         this.관data_CellClick(항data, args);
                         this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+                        this.항data_CellClick(항data, null);
                     }
                     else {
                         this.관data_CellClick(항data, this.clickArgs());
@@ -234,7 +236,8 @@ namespace FinanceManagement {
                 }
                 else if (function == "항 삭제") {
 
-                    if (this.sameGNumber() >= this.h_clickOrder()) { // 삭제하여 밑에 있는 셀이 올라올 때
+                    int deleteOrder = int.Parse(this.항data.Rows[h.RowIndex-1].Cells[2].Value.ToString()); // 이미 삭제 된 상태임
+                    if (this.sameGNumber() > deleteOrder + 1) { // 삭제하여 밑에 있는 셀이 올라올 때
                         DataGridViewCellEventArgs hh = h;
 
                         this.관data_CellClick(관data, k);
@@ -250,13 +253,33 @@ namespace FinanceManagement {
                             this.관data_CellClick(관data, k);
                             this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
 
-                            this.항data_CellClick(항data, this.delHangPreOrder());
-                            this.항data.Rows[this.delHangPreOrder().RowIndex].Selected = true;
+                            this.항data_CellClick(항data, this.delHangPreOrder(deleteOrder));
+                            this.항data.Rows[this.delHangPreOrder(deleteOrder).RowIndex].Cells[1].Selected = true;
                         }
                         catch { // 모두 삭제됐을 때
                             h = null;
                         }
                     }
+                }
+                else if (function == "목 추가") {
+                    int rowcount = 0;
+                    DataGridViewCellEventArgs hh = h;
+
+
+                    this.관data_CellClick(관data, k);
+                    this.관data.Rows[k.RowIndex].Cells[1].Selected = true;
+                    this.항data_CellClick(항data, hh);
+                    this.항data.Rows[hh.RowIndex].Cells[1].Selected = true;
+
+                    foreach (DataGridViewRow row in this.목data.Rows) {
+                        if (this.m_CodeNumber == (int.Parse(row.Cells[0].Value.ToString()) + 1)) {
+                            rowcount = row.Index;
+                        }
+                    }
+                    var args = new DataGridViewCellEventArgs(1, rowcount);
+                    this.목data_CellClick(항data, args);
+                    this.목data.Rows[args.RowIndex].Visible = true;
+                    this.목data.Rows[args.RowIndex].Cells[1].Selected = true;
                 }
             }
         }
@@ -315,13 +338,13 @@ namespace FinanceManagement {
         }
 
         private int HGNumber() {
-            return (int.Parse(this.항data.Rows[k.RowIndex].Cells[3].Value.ToString()));
+            return (int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString()));
         }
         private int MGNumber() {
-            return (int.Parse(this.목data.Rows[k.RowIndex].Cells[3].Value.ToString()));
+            return (int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString()));
         }
         private int MHNumber() {
-            return (int.Parse(this.항data.Rows[h.RowIndex].Cells[3].Value.ToString()));
+            return (int.Parse(this.항data.Rows[h.RowIndex].Cells[0].Value.ToString()));
         }
 
         public bool dupName(string sortName, string name) {
@@ -536,6 +559,7 @@ namespace FinanceManagement {
                 }
                 if (i == 0) {
                     this.h = null;
+                    this.항data_CellClick(항data, h);
                 }
             }
             catch {
@@ -547,54 +571,60 @@ namespace FinanceManagement {
             this.h = e;
             int number = 0;
 
-            foreach (DataGridViewRow row in this.항data.Rows) {
+            if (e != null) {
+                foreach (DataGridViewRow row in this.항data.Rows) {
+                    try { // 일반적인 경우
+                        string a = row.Cells[3].Value.ToString();
+                        string b = this.항data.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        if (row.Cells[3].Value.ToString() == this.항data.Rows[e.RowIndex].Cells[3].Value.ToString()) {
+                            number++;
+                        }
+                    } // 제일 끝의 항을 삭제하여 e가 없는 경우
+                    catch {
 
-                if (e.RowIndex == -1) {
-                    continue;
-                }
-                try { // 일반적인 경우
-                    string a = row.Cells[3].Value.ToString();
-                    string b = this.항data.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    if (row.Cells[3].Value.ToString() == this.항data.Rows[e.RowIndex].Cells[3].Value.ToString()) {
-                        number++;
                     }
-                } // 제일 끝의 항을 삭제하여 e가 없는 경우
-                catch {
-
                 }
-            }
-            this.setSameGNumber(number);
+                this.setSameGNumber(number);
 
-            int i = 0;
-            int k_codeNumber;
-            int h_codeNumber;
-            try {
-                k_codeNumber = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
-                h_codeNumber = int.Parse(this.항data.Rows[h.RowIndex].Cells[0].Value.ToString());
+                int i = 0;
+                int k_codeNumber;
+                int h_codeNumber;
+                try {
+                    k_codeNumber = int.Parse(this.관data.Rows[k.RowIndex].Cells[0].Value.ToString());
+                    h_codeNumber = int.Parse(this.항data.Rows[h.RowIndex].Cells[0].Value.ToString());
 
-                foreach (DataGridViewRow row in this.목data.Rows) {
-                    if (int.Parse(row.Cells[5].Value.ToString()) == k_codeNumber && int.Parse(row.Cells[6].Value.ToString()) == h_codeNumber) {
-                        row.Visible = true;
+                    foreach (DataGridViewRow row in this.목data.Rows) {
+                        if (int.Parse(row.Cells[5].Value.ToString()) == k_codeNumber && int.Parse(row.Cells[6].Value.ToString()) == h_codeNumber) {
+                            row.Visible = true;
 
-                        if (i == 0) {
-                            var args = new DataGridViewCellEventArgs(1, row.Index);
-                            row.Cells[1].Selected = true;
-                            this.목data_CellClick(관data, args);
-                            i++;
+                            if (i == 0) {
+                                var args = new DataGridViewCellEventArgs(1, row.Index);
+                                row.Cells[1].Selected = true;
+                                this.목data_CellClick(관data, args);
+                                i++;
+                            }
+                        }
+                        else {
+                            CurrencyManager cm = (CurrencyManager)BindingContext[this.목data.DataSource];
+                            cm.SuspendBinding();
+                            row.Visible = false;
+                            cm.ResumeBinding();
                         }
                     }
-                    else {
-                        CurrencyManager cm = (CurrencyManager)BindingContext[this.목data.DataSource];
-                        cm.SuspendBinding();
-                        row.Visible = false;
-                        cm.ResumeBinding();
+                    if (i == 0) {
+                        this.m = null;
                     }
                 }
-                if (i == 0) {
-                    this.m = null;
+                catch {
                 }
             }
-            catch {
+            else {
+                foreach (DataGridViewRow row in this.목data.Rows) {
+                    CurrencyManager cm = (CurrencyManager)BindingContext[this.목data.DataSource];
+                    cm.SuspendBinding();
+                    row.Visible = false;
+                    cm.ResumeBinding();
+                }
             }
         }
 
