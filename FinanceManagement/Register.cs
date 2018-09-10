@@ -25,15 +25,11 @@ namespace FinanceManagement {
         string ehang = "지출항";
         string imok = "수입목";
         string emok = "지출목";
-        string hgcode = "항관코드";
-        string mgcode = "목관코드";
-        string mhcode = "목항코드";
         OleDbConnection conn;
         string connStr;
         DataGridViewCellEventArgs k_i = null;
         DataGridViewCellEventArgs k_e = null;
-        int incom_rowcount;
-        int expen_rowcount;
+        int incom_rowcount, expen_rowcount,igcode,ihcode,imcode,egcode,ehcode,emcode;
         DateTime today_date;
         DBHandling dbhand;
 
@@ -54,9 +50,9 @@ namespace FinanceManagement {
         }
 
         public void load_data() {
+            dbhand = new DBHandling(filepath);
             ds = new DataSet();
             ds2 = new DataSet();
-            dbhand = new DBHandling(filepath);
             connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
             conn = new OleDbConnection(connStr);
             adp = new OleDbDataAdapter(sql, conn);
@@ -84,32 +80,58 @@ namespace FinanceManagement {
             yesterday.Text = dbhand.yesterday_sum(today_date.AddDays(-1)).ToString(); //이월금액
         }
 
-        private void comboBox2_TextChanged(object sender, EventArgs e) {
 
+        private void comboBox3_TextChanged(object sender, EventArgs e) { //수입_목선택시
+            imcode = dbhand.get_mokcode(imok, comboBox3.Text.ToString());
         }
 
-        private void comboBox5_TextChanged(object sender, EventArgs e) {
 
+        private void comboBox6_TextChanged(object sender, EventArgs e) { //지출_목선택시
+            emcode = dbhand.get_mokcode(emok, comboBox6.Text.ToString());
+        }
+
+        private void comboBox2_TextChanged(object sender, EventArgs e) { //수입_항선택시(목표시)
+            comboBox3.Items.Clear();
+            ihcode = dbhand.get_hangcode(ihang, comboBox2.Text.ToString());
+            int imok_count = dbhand.count_row(imok);
+            for (int i = 1; i<= imok_count; i++) {
+                if (dbhand.mok(imok,igcode,ihcode,i) != "") {
+                    comboBox3.Items.Add(dbhand.mok(imok, igcode, ihcode, i));
+                }
+            }
+        }
+
+        private void comboBox5_TextChanged(object sender, EventArgs e) { //지출_항선택시(목표시)
+            comboBox6.Items.Clear();
+            ehcode = dbhand.get_hangcode(ehang, comboBox4.Text.ToString());
+            int emok_count = dbhand.count_row(emok);
+            for (int i = 1; i <= emok_count; i++) {
+                if (dbhand.mok(emok, egcode, ehcode, i) != "") {
+                    comboBox6.Items.Add(dbhand.mok(emok, egcode, ehcode, i));
+                }
+            }
         }
 
         private void comboBox1_TextChanged(object sender, EventArgs e) { //수입_관선택시(항표시)
             comboBox2.Items.Clear();
-            int gcode = dbhand.get_gwancode(igwan, comboBox1.Text.ToString());
+            comboBox3.Items.Clear();
+            igcode = dbhand.get_gwancode(igwan, comboBox1.Text.ToString());
             int ihang_count = dbhand.count_row(ihang);
             for (int i = 1; i <= ihang_count; i++) {
-                if (dbhand.hang(ihang, gcode, i) != "") {
-                    comboBox2.Items.Add(dbhand.hang(ihang, gcode, i));
+                if (dbhand.hang(ihang, igcode, i) != "") {
+                    comboBox2.Items.Add(dbhand.hang(ihang, igcode, i));
                 }
             }
         }
         
         private void comboBox4_TextChanged(object sender, EventArgs e) { //지출_관선택시(항표시)
             comboBox5.Items.Clear();
-            int gcode = dbhand.get_gwancode(egwan, comboBox4.Text.ToString());
+            comboBox6.Items.Clear();
+            egcode = dbhand.get_gwancode(egwan, comboBox4.Text.ToString());
             int ehang_count = dbhand.count_row(ehang);
             for (int i = 1; i <= ehang_count; i++) {
-                if (dbhand.hang(ehang, gcode, i) != "") {
-                    comboBox5.Items.Add(dbhand.hang(ehang, gcode, i));
+                if (dbhand.hang(ehang, egcode, i) != "") {
+                    comboBox5.Items.Add(dbhand.hang(ehang, egcode, i));
                 }
             }
         }
@@ -120,17 +142,27 @@ namespace FinanceManagement {
             }
             else {
                 if (Name1.Text == String.Empty) {
-                    currentDB.add(incom_rowcount,today_date, "무명", Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
-                    Name2.Text = "";
-                    Sum.Text = "";
-                    Note.Text = "";
+                    if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "") {
+                        currentDB.add(incom_rowcount, today_date, "무명", Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text, igcode, ihcode, imcode);
+                        Name2.Text = "";
+                        Sum.Text = "";
+                        Note.Text = "";
+                    }
+                    else {
+                        MessageBox.Show("관, 항, 목을 선택해야합니다.","오류");
+                    }
                 }
                 else {
-                    currentDB.add(incom_rowcount,today_date, Name1.Text, Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text);
-                    Name1.Text = "";
-                    Name2.Text = "";
-                    Sum.Text = "";
-                    Note.Text = "";
+                    if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "") {
+                        currentDB.add(incom_rowcount, today_date, Name1.Text, Name2.Text, Int64.Parse(Sum.Text.Replace(",", "")), Note.Text, igcode, ihcode, imcode);
+                        Name1.Text = "";
+                        Name2.Text = "";
+                        Sum.Text = "";
+                        Note.Text = "";
+                    }
+                    else {
+                        MessageBox.Show("관, 항, 목을 선택해야합니다.", "오류");
+                    }
                 }
                 load_data();
             }
@@ -142,10 +174,15 @@ namespace FinanceManagement {
                 MessageBox.Show("금액을 입력해야합니다.","오류");
             }
             else {
-                currentDB.exp(expen_rowcount,today_date, Int64.Parse(Sum2.Text.Replace(",","")), Note2.Text);
-                Sum2.Text = "";
-                Note2.Text = "";
-                load_data();
+                if (comboBox4.Text != "" && comboBox5.Text != "" && comboBox6.Text != "") {
+                    currentDB.exp(expen_rowcount, today_date, Int64.Parse(Sum2.Text.Replace(",", "")), Note2.Text, egcode, ehcode, emcode);
+                    Sum2.Text = "";
+                    Note2.Text = "";
+                    load_data();
+                }
+                else {
+                    MessageBox.Show("관, 항, 목을 선택해야합니다.", "오류");
+                }
             }
         }
 

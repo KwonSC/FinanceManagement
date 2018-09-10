@@ -13,16 +13,16 @@ using System.IO;
 namespace FinanceManagement {
     public partial class Search : Form {
         string filepath;
-        OleDbDataAdapter i_1, i_2, i_3, i_4, e_1, e_2, e_3, e_4;
+        OleDbDataAdapter i,e;
         string connStr;
-        string sql_i_1 = "SELECT * FROM 수입관";
-        string sql_i_2 = "SELECT * FROM 수입항";
-        string sql_i_3 = "SELECT * FROM 수입목";
-        string sql_i_4 = "SELECT * FROM 수입";
-        string sql_e_1 = "SELECT * FROM 지출관";
-        string sql_e_2 = "SELECT * FROM 지출항";
-        string sql_e_3 = "SELECT * FROM 지출목";
-        string sql_e_4 = "SELECT * FROM 지출";
+        string sql_i = "SELECT * FROM 수입";
+        string sql_e = "SELECT * FROM 지출";
+        string igwan = "수입관";
+        string egwan = "지출관";
+        string ihang = "수입항";
+        string ehang = "지출항";
+        string imok = "수입목";
+        string emok = "지출목";
         Int64 sumi, sume;
         DataSet ds1, ds2;
         DateTime today = DateTime.Today;
@@ -30,57 +30,38 @@ namespace FinanceManagement {
         OleDbConnection conn;
         bool power = true;
         DataView idv,edv;
+        int igcode, ihcode, imcode, egcode, ehcode, emcode;
+        DBHandling dbhand;
 
         public Search(string path) { //생성자
             InitializeComponent();
             filepath = path;
             load_data();
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[9].Visible = false;
-            dataGridView1.Columns[10].Visible = false;
-            dataGridView1.Columns[11].Visible = false;
-            dataGridView1.Columns[12].Visible = false;
-            dataGridView2.Columns[0].Visible = false;
-            dataGridView2.Columns[2].Visible = false;
-            dataGridView2.Columns[3].Visible = false;
-            dataGridView2.Columns[5].Visible = false;
-            dataGridView2.Columns[6].Visible = false;
-            dataGridView2.Columns[8].Visible = false;
-            dataGridView2.Columns[9].Visible = false;
-            dataGridView2.Columns[10].Visible = false;
-            dataGridView2.Columns[11].Visible = false;
-            dataGridView2.Columns[12].Visible = false;
             i_week.Checked = true;
             e_week.Checked = true;
+            i_viewall.Checked = true;
+            e_viewall.Checked = true;
             numberofsearch();
+            int igwan_count = dbhand.count_row(igwan);
+            for (int i = 1; i <= igwan_count; i++) {
+                combo1.Items.Add(dbhand.gwan(igwan, i));
+            }
+            int egwan_count = dbhand.count_row(egwan);
+            for (int i = 1; i <= egwan_count; i++) {
+                combo4.Items.Add(dbhand.gwan(egwan, i));
+            }
         }
 
         public void load_data() {
+            dbhand = new DBHandling(filepath);
             connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
             conn = new OleDbConnection(connStr);
-            i_1 = new OleDbDataAdapter(sql_i_1, conn);
-            i_2 = new OleDbDataAdapter(sql_i_2, conn);
-            i_3 = new OleDbDataAdapter(sql_i_3, conn);
-            i_4 = new OleDbDataAdapter(sql_i_4, conn);
-            e_1 = new OleDbDataAdapter(sql_e_1, conn);
-            e_2 = new OleDbDataAdapter(sql_e_2, conn);
-            e_3 = new OleDbDataAdapter(sql_e_3, conn);
-            e_4 = new OleDbDataAdapter(sql_e_4, conn);
+            i = new OleDbDataAdapter(sql_i, conn);
+            e = new OleDbDataAdapter(sql_e, conn);
             ds1 = new DataSet();
             ds2 = new DataSet();
-            i_1.Fill(ds1);
-            i_2.Fill(ds1);
-            i_3.Fill(ds1);
-            i_4.Fill(ds1);
-            e_1.Fill(ds2);
-            e_2.Fill(ds2);
-            e_3.Fill(ds2);
-            e_4.Fill(ds2);
+            i.Fill(ds1);
+            e.Fill(ds2);
             dataGridView1.DataSource = ds1.Tables[0];
             income_date1.Value = set_Sunday(today);
             income_date2.Value = set_Sunday(today).AddDays(6);
@@ -96,7 +77,139 @@ namespace FinanceManagement {
             numberofsearch();
         }
 
+        private void combo1_TextChanged(object sender, EventArgs e) { //수입_관선택
+            combo2.Items.Clear();
+            combo3.Items.Clear();
+            igcode = dbhand.get_gwancode(igwan, combo1.Text.ToString());
+            int ihang_count = dbhand.count_row(ihang);
+            for (int i = 1; i <= ihang_count; i++) {
+                if (dbhand.hang(ihang, igcode, i) != "") {
+                    combo2.Items.Add(dbhand.hang(ihang, igcode, i));
+                }
+            }
+            if (i_gwan.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "관코드 = " + dbhand.get_gwancode(igwan, combo1.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void combo2_TextChanged(object sender, EventArgs e) { //수입_항선택
+            combo3.Items.Clear();
+            ihcode = dbhand.get_hangcode(ihang, combo2.Text.ToString());
+            int imok_count = dbhand.count_row(imok);
+            for (int i = 1; i <= imok_count; i++) {
+                if (dbhand.mok(imok, igcode, ihcode, i) != "") {
+                    combo3.Items.Add(dbhand.mok(imok, igcode, ihcode, i));
+                }
+            }
+            if (i_hang.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "항코드 = " + dbhand.get_hangcode(ihang, combo2.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void combo3_TextChanged(object sender, EventArgs e) { //수입_목선택
+            imcode = dbhand.get_mokcode(imok, combo3.Text.ToString());
+            if (i_mok.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "목코드 = " + dbhand.get_mokcode(imok, combo3.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void combo4_TextChanged(object sender, EventArgs e) { //지출_관선택
+            combo5.Items.Clear();
+            combo6.Items.Clear();
+            egcode = dbhand.get_gwancode(egwan, combo4.Text.ToString());
+            int ehang_count = dbhand.count_row(ehang);
+            for (int i = 1; i <= ehang_count; i++) {
+                if (dbhand.hang(ehang, egcode, i) != "") {
+                    combo5.Items.Add(dbhand.hang(ehang, egcode, i));
+                }
+            }
+            if (e_gwan.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "관코드 = " + dbhand.get_gwancode(egwan, combo4.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
+
+        private void combo5_TextChanged(object sender, EventArgs e) { //지출_항선택
+            combo6.Items.Clear();
+            ehcode = dbhand.get_hangcode(ehang, combo4.Text.ToString());
+            int emok_count = dbhand.count_row(emok);
+            for (int i = 1; i <= emok_count; i++) {
+                if (dbhand.mok(emok, egcode, ehcode, i) != "") {
+                    combo6.Items.Add(dbhand.mok(emok, egcode, ehcode, i));
+                }
+            }
+            if(e_hang.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "항코드 = " + dbhand.get_hangcode(ehang, combo5.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
+
+        private void combo6_TextChanged(object sender, EventArgs e) { //지출_목선택
+            emcode = dbhand.get_mokcode(emok, combo6.Text.ToString());
+            if (e_mok.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "목코드 = " + dbhand.get_mokcode(emok, combo6.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
+
+        private void i_gwan_CheckedChanged(object sender, EventArgs e) { //수입_관체크
+            if (combo1.Text != "" && i_gwan.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "관코드 = " + dbhand.get_gwancode(igwan, combo1.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void i_hang_CheckedChanged(object sender, EventArgs e) { //수입_항체크
+            if (combo2.Text != "" && i_hang.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "항코드 = " + dbhand.get_hangcode(ihang, combo2.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void i_mok_CheckedChanged(object sender, EventArgs e) { //수입_목체크
+            if (combo3.Text != "" && i_mok.Checked == true) {
+                DataView dvi = idv;
+                dvi.RowFilter = "목코드 = " + dbhand.get_mokcode(imok, combo3.Text);
+                dataGridView1.DataSource = dvi;
+            }
+        }
+
+        private void e_gwan_CheckedChanged(object sender, EventArgs e) { //지출_관체크
+            if (combo4.Text != "" && e_gwan.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "관코드 = " + dbhand.get_gwancode(egwan, combo4.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
+
+        private void e_hang_CheckedChanged(object sender, EventArgs e) { //지출_항체크
+            if (combo5.Text != "" && e_hang.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "항코드 = " + dbhand.get_hangcode(ehang, combo5.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
+
+        private void e_mok_CheckedChanged(object sender, EventArgs e) { //지출_목체크
+            if (combo6.Text != "" && e_mok.Checked == true) {
+                DataView dve = edv;
+                dve.RowFilter = "목코드 = " + dbhand.get_mokcode(emok, combo6.Text);
+                dataGridView2.DataSource = dve;
+            }
+        }
         public void numberofsearch() { //검색건수, 합계금액 표시
+            dbhand = new DBHandling(filepath);
             sumi = 0;
             sume = 0;
             income_numberofsear.Text = dataGridView1.RowCount.ToString();
@@ -110,17 +223,17 @@ namespace FinanceManagement {
             }
             expend_sumofsear.Text = sume.ToString();
             //------------수입------------
-            income_carry.Text = ""; //이월금액
+            income_carry.Text = dbhand.yesterday_sum(income_date1.Value.AddDays(-1)).ToString(); //이월금액
             income_income.Text = sumi.ToString(); ; //수입금액
             income_expend.Text = sume.ToString(); ; //지출금액
             income_differ.Text = (sumi - sume).ToString(); ; //현 차액
-            income_now.Text = ""; //현 잔액
+            income_now.Text = (dbhand.yesterday_sum(income_date1.Value.AddDays(-1)) + (sumi - sume)).ToString(); //현 잔액
             //------------지출-------------------
-            expend_carry.Text = ""; //이월금액
+            expend_carry.Text = dbhand.yesterday_sum(expend_date1.Value.AddDays(-1)).ToString();//이월금액
             expend_income.Text = sumi.ToString(); ; //수입금액
             expend_expend.Text = sume.ToString(); ; //지출금액
             expend_differ.Text = (sumi - sume).ToString(); ; //현 차액
-            expend_now.Text = ""; //현 잔액
+            expend_now.Text = (dbhand.yesterday_sum(income_date1.Value.AddDays(-1)) + (sumi - sume)).ToString(); //현 잔액
         }
 
         public void add_Days(int a) { //입력하는 수만큼 일 더하기
@@ -409,6 +522,7 @@ namespace FinanceManagement {
         }
 
         public DateTime set_Sunday(DateTime dt) { //주간검색_강제일요일 변경
+            rdt = dt;
             if (dt.DayOfWeek == DayOfWeek.Monday) {
                 rdt = dt.AddDays(-1);
             }
@@ -482,6 +596,7 @@ namespace FinanceManagement {
             }
         }
 
+
         private void income_carry_TextChanged(object sender, EventArgs e) {
             string lgsText;
             lgsText = income_carry.Text.Replace(",", "");
@@ -489,6 +604,44 @@ namespace FinanceManagement {
                 income_carry.Text = String.Format("{0:#,##0}", Convert.ToInt64(lgsText));
                 income_carry.SelectionStart = income_carry.TextLength;
                 income_carry.SelectionLength = 0;
+            }
+        }
+
+        private void i_viewall_CheckedChanged(object sender, EventArgs e) { //수입_전체보기 값변경
+            if (i_viewall.Checked == true) {
+                i_gwan.Enabled = false;
+                i_hang.Enabled = false;
+                i_mok.Enabled = false;
+                combo1.Enabled = false;
+                combo2.Enabled = false;
+                combo3.Enabled = false;
+            }
+            else {
+                i_gwan.Enabled = true;
+                i_hang.Enabled = true;
+                i_mok.Enabled = true;
+                combo1.Enabled = true;
+                combo2.Enabled = true;
+                combo3.Enabled = true;
+            }
+        }
+
+        private void e_viewall_CheckedChanged(object sender, EventArgs e) { //지출_전체보기 값변경
+            if (e_viewall.Checked == true) {
+                e_gwan.Enabled = false;
+                e_hang.Enabled = false;
+                e_mok.Enabled = false;
+                combo4.Enabled = false;
+                combo5.Enabled = false;
+                combo6.Enabled = false;
+            }
+            else {
+                e_gwan.Enabled = true;
+                e_hang.Enabled = true;
+                e_mok.Enabled = true;
+                combo4.Enabled = true;
+                combo5.Enabled = true;
+                combo6.Enabled = true;
             }
         }
 

@@ -41,18 +41,14 @@
             this.income_differ = new System.Windows.Forms.TextBox();
             this.income_expend = new System.Windows.Forms.TextBox();
             this.income_income = new System.Windows.Forms.TextBox();
+            this.i_viewall = new System.Windows.Forms.RadioButton();
+            this.i_viewselect = new System.Windows.Forms.RadioButton();
             this.income_carry = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.income_sumofsear = new System.Windows.Forms.TextBox();
             this.income_numberofsear = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,6 +59,13 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.combo3 = new System.Windows.Forms.ComboBox();
+            this.combo2 = new System.Windows.Forms.ComboBox();
+            this.combo1 = new System.Windows.Forms.ComboBox();
+            this.i_mok = new System.Windows.Forms.RadioButton();
+            this.i_hang = new System.Windows.Forms.RadioButton();
+            this.i_gwan = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -83,18 +86,14 @@
             this.expend_differ = new System.Windows.Forms.TextBox();
             this.expend_expend = new System.Windows.Forms.TextBox();
             this.expend_income = new System.Windows.Forms.TextBox();
+            this.e_viewselect = new System.Windows.Forms.RadioButton();
             this.expend_carry = new System.Windows.Forms.TextBox();
+            this.e_viewall = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
             this.expend_sumofsear = new System.Windows.Forms.TextBox();
             this.expend_numberofsear = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -105,20 +104,21 @@
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.combo4 = new System.Windows.Forms.ComboBox();
-            this.combo5 = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.combo6 = new System.Windows.Forms.ComboBox();
-            this.combo1 = new System.Windows.Forms.ComboBox();
-            this.combo2 = new System.Windows.Forms.ComboBox();
-            this.combo3 = new System.Windows.Forms.ComboBox();
+            this.combo5 = new System.Windows.Forms.ComboBox();
+            this.combo4 = new System.Windows.Forms.ComboBox();
+            this.e_mok = new System.Windows.Forms.RadioButton();
+            this.e_hang = new System.Windows.Forms.RadioButton();
+            this.e_gwan = new System.Windows.Forms.RadioButton();
             this.income_panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.expend_panel.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // income_panel
@@ -129,6 +129,8 @@
             this.income_panel.Controls.Add(this.income_differ);
             this.income_panel.Controls.Add(this.income_expend);
             this.income_panel.Controls.Add(this.income_income);
+            this.income_panel.Controls.Add(this.i_viewall);
+            this.income_panel.Controls.Add(this.i_viewselect);
             this.income_panel.Controls.Add(this.income_carry);
             this.income_panel.Controls.Add(this.label9);
             this.income_panel.Controls.Add(this.label8);
@@ -324,6 +326,29 @@
             this.income_income.TabIndex = 18;
             this.income_income.TextChanged += new System.EventHandler(this.income_income_TextChanged);
             // 
+            // i_viewall
+            // 
+            this.i_viewall.AutoSize = true;
+            this.i_viewall.Location = new System.Drawing.Point(307, 438);
+            this.i_viewall.Name = "i_viewall";
+            this.i_viewall.Size = new System.Drawing.Size(71, 16);
+            this.i_viewall.TabIndex = 1;
+            this.i_viewall.TabStop = true;
+            this.i_viewall.Text = "전체보기";
+            this.i_viewall.UseVisualStyleBackColor = true;
+            this.i_viewall.CheckedChanged += new System.EventHandler(this.i_viewall_CheckedChanged);
+            // 
+            // i_viewselect
+            // 
+            this.i_viewselect.AutoSize = true;
+            this.i_viewselect.Location = new System.Drawing.Point(403, 438);
+            this.i_viewselect.Name = "i_viewselect";
+            this.i_viewselect.Size = new System.Drawing.Size(127, 16);
+            this.i_viewselect.TabIndex = 2;
+            this.i_viewselect.TabStop = true;
+            this.i_viewselect.Text = "선택한 계정만 보기";
+            this.i_viewselect.UseVisualStyleBackColor = true;
+            // 
             // income_carry
             // 
             this.income_carry.BackColor = System.Drawing.Color.LightGray;
@@ -379,78 +404,6 @@
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 12;
             this.label5.Text = "이월금액";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.combo3);
-            this.groupBox2.Controls.Add(this.combo2);
-            this.groupBox2.Controls.Add(this.combo1);
-            this.groupBox2.Controls.Add(this.radioButton8);
-            this.groupBox2.Controls.Add(this.radioButton7);
-            this.groupBox2.Controls.Add(this.radioButton6);
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Location = new System.Drawing.Point(301, 440);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(235, 119);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "검색범위";
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(6, 91);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(35, 16);
-            this.radioButton8.TabIndex = 5;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "목";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(6, 65);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(35, 16);
-            this.radioButton7.TabIndex = 4;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "항";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(6, 39);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(35, 16);
-            this.radioButton6.TabIndex = 3;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "관";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(102, 20);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(127, 16);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "선택한 계정만 보기";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 20);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(71, 16);
-            this.radioButton4.TabIndex = 1;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "전체보기";
-            this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // income_sumofsear
             // 
@@ -549,6 +502,87 @@
             this.dataGridView1.Size = new System.Drawing.Size(1016, 339);
             this.dataGridView1.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.combo3);
+            this.groupBox2.Controls.Add(this.combo2);
+            this.groupBox2.Controls.Add(this.combo1);
+            this.groupBox2.Controls.Add(this.i_mok);
+            this.groupBox2.Controls.Add(this.i_hang);
+            this.groupBox2.Controls.Add(this.i_gwan);
+            this.groupBox2.Location = new System.Drawing.Point(301, 460);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(235, 99);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "검색범위";
+            // 
+            // combo3
+            // 
+            this.combo3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo3.FormattingEnabled = true;
+            this.combo3.Location = new System.Drawing.Point(47, 68);
+            this.combo3.Name = "combo3";
+            this.combo3.Size = new System.Drawing.Size(119, 20);
+            this.combo3.TabIndex = 9;
+            this.combo3.TextChanged += new System.EventHandler(this.combo3_TextChanged);
+            // 
+            // combo2
+            // 
+            this.combo2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo2.FormattingEnabled = true;
+            this.combo2.Location = new System.Drawing.Point(47, 42);
+            this.combo2.Name = "combo2";
+            this.combo2.Size = new System.Drawing.Size(119, 20);
+            this.combo2.TabIndex = 8;
+            this.combo2.TextChanged += new System.EventHandler(this.combo2_TextChanged);
+            // 
+            // combo1
+            // 
+            this.combo1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo1.FormattingEnabled = true;
+            this.combo1.Location = new System.Drawing.Point(47, 16);
+            this.combo1.Name = "combo1";
+            this.combo1.Size = new System.Drawing.Size(119, 20);
+            this.combo1.TabIndex = 7;
+            this.combo1.TextChanged += new System.EventHandler(this.combo1_TextChanged);
+            // 
+            // i_mok
+            // 
+            this.i_mok.AutoSize = true;
+            this.i_mok.Location = new System.Drawing.Point(6, 69);
+            this.i_mok.Name = "i_mok";
+            this.i_mok.Size = new System.Drawing.Size(35, 16);
+            this.i_mok.TabIndex = 5;
+            this.i_mok.TabStop = true;
+            this.i_mok.Text = "목";
+            this.i_mok.UseVisualStyleBackColor = true;
+            this.i_mok.CheckedChanged += new System.EventHandler(this.i_mok_CheckedChanged);
+            // 
+            // i_hang
+            // 
+            this.i_hang.AutoSize = true;
+            this.i_hang.Location = new System.Drawing.Point(6, 43);
+            this.i_hang.Name = "i_hang";
+            this.i_hang.Size = new System.Drawing.Size(35, 16);
+            this.i_hang.TabIndex = 4;
+            this.i_hang.TabStop = true;
+            this.i_hang.Text = "항";
+            this.i_hang.UseVisualStyleBackColor = true;
+            this.i_hang.CheckedChanged += new System.EventHandler(this.i_hang_CheckedChanged);
+            // 
+            // i_gwan
+            // 
+            this.i_gwan.AutoSize = true;
+            this.i_gwan.Location = new System.Drawing.Point(6, 17);
+            this.i_gwan.Name = "i_gwan";
+            this.i_gwan.Size = new System.Drawing.Size(35, 16);
+            this.i_gwan.TabIndex = 3;
+            this.i_gwan.TabStop = true;
+            this.i_gwan.Text = "관";
+            this.i_gwan.UseVisualStyleBackColor = true;
+            this.i_gwan.CheckedChanged += new System.EventHandler(this.i_gwan_CheckedChanged);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(6, 12);
@@ -587,7 +621,9 @@
             this.expend_panel.Controls.Add(this.expend_differ);
             this.expend_panel.Controls.Add(this.expend_expend);
             this.expend_panel.Controls.Add(this.expend_income);
+            this.expend_panel.Controls.Add(this.e_viewselect);
             this.expend_panel.Controls.Add(this.expend_carry);
+            this.expend_panel.Controls.Add(this.e_viewall);
             this.expend_panel.Controls.Add(this.label12);
             this.expend_panel.Controls.Add(this.label13);
             this.expend_panel.Controls.Add(this.label14);
@@ -782,6 +818,17 @@
             this.expend_income.TabIndex = 18;
             this.expend_income.TextChanged += new System.EventHandler(this.expend_income_TextChanged);
             // 
+            // e_viewselect
+            // 
+            this.e_viewselect.AutoSize = true;
+            this.e_viewselect.Location = new System.Drawing.Point(403, 438);
+            this.e_viewselect.Name = "e_viewselect";
+            this.e_viewselect.Size = new System.Drawing.Size(127, 16);
+            this.e_viewselect.TabIndex = 2;
+            this.e_viewselect.TabStop = true;
+            this.e_viewselect.Text = "선택한 계정만 보기";
+            this.e_viewselect.UseVisualStyleBackColor = true;
+            // 
             // expend_carry
             // 
             this.expend_carry.BackColor = System.Drawing.Color.LightGray;
@@ -792,6 +839,18 @@
             this.expend_carry.Size = new System.Drawing.Size(108, 21);
             this.expend_carry.TabIndex = 17;
             this.expend_carry.TextChanged += new System.EventHandler(this.expend_carry_TextChanged);
+            // 
+            // e_viewall
+            // 
+            this.e_viewall.AutoSize = true;
+            this.e_viewall.Location = new System.Drawing.Point(307, 438);
+            this.e_viewall.Name = "e_viewall";
+            this.e_viewall.Size = new System.Drawing.Size(71, 16);
+            this.e_viewall.TabIndex = 1;
+            this.e_viewall.TabStop = true;
+            this.e_viewall.Text = "전체보기";
+            this.e_viewall.UseVisualStyleBackColor = true;
+            this.e_viewall.CheckedChanged += new System.EventHandler(this.e_viewall_CheckedChanged);
             // 
             // label12
             // 
@@ -837,78 +896,6 @@
             this.label16.Size = new System.Drawing.Size(53, 12);
             this.label16.TabIndex = 12;
             this.label16.Text = "이월금액";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.combo6);
-            this.groupBox3.Controls.Add(this.combo5);
-            this.groupBox3.Controls.Add(this.combo4);
-            this.groupBox3.Controls.Add(this.radioButton9);
-            this.groupBox3.Controls.Add(this.radioButton10);
-            this.groupBox3.Controls.Add(this.radioButton11);
-            this.groupBox3.Controls.Add(this.radioButton12);
-            this.groupBox3.Controls.Add(this.radioButton13);
-            this.groupBox3.Location = new System.Drawing.Point(301, 440);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(235, 119);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "검색범위";
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(6, 91);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(35, 16);
-            this.radioButton9.TabIndex = 5;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "목";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            // 
-            // radioButton10
-            // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(6, 65);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(35, 16);
-            this.radioButton10.TabIndex = 4;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "항";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(6, 39);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(35, 16);
-            this.radioButton11.TabIndex = 3;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "관";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(102, 20);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(127, 16);
-            this.radioButton12.TabIndex = 2;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "선택한 계정만 보기";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(6, 20);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(71, 16);
-            this.radioButton13.TabIndex = 1;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "전체보기";
-            this.radioButton13.UseVisualStyleBackColor = true;
             // 
             // expend_sumofsear
             // 
@@ -1007,59 +994,86 @@
             this.dataGridView2.Size = new System.Drawing.Size(1016, 339);
             this.dataGridView2.TabIndex = 0;
             // 
-            // combo4
+            // groupBox3
             // 
-            this.combo4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo4.FormattingEnabled = true;
-            this.combo4.Location = new System.Drawing.Point(47, 38);
-            this.combo4.Name = "combo4";
-            this.combo4.Size = new System.Drawing.Size(119, 20);
-            this.combo4.TabIndex = 6;
-            // 
-            // combo5
-            // 
-            this.combo5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo5.FormattingEnabled = true;
-            this.combo5.Location = new System.Drawing.Point(47, 64);
-            this.combo5.Name = "combo5";
-            this.combo5.Size = new System.Drawing.Size(119, 20);
-            this.combo5.TabIndex = 7;
+            this.groupBox3.Controls.Add(this.combo6);
+            this.groupBox3.Controls.Add(this.combo5);
+            this.groupBox3.Controls.Add(this.combo4);
+            this.groupBox3.Controls.Add(this.e_mok);
+            this.groupBox3.Controls.Add(this.e_hang);
+            this.groupBox3.Controls.Add(this.e_gwan);
+            this.groupBox3.Location = new System.Drawing.Point(301, 460);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(235, 99);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "검색범위";
             // 
             // combo6
             // 
             this.combo6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo6.FormattingEnabled = true;
-            this.combo6.Location = new System.Drawing.Point(47, 90);
+            this.combo6.Location = new System.Drawing.Point(47, 68);
             this.combo6.Name = "combo6";
             this.combo6.Size = new System.Drawing.Size(119, 20);
             this.combo6.TabIndex = 8;
+            this.combo6.TextChanged += new System.EventHandler(this.combo6_TextChanged);
             // 
-            // combo1
+            // combo5
             // 
-            this.combo1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo1.FormattingEnabled = true;
-            this.combo1.Location = new System.Drawing.Point(47, 38);
-            this.combo1.Name = "combo1";
-            this.combo1.Size = new System.Drawing.Size(119, 20);
-            this.combo1.TabIndex = 7;
+            this.combo5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo5.FormattingEnabled = true;
+            this.combo5.Location = new System.Drawing.Point(47, 42);
+            this.combo5.Name = "combo5";
+            this.combo5.Size = new System.Drawing.Size(119, 20);
+            this.combo5.TabIndex = 7;
+            this.combo5.TextChanged += new System.EventHandler(this.combo5_TextChanged);
             // 
-            // combo2
+            // combo4
             // 
-            this.combo2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo2.FormattingEnabled = true;
-            this.combo2.Location = new System.Drawing.Point(47, 64);
-            this.combo2.Name = "combo2";
-            this.combo2.Size = new System.Drawing.Size(119, 20);
-            this.combo2.TabIndex = 8;
+            this.combo4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo4.FormattingEnabled = true;
+            this.combo4.Location = new System.Drawing.Point(47, 16);
+            this.combo4.Name = "combo4";
+            this.combo4.Size = new System.Drawing.Size(119, 20);
+            this.combo4.TabIndex = 6;
+            this.combo4.TextChanged += new System.EventHandler(this.combo4_TextChanged);
             // 
-            // combo3
+            // e_mok
             // 
-            this.combo3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo3.FormattingEnabled = true;
-            this.combo3.Location = new System.Drawing.Point(47, 90);
-            this.combo3.Name = "combo3";
-            this.combo3.Size = new System.Drawing.Size(119, 20);
-            this.combo3.TabIndex = 9;
+            this.e_mok.AutoSize = true;
+            this.e_mok.Location = new System.Drawing.Point(6, 69);
+            this.e_mok.Name = "e_mok";
+            this.e_mok.Size = new System.Drawing.Size(35, 16);
+            this.e_mok.TabIndex = 5;
+            this.e_mok.TabStop = true;
+            this.e_mok.Text = "목";
+            this.e_mok.UseVisualStyleBackColor = true;
+            this.e_mok.CheckedChanged += new System.EventHandler(this.e_mok_CheckedChanged);
+            // 
+            // e_hang
+            // 
+            this.e_hang.AutoSize = true;
+            this.e_hang.Location = new System.Drawing.Point(6, 43);
+            this.e_hang.Name = "e_hang";
+            this.e_hang.Size = new System.Drawing.Size(35, 16);
+            this.e_hang.TabIndex = 4;
+            this.e_hang.TabStop = true;
+            this.e_hang.Text = "항";
+            this.e_hang.UseVisualStyleBackColor = true;
+            this.e_hang.CheckedChanged += new System.EventHandler(this.e_hang_CheckedChanged);
+            // 
+            // e_gwan
+            // 
+            this.e_gwan.AutoSize = true;
+            this.e_gwan.Location = new System.Drawing.Point(6, 17);
+            this.e_gwan.Name = "e_gwan";
+            this.e_gwan.Size = new System.Drawing.Size(35, 16);
+            this.e_gwan.TabIndex = 3;
+            this.e_gwan.TabStop = true;
+            this.e_gwan.Text = "관";
+            this.e_gwan.UseVisualStyleBackColor = true;
+            this.e_gwan.CheckedChanged += new System.EventHandler(this.e_gwan_CheckedChanged);
             // 
             // Search
             // 
@@ -1080,16 +1094,16 @@
             this.income_panel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.expend_panel.ResumeLayout(false);
             this.expend_panel.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1112,11 +1126,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton i_mok;
+        private System.Windows.Forms.RadioButton i_hang;
+        private System.Windows.Forms.RadioButton i_gwan;
+        private System.Windows.Forms.RadioButton i_viewselect;
+        private System.Windows.Forms.RadioButton i_viewall;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
@@ -1151,11 +1165,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton12;
-        private System.Windows.Forms.RadioButton radioButton13;
+        private System.Windows.Forms.RadioButton e_mok;
+        private System.Windows.Forms.RadioButton e_hang;
+        private System.Windows.Forms.RadioButton e_gwan;
+        private System.Windows.Forms.RadioButton e_viewselect;
+        private System.Windows.Forms.RadioButton e_viewall;
         private System.Windows.Forms.TextBox expend_sumofsear;
         private System.Windows.Forms.TextBox expend_numberofsear;
         private System.Windows.Forms.Label label18;
