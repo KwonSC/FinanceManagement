@@ -36,7 +36,6 @@ namespace FinanceManagement {
         public Search(string path) { //생성자
             InitializeComponent();
             filepath = path;
-            dbhand = new DBHandling(filepath);
             load_data();
             i_week.Checked = true;
             e_week.Checked = true;
@@ -54,6 +53,7 @@ namespace FinanceManagement {
         }
 
         public void load_data() {
+            dbhand = new DBHandling(filepath);
             connStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";";
             conn = new OleDbConnection(connStr);
             i = new OleDbDataAdapter(sql_i, conn);
@@ -209,6 +209,7 @@ namespace FinanceManagement {
             }
         }
         public void numberofsearch() { //검색건수, 합계금액 표시
+            dbhand = new DBHandling(filepath);
             sumi = 0;
             sume = 0;
             income_numberofsear.Text = dataGridView1.RowCount.ToString();
@@ -222,17 +223,17 @@ namespace FinanceManagement {
             }
             expend_sumofsear.Text = sume.ToString();
             //------------수입------------
-            income_carry.Text = ""; //이월금액
+            income_carry.Text = dbhand.yesterday_sum(income_date1.Value.AddDays(-1)).ToString(); //이월금액
             income_income.Text = sumi.ToString(); ; //수입금액
             income_expend.Text = sume.ToString(); ; //지출금액
             income_differ.Text = (sumi - sume).ToString(); ; //현 차액
-            income_now.Text = ""; //현 잔액
+            income_now.Text = (dbhand.yesterday_sum(income_date1.Value.AddDays(-1)) + (sumi - sume)).ToString(); //현 잔액
             //------------지출-------------------
-            expend_carry.Text = ""; //이월금액
+            expend_carry.Text = dbhand.yesterday_sum(expend_date1.Value.AddDays(-1)).ToString();//이월금액
             expend_income.Text = sumi.ToString(); ; //수입금액
             expend_expend.Text = sume.ToString(); ; //지출금액
             expend_differ.Text = (sumi - sume).ToString(); ; //현 차액
-            expend_now.Text = ""; //현 잔액
+            expend_now.Text = (dbhand.yesterday_sum(income_date1.Value.AddDays(-1)) + (sumi - sume)).ToString(); //현 잔액
         }
 
         public void add_Days(int a) { //입력하는 수만큼 일 더하기
